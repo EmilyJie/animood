@@ -1,20 +1,38 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import MainTab from './navigation/MainTab';
+
+const PERSISTENCE_KEY = "NAVIGATION_STATE";
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+  const [isLoadingComplete, setLoadingComplete] = React.useState(false);
+  const [initialNavigationState, setInitialNavigationState] = React.useState();
+  
+  React.useEffect(() => {
+    async function loadResourcesAndDataAsync() {
+      try {
+        SplashScreen.preventAutoHide();
+        const savedStateString = await AsyncStorage.getItem(PERSISTENCE_KEY);
+        const state = JSON.parse(savedStateString);
+        setInitialNavigationState(state);
+      } catch (e) {
+        // We might want to provide this error information to an error reporting service
+        console.warn(e);
+      } finally {
+        setLoadingComplete(true);
+        SplashScreen.hide();
+      }
+    }
+    loadResourcesAndDataAsync();
+  }, []);
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+  if (!isLoadingComplete) {
+    return null;
+  } else {
+    return (
+      <NavigationContainer initialState={initialNavigationState}>
+        <MainTab/>
+      </NavigationContainer>
+    );
+  }
+}
