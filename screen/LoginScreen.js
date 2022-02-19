@@ -1,35 +1,52 @@
-import { StatusBar } from 'expo-status-bar';
 import React, { useState } from "react";
-import { StyleSheet, Text, TextInput, TouchableOpacity, Image, View, Animated } from 'react-native';
-import { ProgressBar } from 'react-native-paper';
+import { StyleSheet, Text, TextInput, TouchableOpacity, View, } from 'react-native';
 
 export default function LoginScreen({ navigation }) {
-  const [account, onChangeaccount] = React.useState(null);
-  const [password, onChangepassword] = React.useState(null);
+  const [account, onChangeAccount] = useState(null);
+  const [password, onChangePassword] = useState(null);
+
   return (
     <View style={styles.container}>
         <Text style={styles.title}>Animood</Text>
-        <TextInput
-          style={styles.input}
-          onChangeText={onChangeaccount}
-          value={account}
-          placeholder="帳號"
-          placeholderTextColor={'#FF986D'}
-        />
-        <TextInput
-          style={styles.input}
-          onChangeText={onChangepassword}
-          value={password}
-          placeholder="密碼"
-          placeholderTextColor={'#FF986D'}
-        />
+        <View style={styles.inputContainer}>
+          <TextInput
+            style={styles.input}
+            onChangeText={onChangeAccount}
+            value={account}
+            placeholder="帳號"
+            placeholderTextColor={'#FF986D'}
+            textContentType='username'
+            keyboardAppearance='dark'
+          />
+          <TextInput
+            style={styles.input}
+            onChangeText={onChangePassword}
+            value={password}
+            placeholder="密碼"
+            placeholderTextColor={'#FF986D'}
+            textContentType='password'
+            keyboardAppearance='dark'
+            secureTextEntry={true}
+          />
+        </View>
+        <TouchableOpacity style={{width: 280, alignItems: 'flex-end', marginBottom: 5}}>
+            <Text style={styles.forget}>忘記密碼？</Text>
+        </TouchableOpacity>
+        <View style={styles.btn}>
+          <TouchableOpacity style={styles.signUp}>
+            <Text style={styles.btnText}>註冊</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.login}>
+            <Text style={styles.btnText}>登入</Text>
+          </TouchableOpacity>
+        </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container:{
-    backgroundColor:'#FFC5AD',
+    backgroundColor:'#FFBB9E',
     alignItems:'center',
     justifyContent:'center',
     flex: 1,
@@ -43,9 +60,12 @@ const styles = StyleSheet.create({
     textShadowOffset: {width: 0, height: 4},
     textShadowRadius: 4,
   },
+  inputContainer: {
+    marginTop: 10,
+  },
   input: {
     backgroundColor: '#FFF9F7',
-    height: 45,
+    height: 55,
     width: 285,
     margin: 15,
     borderWidth: 1,
@@ -55,4 +75,37 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight:"bold",
   },
+  forget: {
+    fontSize: 14,
+    fontWeight:"bold",
+    color: '#FFFFFF',
+    textDecorationLine: 'underline'
+  },
+  btn: {
+    width: 285,
+    marginTop: 10,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  signUp: {
+    width: 125,
+    height: 60,
+    backgroundColor: '#FF7D3C',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 20,
+  },
+  login: {
+    width: 125,
+    height: 60,
+    backgroundColor: '#F95A5A',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 20,
+  },
+  btnText: {
+    fontSize: 18,
+    fontWeight:"bold",
+    color: '#FFFFFF'
+  }
 });

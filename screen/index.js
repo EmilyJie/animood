@@ -4,7 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './HomeScreen';
 import ReplyScreen from './ReplyScreen';
 import TestScreen from './TestScreen';
-import PersonScreen from './PersonScreen';
+import UserScreen from './UserScreen';
 
 export const Stack = createStackNavigator();
 
@@ -47,10 +47,10 @@ export const TestStack = () => {
   );
 }
   
-export const PersonStack = () => {
+export const UserStack = () => {
   return (
     <Stack.Navigator>
-    <Stack.Screen name="Person"component={PersonScreen}  
+    <Stack.Screen name="User"component={UserScreen}  
       options={{
       headerStyle:{
           height:0,

@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { StyleSheet, Text, TouchableOpacity, Image, View, Animated } from 'react-native';
 import { ProgressBar } from 'react-native-paper';
 
-export default function PersonScreen({ navigation }) {
+export default function TestScreen({ navigation }) {
   return (
     <View style={{flex:1}}>
     </View>
