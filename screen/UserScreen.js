@@ -43,6 +43,10 @@ export default function UserScreen({ navigation }) {
   const [aboutVisible, setAboutVisible] = React.useState(false);
   return (
     <View style={styles.center}>
+      <Image 
+        style={{ position: 'absolute' ,flex: 1 }}
+        source={require('../assets/user/bg_user.png')}
+      />
       <Image
         style={styles.profilePhoto}
         source={require('../assets/img_profliePhoto.png')}
@@ -69,6 +73,25 @@ export default function UserScreen({ navigation }) {
         </View>
         <View style={styles.settingBox}>
           <Image
+            style={{ width: 27.5, height: 27.5, marginLeft: 20 }}
+            source={require('../assets/user/img_solved.png')}
+          />
+          <Text style={styles.settingText}>已解決的煩惱</Text>
+          <ModalPoup visible={notificationVisible}>
+              <NotificationScreen></NotificationScreen>
+              <TouchableOpacity onPress={() => setNotificationVisible(false)}>
+                <Image source={require('../assets/user/btn_sent.png')} style={styles.btnSent}/>
+              </TouchableOpacity> 
+            </ModalPoup>
+          <TouchableOpacity onPress={() => setNotificationVisible(true)}>
+            <Image
+              style={{width: 13, height: 25, marginLeft: 95}}
+              source={require('../assets/user/btn_arrow.png')}
+            />
+          </TouchableOpacity>
+        </View>
+        <View style={styles.settingBox}>
+          <Image
             style={{ width: 26.65, height: 30, marginLeft: 20 }}
             source={require('../assets/user/img_notification.png')}
           />
@@ -88,7 +111,7 @@ export default function UserScreen({ navigation }) {
         </View>
         <View style={styles.settingBox}>
           <Image
-            style={{ width: 28, height: 28, marginLeft: 20 }}
+            style={{ width: 27, height: 28, marginLeft: 20 }}
             source={require('../assets/user/img_about.png')}
           />
           <Text style={styles.settingText}>關於我們</Text>
@@ -98,13 +121,6 @@ export default function UserScreen({ navigation }) {
               source={require('../assets/user/btn_arrow.png')}
             />
           </TouchableOpacity>
-        </View>
-        <View style={styles.settingBox}>
-          <Image
-            style={{ width: 28, height: 30, marginLeft: 20 }}
-            source={require('../assets/user/img_version.png')}
-          />
-          <Text style={styles.settingText}>版本資訊</Text>
         </View>
         <TouchableOpacity style={styles.signOut}>
           <Image
@@ -121,7 +137,7 @@ export default function UserScreen({ navigation }) {
 const styles = StyleSheet.create({
   center:{
     alignItems: 'center',
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#FFBB9E',
     width:415,
     height:896,
   },
@@ -133,7 +149,6 @@ const styles = StyleSheet.create({
   setting:{
     width: 345,
     height: 455,
-    backgroundColor: '#FFBB9E',
     borderRadius: 20,
     marginTop: 30,
     paddingTop: 20,
