@@ -26,7 +26,7 @@ const HomeTabNavigation = () => {
             ? require('../assets/home/btn_reply_click.png'):
             require('../assets/home/btn_reply.png');
             iconWidth = focused ? 38 : 38;
-            iconHeight = focused ? 29.9 : 29.9;
+            iconHeight = focused ? 30.08 : 30.08;
           }else if (route.name == '測驗') {
             iconPath = focused
             ? require('../assets/home/btn_test_click.png'):

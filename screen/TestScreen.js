@@ -1,6 +1,6 @@
-import React , { Component }from 'react';
+import React from 'react';
 import { TouchableOpacity } from 'react-native';
-import { StyleSheet, Text, View ,Image, Modal, Animated, Button} from 'react-native';
+import { StyleSheet, Text, View ,Image } from 'react-native';
 import ModalPoup from '../component/ModalPoup';
 
 const DetailModal = () => {
@@ -51,21 +51,21 @@ export default function TestScreen({ navigation }) {
             <TouchableOpacity onPress={() => setDetailVisible(true)}>
                 <Text style={styles.detailText}>詳細內容</Text>
             </TouchableOpacity>
-          </View>
-          <View style={styles.historyBox}>
+        </View>
+        <View style={styles.historyBox}>
             <Text style={styles.detailText}>2022/01/01</Text>
             <Text style={styles.detailText}>90分</Text>
             <TouchableOpacity>
-              <Text style={styles.detailText}>詳細內容</Text>
+                <Text style={styles.detailText}>詳細內容</Text>
             </TouchableOpacity>
-          </View>
-          <View style={styles.historyBox}>
+        </View>
+        <View style={styles.historyBox}>
             <Text style={styles.detailText}>2021/12/13</Text>
             <Text style={styles.detailText}>86分</Text>
             <TouchableOpacity>
               <Text style={styles.detailText}>詳細內容</Text>
             </TouchableOpacity>
-          </View>
+        </View>
       </View>
     </View>
   )

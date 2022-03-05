@@ -11,16 +11,16 @@ export default function SignUpScreen({ navigation }) {
         <Text style={styles.title}>Animood</Text>
         <View style={styles.photoSelection}>
           <TouchableOpacity>
-            <Image style={styles.profliePhoto} source={require('../assets/img_profliePhoto.png')}/>
+            <Image style={styles.profliePhoto} source={require('../assets/img_head1.png')}/>
           </TouchableOpacity>
           <TouchableOpacity>
-            <Image style={styles.profliePhoto} source={require('../assets/img_profliePhoto(1).png')}/>
+            <Image style={styles.profliePhoto} source={require('../assets/img_head2.png')}/>
           </TouchableOpacity>
           <TouchableOpacity>
-            <Image style={styles.profliePhoto} source={require('../assets/img_profliePhoto(2).png')}/>
+            <Image style={styles.profliePhoto} source={require('../assets/img_head3.png')}/>
           </TouchableOpacity>
           <TouchableOpacity>
-            <Image style={styles.profliePhoto} source={require('../assets/img_profliePhoto(3).png')}/>
+            <Image style={styles.profliePhoto} source={require('../assets/img_head4.png')}/>
           </TouchableOpacity>
         </View>
         <View style={styles.inputContainer}>

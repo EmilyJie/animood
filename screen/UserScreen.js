@@ -18,10 +18,12 @@ export default function UserScreen({ navigation }) {
         style={{ position: 'absolute' ,flex: 1 }}
         source={require('../assets/img_bg.png')}
       />
-      <Image
-        style={styles.profilePhoto}
-        source={require('../assets/img_profliePhoto.png')}
-      />
+      <View style={styles.photoBg}>
+        <Image
+          style={styles.profilePhoto}
+          source={require('../assets/img_head1.png')}
+        />
+      </View>
       <View style={styles.setting}>
         <View style={styles.settingBox}>
           <Image
@@ -47,7 +49,7 @@ export default function UserScreen({ navigation }) {
             style={{ width: 27.5, height: 27.5, marginLeft: 20 }}
             source={require('../assets/user/img_solved.png')}
           />
-          <Text style={styles.settingText}>已解決的煩惱</Text>
+          <Text style={styles.settingText}>所有煩惱</Text>
           <ModalPoup visible={solvedVisible}>
               <SolvedScreen></SolvedScreen>
               <TouchableOpacity onPress={() => setSolvedVisible(false)}>
@@ -56,7 +58,7 @@ export default function UserScreen({ navigation }) {
           </ModalPoup>
           <TouchableOpacity onPress={() => setSolvedVisible(true)}>
             <Image
-              style={{width: 13, height: 25, marginLeft: 95}}
+              style={styles.arrow}
               source={require('../assets/user/btn_arrow.png')}
             />
           </TouchableOpacity>
@@ -117,10 +119,25 @@ const styles = StyleSheet.create({
     width:415,
     height:896,
   },
+  photoBg:{
+    width: 120,
+    height: 120,
+    backgroundColor: '#FFF5F0',
+    borderRadius: 100,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 120,
+  },
   profilePhoto:{
     width: 100,
     height: 100,
-    marginTop: 130,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 3.5,
   },
   setting:{
     width: 345,
