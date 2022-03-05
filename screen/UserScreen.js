@@ -1,51 +1,22 @@
-import { StatusBar } from 'expo-status-bar';
 import React , { Component }from 'react';
 import { TouchableOpacity } from 'react-native';
 import { StyleSheet, Text, View ,Image, Modal, Animated} from 'react-native';
+import ModalPoup from '../component/ModalPoup';
 import AccountScreen from './AccountScreen';
 import NotificationScreen from './NotificationScreen';
-
-const ModalPoup = ({visible, children}) => {
-  const [showModal, setShowModal ] = React.useState(visible);
-  const scalValue = React.useRef(new Animated.Value(0)).current;
-  React.useEffect(() => {
-    toggleModal();
-  }, [visible])
-  const toggleModal =() => {
-    if (visible) {
-      setShowModal(true);
-      Animated.spring(scalValue,{
-        toValue: 1,
-        duration: 300,
-        useNativeDriver: true,
-      }).start();
-    } else {
-      setTimeout(() => setShowModal(false), 200)
-      Animated.timing(scalValue,{
-        toValue: 0,
-        duration: 300,
-        useNativeDriver: true,
-      }).start();
-    }
-  };
-  return(
-    <Modal transparent visible={showModal}>
-      <View style={styles.modalBg}>
-        <Animated.View style={[styles.modalContainer,{transform:[{scale:scalValue}]}]}>{children}</Animated.View>
-      </View>
-    </Modal>
-  )
-}
+import SolvedScreen from './SolvedScreen';
+import AboutScreen from './AboutScreen';
 
 export default function UserScreen({ navigation }) {
   const [accountVisible, setAccountVisible] = React.useState(false);
   const [notificationVisible, setNotificationVisible] = React.useState(false);
+  const [solvedVisible, setSolvedVisible] = React.useState(false);
   const [aboutVisible, setAboutVisible] = React.useState(false);
   return (
-    <View style={styles.center}>
+    <View style={styles.container}>
       <Image 
         style={{ position: 'absolute' ,flex: 1 }}
-        source={require('../assets/user/bg_user.png')}
+        source={require('../assets/img_bg.png')}
       />
       <Image
         style={styles.profilePhoto}
@@ -63,7 +34,7 @@ export default function UserScreen({ navigation }) {
               <TouchableOpacity onPress={() => setAccountVisible(false)}>
                 <Image source={require('../assets/user/btn_sent.png')} style={styles.btnSent}/>
               </TouchableOpacity> 
-            </ModalPoup>
+          </ModalPoup>
           <TouchableOpacity onPress={() => setAccountVisible(true)}>
             <Image
               style={styles.arrow}
@@ -77,13 +48,13 @@ export default function UserScreen({ navigation }) {
             source={require('../assets/user/img_solved.png')}
           />
           <Text style={styles.settingText}>已解決的煩惱</Text>
-          <ModalPoup visible={notificationVisible}>
-              <NotificationScreen></NotificationScreen>
-              <TouchableOpacity onPress={() => setNotificationVisible(false)}>
+          <ModalPoup visible={solvedVisible}>
+              <SolvedScreen></SolvedScreen>
+              <TouchableOpacity onPress={() => setSolvedVisible(false)}>
                 <Image source={require('../assets/user/btn_sent.png')} style={styles.btnSent}/>
               </TouchableOpacity> 
-            </ModalPoup>
-          <TouchableOpacity onPress={() => setNotificationVisible(true)}>
+          </ModalPoup>
+          <TouchableOpacity onPress={() => setSolvedVisible(true)}>
             <Image
               style={{width: 13, height: 25, marginLeft: 95}}
               source={require('../assets/user/btn_arrow.png')}
@@ -101,7 +72,7 @@ export default function UserScreen({ navigation }) {
               <TouchableOpacity onPress={() => setNotificationVisible(false)}>
                 <Image source={require('../assets/user/btn_sent.png')} style={styles.btnSent}/>
               </TouchableOpacity> 
-            </ModalPoup>
+          </ModalPoup>
           <TouchableOpacity onPress={() => setNotificationVisible(true)}>
             <Image
               style={styles.arrow}
@@ -115,7 +86,13 @@ export default function UserScreen({ navigation }) {
             source={require('../assets/user/img_about.png')}
           />
           <Text style={styles.settingText}>關於我們</Text>
-          <TouchableOpacity>
+          <ModalPoup visible={aboutVisible}>
+              <AboutScreen></AboutScreen>
+              <TouchableOpacity onPress={() => setAboutVisible(false)}>
+                <Image source={require('../assets/user/btn_sent.png')} style={styles.btnSent}/>
+              </TouchableOpacity> 
+          </ModalPoup>
+          <TouchableOpacity onPress={() => setAboutVisible(true)}>
             <Image
               style={styles.arrow}
               source={require('../assets/user/btn_arrow.png')}
@@ -135,9 +112,8 @@ export default function UserScreen({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  center:{
+  container:{
     alignItems: 'center',
-    backgroundColor: '#FFBB9E',
     width:415,
     height:896,
   },
