@@ -6,35 +6,28 @@ import { ProgressBar } from 'react-native-paper';
 export default function HomeScreen({ navigation }) {
   return (
     <View style={{flex:1}}>
-      <View style={{backgroundColor:'#FFFFFF', alignItems:'center', height: 815}}>
+      <View style={{backgroundColor:'#FFF4B9', alignItems:'center', height: 896}}>
+      <Image style={styles.home_bg} source={require('../assets/gif/bg_happy.gif')}/> 
+        <Image style={styles.icon_happy} source={require('../assets/home/icon_happy.png')}/>
         <View style={styles.allGoal}>
           <Animated.ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-            <View style={styles.goal_bg}>
+            
+              <Image
+                style={styles.faceGifStyle1}
+                source={require('../assets/animals/panda.png')}
+              />
               <Image
                 style={styles.faceGifStyle}
-                source={require('../assets/faceGif/faceIcon_box.gif')}
+                source={require('../assets/animals/pig.png')}
               />
-              <ProgressBar progress={0.2} style={styles.probarStyle} color={'#63CFA8'}/>
-              <Text style={styles.probarText}>4/20</Text>
-            </View>
-            <View style={styles.goal_bg}>
               <Image
-                style={styles.faceGifStyle}
-                source={require('../assets/faceGif/faceIcon_cup.gif')}
+                style={styles.faceGifStyle2}
+                source={require('../assets/animals/crocodile.png')}
               />
-              <ProgressBar progress={0.8} style={styles.probarStyle} color={'#63CFA8'}/>
-              <Text style={styles.probarText}>8/10</Text>
-            </View>
-            <View style={styles.goal_bg}>
-              <Image
-                style={styles.faceGifStyle}
-                source={require('../assets/faceGif/faceIcon_chopstick.gif')}
-              />
-              <ProgressBar progress={0.5} style={styles.probarStyle} color={'#63CFA8'}/>
-              <Text style={styles.probarText}>5/10</Text>
-            </View>
+            
           </Animated.ScrollView>
         </View>
+        
       </View>
     </View>
   );
@@ -42,38 +35,43 @@ export default function HomeScreen({ navigation }) {
 
 const styles = StyleSheet.create({
   allGoal:{
-    marginTop: 250,
+    marginTop: 280,
     height: 400,
   },
-  goal_bg:{
-    width: 300,
-    height: 400,
-    backgroundColor:'#fff',
-    borderRadius: 20,
-    borderWidth: 1,
-    borderColor:'#D9D9D9',
-    alignItems:'center',
-    marginLeft: 10,
-    marginRight: 10,
+  home_bg:{
+    zIndex:0,
+    position: 'absolute' ,
+    flex: 1
   },
+  icon_happy:{
+    width: 145,
+    height: 51,
+    marginTop: 90,
+    marginLeft: -220,
+    zIndex:10
+  },
+  // goal_bg:{
+  //   width: 280,
+  //   height: 250,
+  //   alignItems:'center',
+  //   marginLeft: 5,
+  //   marginRight: 5,
+  // },
   faceGifStyle:{
-    width: 330,
-    height: 330,
-    marginTop: -35,
+    width: 240,
+    height: 195,
+    marginLeft:10
   },
-  probarStyle:{
-    width: 190,
-    height: 30,
-    borderRadius: 20,
-    borderWidth: 1,
-    borderColor:'#D9D9D9',
-    backgroundColor: "#E7FFF6",
-    marginTop: -10,
+  faceGifStyle1:{
+    width: 132,
+    height: 114,
+    marginTop:70
   },
-  probarText:{
-    fontSize: 22,
-    fontWeight: 'bold',
-    color: '#3A9F7A',
-    marginTop: 20,
+  faceGifStyle2:{
+    width: 144,
+    height: 105,
+    marginTop:80,
+    marginLeft:10
   },
+  
 });

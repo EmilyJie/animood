@@ -7,7 +7,7 @@ const DetailModal = () => {
   return(
     <View style={styles.detailBg}>
       <View style={styles.detailDate}>
-        <Text style={styles.detailText}>2022/01/29</Text>
+        <Text style={styles.detailText}>2022/01/15</Text>
       </View>
       <View style={styles.detailScore}>
         <Text style={styles.score}>80</Text>
@@ -26,7 +26,7 @@ export default function TestScreen({ navigation }) {
     <View style={styles.container}>
       <Image 
         style={{ position: 'absolute' ,flex: 1 }}
-        source={require('../assets/img_bg.png')}
+        source={require('../assets/gif/bg_gif.gif')}
       />
       <View style={styles.scoreBg}>
         <Text style={styles.score}>85</Text>
@@ -215,7 +215,7 @@ const styles = StyleSheet.create({
     shadowRadius: 3.5,
     justifyContent: 'center',
     alignItems: 'center',
-    marginLeft: 125,
+    marginLeft: -120,
   },
   detailScore:{
     backgroundColor: '#FFE8B0',
@@ -257,6 +257,6 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     marginTop: -420,
-    marginLeft: 25,
+    marginLeft: 270,
   }
 });

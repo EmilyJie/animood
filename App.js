@@ -1,13 +1,18 @@
-import React from 'react';
+import React, { useContext, useEffect,useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import MainTab from './navigation/MainTab';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { SplashScreen } from 'expo';
+//import { Provider as StoreProvider } from 'react-redux';
+//import { StoreProvider, StoreContext } from "./store/UserStore";
 
 const PERSISTENCE_KEY = "NAVIGATION_STATE";
 
-export default function App() {
+export default App = ()=> {
   const [isLoadingComplete, setLoadingComplete] = React.useState(false);
   const [initialNavigationState, setInitialNavigationState] = React.useState();
   
+
   React.useEffect(() => {
     async function loadResourcesAndDataAsync() {
       try {
@@ -29,10 +34,23 @@ export default function App() {
   if (!isLoadingComplete) {
     return null;
   } else {
-    return (
-      <NavigationContainer initialState={initialNavigationState}>
-        <MainTab/>
-      </NavigationContainer>
-    );
+    
+      return (
+        <NavigationContainer
+          initialState={initialNavigationState}
+        >
+          <MainTab />
+        </NavigationContainer>
+      )
+    
+
   }
 }
+
+// export default () => {
+//   return (
+//     <StoreProvider>
+//       <App />
+//     </StoreProvider>
+//   )
+// };
