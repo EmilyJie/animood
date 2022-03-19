@@ -4,9 +4,9 @@
     "slug": "animood",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/animood.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/spiner.gif",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },

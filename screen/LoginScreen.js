@@ -33,11 +33,11 @@ export default function LoginScreen({ navigation }) {
             <Text style={styles.forget}>忘記密碼？</Text>
         </TouchableOpacity>
         <View style={styles.btn}>
-          <TouchableOpacity style={styles.signUp}>
-            <Text style={styles.btnText}>註冊</Text>
-          </TouchableOpacity>
           <TouchableOpacity style={styles.login}>
             <Text style={styles.btnText}>登入</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.signUp}>
+            <Text style={styles.btnText}>註冊</Text>
           </TouchableOpacity>
         </View>
     </View>
@@ -84,16 +84,7 @@ const styles = StyleSheet.create({
   btn: {
     width: 285,
     marginTop: 10,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  signUp: {
-    width: 125,
-    height: 60,
-    backgroundColor: '#FF7D3C',
-    justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 20,
   },
   login: {
     width: 125,
@@ -102,6 +93,29 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 20,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 3.5,
+    marginBottom: 15,
+  },
+  signUp: {
+    width: 125,
+    height: 60,
+    backgroundColor: '#FF7D3C',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 20,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 3.5,
   },
   btnText: {
     fontSize: 18,
