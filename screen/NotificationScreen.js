@@ -21,20 +21,20 @@ export default function NotificationScreen() {
                 <Text style={styles.settingText}>每日記錄提醒</Text>
                 <View style={styles.btnSwitch}>
                     <Switch
-                        value={notificationEnabled}
-                        onValueChange={notificationSwitch}
-                        disabled={false}
-                        activeText={'ON'}
-                        activeTextStyle={styles.inText}
-                        inActiveText={'OFF'}
-                        inactiveTextStyle={styles.inText}
-                        backgroundActive={'#FFA580'}
-                        backgroundInactive={'#CACACA'}
-                        circleSize={30}
-                        barHeight={30}
-                        circleBorderWidth={0}
-                        circleActiveColor={'#FFBB9E'}
-                        circleInActiveColor={'#FFDACA'}
+                      value={notificationEnabled}
+                      onValueChange={notificationSwitch}
+                      disabled={false}
+                      activeText={'ON'}
+                      activeTextStyle={styles.inText}
+                      inActiveText={'OFF'}
+                      inactiveTextStyle={styles.inText}
+                      backgroundActive={'#FFA580'}
+                      backgroundInactive={'#CACACA'}
+                      circleSize={30}
+                      barHeight={30}
+                      circleBorderWidth={0}
+                      circleActiveColor={'#FFBB9E'}
+                      circleInActiveColor={'#FFDACA'}
                     />
                 </View>
             </View>

@@ -7,36 +7,43 @@ export default function HomeScreen({ navigation }) {
   return (
     <View style={{flex:1}}>
       <View style={{backgroundColor:'#FFF4B9', alignItems:'center', height: 896}}>
-      <Image style={styles.home_bg} source={require('../assets/gif/bg_happy.gif')}/> 
+        <Image style={styles.home_bg} source={require('../assets/gif/bg_happy.gif')}/> 
         <Image style={styles.icon_happy} source={require('../assets/home/icon_happy.png')}/>
-        <View style={styles.allGoal}>
-          <Animated.ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-            
+        <View style={styles.allWorreis}>
+          <Animated.ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>    
               <Image
-                style={styles.faceGifStyle1}
-                source={require('../assets/animals/panda.png')}
+                style={styles.faceGifStyle}
+                source={require('../assets/animals/panda_circle.png')}
               />
               <Image
                 style={styles.faceGifStyle}
-                source={require('../assets/animals/pig.png')}
+                source={require('../assets/animals/pig_circle.png')}
               />
               <Image
-                style={styles.faceGifStyle2}
-                source={require('../assets/animals/crocodile.png')}
+                style={styles.faceGifStyle}
+                source={require('../assets/animals/crocodile_circle.png')}
               />
-            
           </Animated.ScrollView>
+          <View style={styles.worry_bg}>
+            <Text style={styles.worryText}>最近沒有錢</Text>
+          </View>
         </View>
-        
+        <TouchableOpacity>
+          <Image
+            style={styles.btnAdd}
+            source={require('../assets/home/btn_add.png')}
+          />
+        </TouchableOpacity>
       </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  allGoal:{
-    marginTop: 280,
+  allWorreis:{
+    marginTop: 120,
     height: 400,
+    alignItems: 'center',
   },
   home_bg:{
     zIndex:0,
@@ -50,28 +57,36 @@ const styles = StyleSheet.create({
     marginLeft: -220,
     zIndex:10
   },
-  // goal_bg:{
-  //   width: 280,
-  //   height: 250,
-  //   alignItems:'center',
-  //   marginLeft: 5,
-  //   marginRight: 5,
-  // },
   faceGifStyle:{
-    width: 240,
-    height: 195,
+    width: 260,
+    height: 260,
     marginLeft:10
   },
-  faceGifStyle1:{
-    width: 132,
-    height: 114,
-    marginTop:70
+  worry_bg:{
+    width: 230,
+    height: 50,
+    backgroundColor: '#FFFAEE',
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 3.5,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 20,
+    marginBottom: 30,
   },
-  faceGifStyle2:{
-    width: 144,
-    height: 105,
-    marginTop:80,
-    marginLeft:10
+  worryText:{
+    fontSize: 18,
+    fontWeight:"bold",
+    color: '#702929'
   },
-  
+  btnAdd:{
+    width: 60,
+    height: 60,
+    marginTop: 70,
+    marginLeft: 315
+  },
 });

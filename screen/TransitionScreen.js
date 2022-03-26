@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     width: 295,
     height: 175,
     backgroundColor: '#FFFAEE',
-    borderColor: '#FF986D',
+    borderColor: '#F1A673',
     borderRadius: 20,
     borderWidth: 2,
     justifyContent: 'center',
@@ -34,6 +34,6 @@ const styles = StyleSheet.create({
   text:{
     fontSize: 26,
     fontWeight:"bold",
-    color: '#FF986D',
+    color: '#F1A673',
   },
 });

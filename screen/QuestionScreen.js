@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
   numberBg:{
     width: 75,
     height: 75,
-    backgroundColor: '#F95A5A',
+    backgroundColor: '#F1A673',
     borderRadius: 100,
     alignItems: 'center',
     justifyContent: 'center',
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
   questionBg:{
     width: 315,
     height: 205,
-    borderColor: '#F95A5A',
+    borderColor: '#F1A673',
     borderWidth: 2,
     borderRadius: 20,
     alignItems: 'center',
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
   questionText:{
     fontSize: 24,
     fontWeight:"bold",
-    color: '#F95A5A'
+    color: '#F1A673'
   },
   optionBox:{
     marginTop: 40
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
   option:{
     width: 285,
     height: 60,
-    borderColor: '#F95A5A',
+    borderColor: '#F1A673',
     borderWidth: 2,
     borderRadius: 20,
     justifyContent: 'center',
@@ -83,6 +83,6 @@ const styles = StyleSheet.create({
   },
   optionText:{
     fontSize: 20,
-    color: '#F95A5A'
+    color: '#F1A673'
   }
 });

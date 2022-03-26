@@ -44,7 +44,7 @@ const HomeTabNavigation = () => {
           // You can return any component that you like here!
           return (
             <Image 
-              style={{width: iconWidth, height: iconHeight, marginTop: 20,}}
+              style={{width: iconWidth, height: iconHeight, marginTop: 20, overflow: 'visible'}}
               source={iconPath} 
             />
           );
