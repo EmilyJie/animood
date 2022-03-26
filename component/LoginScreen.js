@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { app } from '../Config/Firebase';
-import { updateEmail, updatePassword, updateUid, login, getUser } from '../Actions/User'
+import { updateEmail, updatePassword, updateUid, login, getUser } from '../Action/User'
 import { withNavigation } from 'react-navigation';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
@@ -72,11 +72,11 @@ class Login extends Component {
               right={<TextInput.Icon icon={this.state.hidePassword ? 'eye-off-outline' : 'eye-outline'} onPress={this._toggleHidePassword} />}
             />
           </View>
-          <TouchableOpacity style={{width: 280, alignItems: 'flex-end', marginBottom: 5}}>
+          <TouchableOpacity style={{width: 280, alignItems: 'flex-end', marginBottom: 5}} onPress={this.goToForgotPassword}>
               <Text style={styles.forget}>忘記密碼？</Text>
           </TouchableOpacity>
           <View style={styles.btn}>
-            <TouchableOpacity style={styles.login}>
+            <TouchableOpacity style={styles.login} onPress={this._loginAsync}>
               <Text style={styles.btnText}>登入</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.signUp}>

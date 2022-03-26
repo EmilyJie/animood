@@ -16,7 +16,7 @@ export default function UserScreen({ navigation }) {
     <View style={styles.container}>
       <Image 
         style={{ position: 'absolute' ,flex: 1 }}
-        source={require('../assets/img_bg.png')}
+        source={require('../assets/gif/bg_gif.gif')}
       />
       <View style={styles.photoBg}>
         <Image
@@ -101,7 +101,7 @@ export default function UserScreen({ navigation }) {
             />
           </TouchableOpacity>
         </View>
-        <TouchableOpacity style={styles.signOut}>
+        <TouchableOpacity style={styles.signOut} onPress={() => navigation.navigate('Login')}>
           <Image
             style={{ width: 30, height: 30, marginLeft: 20 }}
             source={require('../assets/user/img_signOut.png')}

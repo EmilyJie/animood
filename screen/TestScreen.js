@@ -1,6 +1,5 @@
 import React from 'react';
-import { TouchableOpacity } from 'react-native';
-import { StyleSheet, Text, View ,Image } from 'react-native';
+import { StyleSheet, Text, View ,Image, TouchableOpacity, Button} from 'react-native';
 import ModalPoup from '../component/ModalPoup';
 
 const DetailModal = () => {
@@ -20,8 +19,10 @@ const DetailModal = () => {
   )
 }
 
+
 export default function TestScreen({ navigation }) {
   const [detailVisible, setDetailVisible] = React.useState(false);
+  
   return (
     <View style={styles.container}>
       <Image 
@@ -34,9 +35,11 @@ export default function TestScreen({ navigation }) {
       <View style={styles.testDateBg}>
         <Text style={styles.testDate}>2022/03/10</Text>
       </View>
-      <TouchableOpacity style={styles.btnTestBg}>
+      <TouchableOpacity style={styles.btnTestBg} onPress={() => navigation.navigate('Question')}>
         <Text style={styles.btnTest}>來做測驗</Text>
       </TouchableOpacity>
+      {/* <Button style={styles.btnTestBg} onPress={this.goToTest} title="來做測驗"/> */}
+     
       <View style={styles.historyContainer}>
         <Text style={styles.title}>歷史紀錄</Text>
         <View style={styles.historyBox}>

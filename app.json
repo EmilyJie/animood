@@ -6,7 +6,7 @@
     "orientation": "portrait",
     "icon": "./assets/animood.png",
     "splash": {
-      "image": "./assets/spiner.gif",
+      "image": "./assets/gif/spinner.gif",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },

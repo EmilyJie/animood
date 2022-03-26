@@ -2,10 +2,15 @@ import { StatusBar } from 'expo-status-bar';
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity, Image, View, Animated } from 'react-native';
 import { ProgressBar } from 'react-native-paper';
+import test from '../json/test.json'
 
 export default function QuestionScreen({ navigation }) {
   return (
     <View style={styles.container}>
+      <TouchableOpacity onPress={() => navigation.goBack()}>
+        <Image style={styles.back} source={require('../assets/btn_back.png')} />
+      </TouchableOpacity>
+      
       <View style={styles.numberBg}>
         <Text style={styles.number}>Q1</Text>
       </View>
@@ -32,11 +37,16 @@ export default function QuestionScreen({ navigation }) {
 
 const styles = StyleSheet.create({
   container:{
-    width:415,
+    width:414,
     height:896,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#FFEBC3',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  back:{
+    marginRight:300,
+    marginBottom:50,
+    marginTop:-50,
   },
   numberBg:{
     width: 75,
@@ -52,13 +62,14 @@ const styles = StyleSheet.create({
   number:{
     fontSize: 24,
     fontWeight:"bold",
-    color: '#FFFFFF'
+    color: '#FFFAEE'
   },
   questionBg:{
     width: 315,
     height: 205,
     borderColor: '#F1A673',
-    borderWidth: 2,
+    backgroundColor: '#FFFAEE',
+    borderWidth: 3,
     borderRadius: 20,
     alignItems: 'center',
     justifyContent: 'center',
@@ -75,7 +86,8 @@ const styles = StyleSheet.create({
     width: 285,
     height: 60,
     borderColor: '#F1A673',
-    borderWidth: 2,
+    backgroundColor: '#FFFAEE',
+    borderWidth: 3,
     borderRadius: 20,
     justifyContent: 'center',
     alignItems: 'center',
@@ -83,6 +95,7 @@ const styles = StyleSheet.create({
   },
   optionText:{
     fontSize: 20,
+    fontWeight: 'bold',
     color: '#F1A673'
   }
 });
