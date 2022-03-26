@@ -7,6 +7,9 @@ import HomeScreen from './HomeScreen';
 import ReplyScreen from './ReplyScreen';
 import TestScreen from './TestScreen';
 import UserScreen from './UserScreen';
+import QuestionScreen from './QuestionScreen';
+import LoginScreen from './LoginScreen';
+
 
 export const Stack = createStackNavigator();
 
@@ -45,6 +48,13 @@ export const TestStack = () => {
             height:0,
         }
       }} />  
+    <Stack.Screen name="Question" component={QuestionScreen} 
+      options={{
+        headerStyle:{
+            height:0,
+        },
+        headerLeft: null,
+      }} />
     </Stack.Navigator>
   );
 }
@@ -53,6 +63,26 @@ export const UserStack = () => {
   return (
     <Stack.Navigator>
     <Stack.Screen name="User"component={UserScreen}  
+      options={{
+      headerStyle:{
+          height:0,
+      }
+      }} />  
+    <Stack.Screen name="Login" component={LoginScreen} 
+      options={{
+        headerStyle:{
+            height:0,
+        },
+        headerLeft: null,
+      }} />
+    </Stack.Navigator>
+  );
+}
+
+export const LoginStack = () => {
+  return (
+    <Stack.Navigator>
+    <Stack.Screen name="Login"component={LoginScreen}  
       options={{
       headerStyle:{
           height:0,
