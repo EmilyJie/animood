@@ -4,7 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from "@react-navigation/native";
 
 import HomeScreen from './HomeScreen';
-import ReplyScreen from './ReplyScreen';
+import TravelScreen from './TravelScreen';
 import TestScreen from './TestScreen';
 import UserScreen from './UserScreen';
 import QuestionScreen from './QuestionScreen';
@@ -23,10 +23,10 @@ export const HomeStack = ({navigation}) => {
   );
 }
   
-export const ReplyStack = () => {
+export const TravelStack = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Reply"component={ReplyScreen}  
+      <Stack.Screen name="Reply"component={TravelScreen}  
         options={{
           headerStyle:{
               height:0,
