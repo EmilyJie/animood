@@ -1,11 +1,119 @@
-import React, { useState } from "react";
-import { StyleSheet, Text, TextInput, TouchableOpacity, View, Image } from 'react-native';
+import React, { useContext,useState,useEffect } from "react";
+import { StyleSheet, Text, TextInput, TouchableOpacity, View, Image, 
+  ActivityIndicator, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard } from 'react-native';
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import {Button} from "react-native-elements";
+import * as firebase from 'firebase'; 
+import {StoreContext}from "../stores/index.js";
+
+const ME_PERSISTENCE_KEY = "ME_PERSISTENCE_KEY";
+const HAS_SET_KEY = "HAS_SET_KEY";
+
+const SIGN_PERSISTENCE_KEY = "SIGN_PERSISTENCE_KEY";
+const SIGN_HAS_SET_KEY = "SIGN_HAS_SET_KEY";
 
 export default function LoginScreen({ navigation }) {
-  const [account, onChangeAccount] = useState(null);
-  const [password, onChangePassword] = useState(null);
+  const [name, setName] = useState(null);
+  const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState(null);
+  const [error, setError] = useState("");
+  const { isLoginState } = useContext(StoreContext);
+  const [isLogin, setIsLogin] = isLoginState;
+
+  const [loading, setLoading] = useState(false);
+
+  const {userState} = useContext(StoreContext);
+  const [user,setUser] = userState;
+
+  const saveToAsyncStorage = () => {
+      try{
+          AsyncStorage.setItem(ME_PERSISTENCE_KEY,JSON.stringify(user));
+          AsyncStorage.setItem(HAS_SET_KEY,JSON.stringify(true));
+          console.log(`sign user`);
+      }catch(e){}
+  };
+
+  const isignInsaveToAsyncStorage = () => {
+      try{
+          AsyncStorage.setItem(SIGN_PERSISTENCE_KEY,JSON.stringify(true));
+          AsyncStorage.setItem(SIGN_HAS_SET_KEY.stringify(true));
+          
+          
+      }catch(e){}
+      console.log(`signin isLogin=${isLogin}`);
+  };
+  useEffect(()=>{
+      isignInsaveToAsyncStorage();
+  },[isLogin]);
+
+  useEffect(()=>{
+      saveToAsyncStorage();
+  },[user]);
+
+  const renderButton = () => {
+    return loading ? (
+      <ActivityIndicator size="large" color="#F0A202"  />
+    ) : (
+      <Button
+        buttonStyle={{
+          width: 125,
+          height: 60,
+          backgroundColor: '#EEA970',
+          justifyContent: 'center',
+          alignItems: 'center',
+          borderRadius: 20,
+          shadowColor: "#000",
+          shadowOffset: {
+            width: 0,
+            height: 3,
+          },
+          shadowOpacity: 0.2,
+          shadowRadius: 3.5,
+          marginBottom: 15,
+        }}
+            
+        title="登入"
+        onPress={onSignIn}
+        //onPress={() => navigation.navigate('Home')} 
+        style={{borderRadius:20}}
+        />
+        // <TouchableOpacity style={styles.login} onPress={onSignIn}>
+        //   <Text style={styles.btnText}>登入</Text>
+        // </TouchableOpacity>
+    );
+  };
+
+  const onSignIn = async () => {
+    setError(" ");
+    setLoading(true);
+    try {
+      
+      await firebase.auth().signInWithEmailAndPassword(email, password);
+      
+      setName(firebase.auth().currentUser.displayName);
+      setEmail(firebase.auth().currentUser.email);
+      console.log(`signin name=${name}`);
+      console.log(`signin email=${email}`);
+      setUser({...user,email})
+      setUser({...user,name})
+      
+      setEmail("");
+      setPassword("");
+      setError("");
+      setIsLogin(true);
+      isignInsaveToAsyncStorage();
+    } catch (err1) {
+      
+        setError(err1.message);
+    } finally {
+        setLoading(false);
+    }
+  };
 
   return (
+    <KeyboardAvoidingView style={styles.container}
+    behavior={Platform.OS === "ios" ? "padding" : "height"}>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
     <View style={styles.container}>
       <Image 
         style={styles.logo}
@@ -14,8 +122,8 @@ export default function LoginScreen({ navigation }) {
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
-          onChangeText={onChangeAccount}
-          value={account}
+          value={email}
+          onChangeText={(email) => setEmail(email)}
           placeholder="帳號"
           placeholderTextColor={'#D2A98D'}
           textContentType='username'
@@ -23,8 +131,8 @@ export default function LoginScreen({ navigation }) {
         />
         <TextInput
           style={styles.input}
-          onChangeText={onChangePassword}
           value={password}
+          onChangeText={(password) => setPassword(password)}
           placeholder="密碼"
           placeholderTextColor={'#D2A98D'}
           textContentType='password'
@@ -36,14 +144,14 @@ export default function LoginScreen({ navigation }) {
           <Text style={styles.forget}>忘記密碼？</Text>
       </TouchableOpacity>
       <View style={styles.btn}>
-        <TouchableOpacity style={styles.login}>
-          <Text style={styles.btnText}>登入</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.signUp}>
-          <Text style={styles.btnText}>註冊</Text>
-        </TouchableOpacity>
+        {renderButton()}
+          <TouchableOpacity style={styles.signUp} onPress={() => navigation.navigate('Signup')}>
+            <Text style={styles.btnText}>註冊</Text>
+          </TouchableOpacity>
       </View>
-    </View>
+      </View>
+     </TouchableWithoutFeedback>
+     </KeyboardAvoidingView>
   );
 }
 

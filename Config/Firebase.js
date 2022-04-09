@@ -1,8 +1,7 @@
 import * as firebase from 'firebase';
 import firestore from 'firebase/firestore'
 
-export const config = {
-
+const firebaseConfig = {
     apiKey: "AIzaSyAXE_MTC98TlksEoWcwWEplNhsI8mnCw7A",
     authDomain: "animood-421e6.firebaseapp.com",
     databaseURL: "https://animood-421e6.firebaseio.com",
@@ -13,9 +12,5 @@ export const config = {
     measurementId: "G-DGJ69FDFMB"
 };
 
-
-export const app = firebase.initializeApp(config);
-
-export const db = app.firestore();
-
-export const storage = firebase.storage();
+firebase.initializeApp(firebaseConfig);
+export default firebase;
