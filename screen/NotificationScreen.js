@@ -28,13 +28,13 @@ export default function NotificationScreen() {
                       activeTextStyle={styles.inText}
                       inActiveText={'OFF'}
                       inactiveTextStyle={styles.inText}
-                      backgroundActive={'#FFA580'}
-                      backgroundInactive={'#CACACA'}
+                      backgroundActive={'#D2C4AA'}
+                      backgroundInactive={'#D8B37E'}
                       circleSize={30}
                       barHeight={30}
                       circleBorderWidth={0}
-                      circleActiveColor={'#FFBB9E'}
-                      circleInActiveColor={'#FFDACA'}
+                      circleActiveColor={'#D2A98D'}
+                      circleInActiveColor={'#D2A98D'}
                     />
                 </View>
             </View>
@@ -56,7 +56,7 @@ export default function NotificationScreen() {
                         height: 30,
                         backgroundColor: '#FBFBFB',
                         borderRadius: 20,
-                        borderColor: '#D5D5D5',
+                        borderColor: '#D2A98D',
                         marginLeft: 130,
                     }}
                     arrowIconStyle={{
@@ -77,7 +77,7 @@ export default function NotificationScreen() {
                     textStyle={{
                         fontSize: 16,
                         fontWeight: 'bold',
-                        color: '#909090'
+                        color: '#D2A98D'
                     }}
                     disabledStyle={{
                         opacity: 0.5
@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
   setting:{
     width: 345,
     height: 455,
-    backgroundColor: '#FFBB9E',
+    backgroundColor: '#FFEBC3',
     borderRadius: 20,
     paddingTop: 20,
     alignItems: 'center',
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
   settingBox:{
     width: 300,
     height: 60,
-    backgroundColor: '#FFF5F0',
+    backgroundColor: '#FFFAEE',
     borderRadius: 20,
     shadowColor: "#000",
     shadowOffset: {
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
   settingText:{
     fontSize: 18,
     fontWeight:"bold",
-    color: '#FF986D',
+    color: '#D2A98D',
     marginLeft: 15,
   },
   btnSwitch:{

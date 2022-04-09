@@ -18,12 +18,10 @@ export default function UserScreen({ navigation }) {
         style={{ position: 'absolute' ,flex: 1 }}
         source={require('../assets/gif/bg_gif.gif')}
       />
-      <View style={styles.photoBg}>
-        <Image
-          style={styles.profilePhoto}
-          source={require('../assets/img_head1.png')}
-        />
-      </View>
+      <Image
+        style={styles.profilePhoto}
+        source={require('../assets/img_head1.png')}
+      />
       <View style={styles.setting}>
         <View style={styles.settingBox}>
           <Image
@@ -34,7 +32,7 @@ export default function UserScreen({ navigation }) {
           <ModalPoup visible={accountVisible}>
               <AccountScreen></AccountScreen>
               <TouchableOpacity onPress={() => setAccountVisible(false)}>
-                <Image source={require('../assets/user/btn_sent.png')} style={styles.btnSent}/>
+                <Image source={require('../assets/btn_sent.png')} style={styles.btnSent}/>
               </TouchableOpacity> 
           </ModalPoup>
           <TouchableOpacity onPress={() => setAccountVisible(true)}>
@@ -53,7 +51,7 @@ export default function UserScreen({ navigation }) {
           <ModalPoup visible={solvedVisible}>
               <SolvedScreen></SolvedScreen>
               <TouchableOpacity onPress={() => setSolvedVisible(false)}>
-                <Image source={require('../assets/user/btn_sent.png')} style={styles.btnSent}/>
+                <Image source={require('../assets/btn_sent.png')} style={styles.btnSent}/>
               </TouchableOpacity> 
           </ModalPoup>
           <TouchableOpacity onPress={() => setSolvedVisible(true)}>
@@ -72,7 +70,7 @@ export default function UserScreen({ navigation }) {
           <ModalPoup visible={notificationVisible}>
               <NotificationScreen></NotificationScreen>
               <TouchableOpacity onPress={() => setNotificationVisible(false)}>
-                <Image source={require('../assets/user/btn_sent.png')} style={styles.btnSent}/>
+                <Image source={require('../assets/btn_sent.png')} style={styles.btnSent}/>
               </TouchableOpacity> 
           </ModalPoup>
           <TouchableOpacity onPress={() => setNotificationVisible(true)}>
@@ -91,7 +89,7 @@ export default function UserScreen({ navigation }) {
           <ModalPoup visible={aboutVisible}>
               <AboutScreen></AboutScreen>
               <TouchableOpacity onPress={() => setAboutVisible(false)}>
-                <Image source={require('../assets/user/btn_sent.png')} style={styles.btnSent}/>
+                <Image source={require('../assets/btn_sent.png')} style={styles.btnSent}/>
               </TouchableOpacity> 
           </ModalPoup>
           <TouchableOpacity onPress={() => setAboutVisible(true)}>
@@ -119,18 +117,10 @@ const styles = StyleSheet.create({
     width:415,
     height:896,
   },
-  photoBg:{
-    width: 120,
-    height: 120,
-    backgroundColor: '#FFF5F0',
-    borderRadius: 100,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 120,
-  },
   profilePhoto:{
     width: 100,
     height: 100,
+    marginTop: 120,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -138,6 +128,7 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.2,
     shadowRadius: 3.5,
+    overflow: 'visible',
   },
   setting:{
     width: 345,
@@ -182,13 +173,13 @@ const styles = StyleSheet.create({
   settingText:{
     fontSize: 18,
     fontWeight:"bold",
-    color: '#FF986D',
+    color: '#D2A98D',
     marginLeft: 15,
   },
   signOutText:{
     fontSize: 18,
     fontWeight:"bold",
-    color: '#FF5422',
+    color: '#FE9A7B',
     marginLeft: 15,
   },
   arrow:{
@@ -208,7 +199,7 @@ const styles = StyleSheet.create({
   btnSent:{
     width: 50,
     height: 50,
-    marginTop: -70,
+    marginTop: -90,
     marginLeft: 145,
   }
 });

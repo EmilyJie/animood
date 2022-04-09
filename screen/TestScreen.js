@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View ,Image, TouchableOpacity, Button} from 'react-native';
+import { StyleSheet, Text, View ,Image, TouchableOpacity, ScrollView} from 'react-native';
 import ModalPoup from '../component/ModalPoup';
 
 const DetailModal = () => {
@@ -24,6 +24,7 @@ export default function TestScreen({ navigation }) {
   const [detailVisible, setDetailVisible] = React.useState(false);
   
   return (
+    <ScrollView>
     <View style={styles.container}>
       <Image 
         style={{ position: 'absolute' ,flex: 1 }}
@@ -35,7 +36,10 @@ export default function TestScreen({ navigation }) {
       <View style={styles.testDateBg}>
         <Text style={styles.testDate}>2022/03/10</Text>
       </View>
-      <TouchableOpacity style={styles.btnTestBg} onPress={() => navigation.navigate('Question')}>
+      <TouchableOpacity 
+        style={styles.btnTestBg} 
+        onPress={() => navigation.navigate('Question')}
+      >
         <Text style={styles.btnTest}>來做測驗</Text>
       </TouchableOpacity>
       {/* <Button style={styles.btnTestBg} onPress={this.goToTest} title="來做測驗"/> */}
@@ -43,34 +47,59 @@ export default function TestScreen({ navigation }) {
       <View style={styles.historyContainer}>
         <Text style={styles.title}>歷史紀錄</Text>
         <View style={styles.historyBox}>
-            <Text style={styles.detailText}>2022/01/15</Text>
-            <Text style={styles.detailText}>80分</Text>
-            <ModalPoup visible={detailVisible}>
-              <DetailModal></DetailModal>
-              <TouchableOpacity onPress={() => setDetailVisible(false)}>
-                <Image source={require('../assets/btn_close.png')} style={styles.btnClose}/>
-              </TouchableOpacity>
-            </ModalPoup>
-            <TouchableOpacity onPress={() => setDetailVisible(true)}>
-                <Text style={styles.detailText}>詳細內容</Text>
+          <View style={styles.scoreBg1}>
+            <Text style={styles.detailText}>80</Text>
+          </View>
+          <Text style={styles.testDate}>2022/01/15</Text>
+          <ModalPoup visible={detailVisible}>
+            <DetailModal></DetailModal>
+            <TouchableOpacity onPress={() => setDetailVisible(false)}>
+              <Image source={require('../assets/btn_close.png')} style={styles.btnClose}/>
             </TouchableOpacity>
+          </ModalPoup>
+          <TouchableOpacity onPress={() => setDetailVisible(true)}>
+            <View style={styles.btnBg}>
+              <Text style={styles.btnDetail}>詳細內容</Text>
+            </View>
+          </TouchableOpacity>
         </View>
         <View style={styles.historyBox}>
-            <Text style={styles.detailText}>2022/01/01</Text>
-            <Text style={styles.detailText}>90分</Text>
-            <TouchableOpacity>
-                <Text style={styles.detailText}>詳細內容</Text>
+          <View style={styles.scoreBg1}>
+            <Text style={styles.detailText}>90</Text>
+          </View>
+          <Text style={styles.testDate}>2022/01/01</Text>
+          <ModalPoup visible={detailVisible}>
+            <DetailModal></DetailModal>
+            <TouchableOpacity onPress={() => setDetailVisible(false)}>
+              <Image source={require('../assets/btn_close.png')} style={styles.btnClose}/>
             </TouchableOpacity>
+          </ModalPoup>
+          <TouchableOpacity onPress={() => setDetailVisible(true)}>
+            <View style={styles.btnBg}>
+              <Text style={styles.btnDetail}>詳細內容</Text>
+            </View>
+          </TouchableOpacity>
         </View>
         <View style={styles.historyBox}>
-            <Text style={styles.detailText}>2021/12/13</Text>
-            <Text style={styles.detailText}>86分</Text>
-            <TouchableOpacity>
-              <Text style={styles.detailText}>詳細內容</Text>
+          <View style={styles.scoreBg1}>
+            <Text style={styles.detailText}>86</Text>
+          </View>
+          <Text style={styles.testDate}>2022/12/13</Text>
+          <ModalPoup visible={detailVisible}>
+            <DetailModal></DetailModal>
+            <TouchableOpacity onPress={() => setDetailVisible(false)}>
+              <Image source={require('../assets/btn_close.png')} style={styles.btnClose}/>
             </TouchableOpacity>
+          </ModalPoup>
+          <TouchableOpacity onPress={() => setDetailVisible(true)}>
+            <View style={styles.btnBg}>
+              <Text style={styles.btnDetail}>詳細內容</Text>
+            </View>
+          </TouchableOpacity>
         </View>
       </View>
     </View>
+    </ScrollView>
   )
 }
 
@@ -124,7 +153,7 @@ const styles = StyleSheet.create({
   btnTestBg:{
     width: 200,
     height: 55,
-    backgroundColor: "#F95A5A",
+    backgroundColor: "#FE9A7B",
     borderRadius: 20,
     shadowColor: "#000",
     shadowOffset: {
@@ -167,10 +196,33 @@ const styles = StyleSheet.create({
     marginBottom: 15
   },
   historyBox:{
-    width: 320,
-    height: 45,
+    width: 315,
+    height: 75,
     backgroundColor: "#FFE8B0",
     borderRadius: 20,
+    marginTop: 15,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+  },
+  scoreBg1:{
+    width: 55,
+    height: 55,
+    backgroundColor: "#FFFAEE",
+    borderRadius: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  detailText:{
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: "#702929",
+  },
+  btnBg:{
+    width: 90,
+    height: 35,
+    backgroundColor: "#EEA970",
+    borderRadius: 15,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -178,14 +230,13 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.2,
     shadowRadius: 3.5,
-    marginTop: 15,
-    flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-around',
+    justifyContent: 'center',
   },
-  detailText:{
-    fontSize: 20,
-    color: "#521111",
+  btnDetail:{
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: "#FFFAEE",
   },
   detailBg:{
     backgroundColor: '#FFFAEE',

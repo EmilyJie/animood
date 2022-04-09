@@ -1,13 +1,13 @@
-import { StatusBar } from 'expo-status-bar';
 import React, { useState } from "react";
 import { StyleSheet, Text, TouchableOpacity, Image, View, Animated } from 'react-native';
-import { ProgressBar } from 'react-native-paper';
+import LottieView from 'lottie-react-native';
 
 export default function HomeScreen({ navigation }) {
   return (
     <View style={{flex:1}}>
       <View style={{backgroundColor:'#FFF4B9', alignItems:'center', height: 896}}>
-        <Image style={styles.home_bg} source={require('../assets/gif/bg_happy.gif')}/> 
+        {/* <Image style={styles.home_bg} source={require('../assets/gif/bg_gif.gif')}/>  */}
+        <LottieView source={require('../json/bg_happy.json')} autoPlay loop/>
         <Image style={styles.icon_happy} source={require('../assets/home/icon_happy.png')}/>
         <View style={styles.allWorreis}>
           <Animated.ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>    
@@ -28,7 +28,7 @@ export default function HomeScreen({ navigation }) {
             <Text style={styles.worryText}>最近沒有錢</Text>
           </View>
         </View>
-        <TouchableOpacity>
+        <TouchableOpacity /*onPress={home_btn_add}*/>
           <Image
             style={styles.btnAdd}
             source={require('../assets/home/btn_add.png')}

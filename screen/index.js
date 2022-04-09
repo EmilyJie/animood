@@ -4,9 +4,12 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from "@react-navigation/native";
 
 import HomeScreen from './HomeScreen';
-import ReplyScreen from './ReplyScreen';
+import TravelScreen from './TravelScreen';
 import TestScreen from './TestScreen';
 import UserScreen from './UserScreen';
+import QuestionScreen from './QuestionScreen';
+import LoginScreen from './LoginScreen';
+
 
 export const Stack = createStackNavigator();
 
@@ -23,10 +26,10 @@ export const HomeStack = () => {
   );
 }
   
-export const ReplyStack = () => {
+export const TravelStack = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Reply"component={ReplyScreen}  
+      <Stack.Screen name="Reply"component={TravelScreen}  
         options={{
           headerStyle:{
               height:0,
@@ -45,6 +48,13 @@ export const TestStack = () => {
             height:0,
         }
       }} />  
+    <Stack.Screen name="Question" component={QuestionScreen} 
+      options={{
+        headerStyle:{
+            height:0,
+        },
+        headerLeft: null,
+      }} />
     </Stack.Navigator>
   );
 }
@@ -53,6 +63,26 @@ export const UserStack = () => {
   return (
     <Stack.Navigator>
     <Stack.Screen name="User"component={UserScreen}  
+      options={{
+      headerStyle:{
+          height:0,
+      }
+      }} />  
+    <Stack.Screen name="Login" component={LoginScreen} 
+      options={{
+        headerStyle:{
+            height:0,
+        },
+        headerLeft: null,
+      }} />
+    </Stack.Navigator>
+  );
+}
+
+export const LoginStack = () => {
+  return (
+    <Stack.Navigator>
+    <Stack.Screen name="Login"component={LoginScreen}  
       options={{
       headerStyle:{
           height:0,

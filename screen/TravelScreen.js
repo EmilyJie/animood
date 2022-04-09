@@ -8,25 +8,37 @@ const TravelModal = () => {
     <View style={styles.travelBg}>
       <Text style={styles.title}>想帶誰去旅行呢？</Text>
       <View style={styles.animalsContainer}>
-        <TouchableOpacity style={styles.animalBg}>
+        <TouchableOpacity 
+          style={styles.animalBg}
+          onPress={reply_btn_chooseAnimal}
+        >
           <Image
             style={styles.animal}
             source={require('../assets/animals/panda.png')}
           />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.animalBg}>
+        <TouchableOpacity 
+          style={styles.animalBg}
+          onPress={reply_btn_chooseAnimal}
+        >
           <Image
             style={styles.animal}
             source={require('../assets/animals/pig.png')}
           />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.animalBg}>
+        <TouchableOpacity 
+          style={styles.animalBg}
+          onPress={reply_btn_chooseAnimal}
+        >
           <Image
             style={styles.animal}
             source={require('../assets/animals/cat.png')}
           />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.animalBg}>
+        <TouchableOpacity 
+          style={styles.animalBg}
+          onPress={reply_btn_chooseAnimal}
+        >
           <Image
             style={styles.animal}
             source={require('../assets/animals/crocodile.png')}
@@ -37,7 +49,7 @@ const TravelModal = () => {
   )
 }
 
-export default function ReplyScreen({ navigation }) {
+export default function TravelScreen({ navigation }) {
   const [travelVisible, setTravelVisible] = React.useState(false);
   return (
     <View style={{ flex:1, justifyContent: 'center', alignItems: 'center'}}>
@@ -52,10 +64,16 @@ export default function ReplyScreen({ navigation }) {
       <ModalPoup visible={travelVisible}>
         <TravelModal></TravelModal>
       </ModalPoup>
-      <TouchableOpacity style={styles.btnRecord} onPress={() => setTravelVisible(true)}>
+      <TouchableOpacity 
+        style={styles.btnRecord} 
+        onPress={() => setTravelVisible(true)}
+      >
         <Text style={styles.recordText}>冒險紀錄</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.btnTravel}>
+      <TouchableOpacity 
+        style={styles.btnTravel}
+        /*onPress={reply_btn_travel}*/
+      >
         <Text style={styles.btnText}>去旅行！</Text>
       </TouchableOpacity>
     </View>
