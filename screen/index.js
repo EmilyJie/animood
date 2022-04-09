@@ -29,7 +29,7 @@ export const HomeStack = () => {
 export const TravelStack = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Reply"component={TravelScreen}  
+      <Stack.Screen name="Travel"component={TravelScreen}  
         options={{
           headerStyle:{
               height:0,

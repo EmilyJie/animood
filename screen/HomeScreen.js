@@ -5,7 +5,7 @@ import LottieView from 'lottie-react-native';
 export default function HomeScreen({ navigation }) {
   return (
     <View style={{flex:1}}>
-      <View style={{backgroundColor:'#FFF4B9', alignItems:'center', height: 896}}>
+      <View style={{alignItems:'center', height: 896}}>
         {/* <Image style={styles.home_bg} source={require('../assets/gif/bg_gif.gif')}/>  */}
         <LottieView source={require('../json/bg_happy.json')} autoPlay loop/>
         <Image style={styles.icon_happy} source={require('../assets/home/icon_happy.png')}/>

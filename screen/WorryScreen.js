@@ -117,7 +117,6 @@ export default function WorryScreen({ navigation, props }) {
             />
           </View>
         </View>
-        
       </View>
     </View>
   );
