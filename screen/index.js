@@ -4,32 +4,29 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from "@react-navigation/native";
 
 import HomeScreen from './HomeScreen';
-import TravelScreen from './TravelScreen';
+import ReplyScreen from './ReplyScreen';
 import TestScreen from './TestScreen';
 import UserScreen from './UserScreen';
 import QuestionScreen from './QuestionScreen';
 import LoginScreen from './LoginScreen';
+import SignUpScreen from './SignUpScreen';
+import TransitionScreen from './TransitionScreen';
 
 
 export const Stack = createStackNavigator();
 
-export const HomeStack = () => {
+export const HomeStack = ({navigation}) => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Home"component={HomeScreen}  
-        options={{
-          headerStyle:{
-            height:0,
-          },
-        }} />  
+      <Stack.Screen name="Home"component={HomeScreen} options={{headerShown: false}}/>  
     </Stack.Navigator>
   );
 }
   
-export const TravelStack = () => {
+export const ReplyStack = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Reply"component={TravelScreen}  
+      <Stack.Screen name="Reply"component={ReplyScreen}  
         options={{
           headerStyle:{
               height:0,
@@ -86,8 +83,37 @@ export const LoginStack = () => {
       options={{
       headerStyle:{
           height:0,
-      }
+      },
+      headerLeft: null,
+      }} />  
+    <Stack.Screen name="Signup"component={SignUpScreen}  
+      options={{
+      headerStyle:{
+          height:0,
+      },
+      headerLeft: null,
       }} />  
     </Stack.Navigator>
   );
-  }
+}
+
+export const SignUpStack = () => {
+  return (
+    <Stack.Navigator>
+    <Stack.Screen name="Signup"component={SignUpScreen}  
+      options={{
+      headerStyle:{
+          height:0,
+      },
+      headerLeft: null,
+      }} />  
+    <Stack.Screen name="Transition"component={TransitionScreen}  
+      options={{
+      headerStyle:{
+          height:0,
+      },
+      headerLeft: null,
+      }} />  
+    </Stack.Navigator>
+  );
+}

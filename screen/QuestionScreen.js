@@ -12,10 +12,10 @@ export default function QuestionScreen({ navigation }) {
       </TouchableOpacity>
       
       <View style={styles.numberBg}>
-        <Text style={styles.number}>Q1</Text>
+        <Text style={styles.number}>{test.num}</Text>
       </View>
       <View style={styles.questionBg}>
-        <Text style={styles.questionText}>我睡不好</Text>
+        <Text style={styles.questionText}>{test.question}</Text>
       </View>
       <View style={styles.optionBox}>
         <TouchableOpacity style={styles.option}>
