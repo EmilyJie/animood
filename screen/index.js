@@ -11,14 +11,24 @@ import QuestionScreen from './QuestionScreen';
 import LoginScreen from './LoginScreen';
 import SignUpScreen from './SignUpScreen';
 import TransitionScreen from './TransitionScreen';
-
+import WorryScreen from './WorryScreen';
 
 export const Stack = createStackNavigator();
 
 export const HomeStack = ({navigation}) => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Home"component={HomeScreen} options={{headerShown: false}}/>  
+      <Stack.Screen name="Home"component={HomeScreen}
+        options={{
+          headerShown: false
+        }}/>
+      <Stack.Screen name="Worry" component={WorryScreen} 
+        options={{
+          headerStyle:{
+              height:0,
+          },
+          headerLeft: null,
+        }}/>  
     </Stack.Navigator>
   );
 }
@@ -31,7 +41,7 @@ export const TravelStack = () => {
           headerStyle:{
               height:0,
           }
-        }} />  
+        }} />
     </Stack.Navigator>
   );
 }

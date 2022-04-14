@@ -28,7 +28,7 @@ export default function HomeScreen({ navigation }) {
             <Text style={styles.worryText}>最近沒有錢</Text>
           </View>
         </View>
-        <TouchableOpacity /*onPress={home_btn_add}*/>
+        <TouchableOpacity onPress={() => navigation.navigate('Worry')}>
           <Image
             style={styles.btnAdd}
             source={require('../assets/home/btn_add.png')}

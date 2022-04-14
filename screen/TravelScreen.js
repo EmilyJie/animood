@@ -1,53 +1,7 @@
-import { StatusBar } from 'expo-status-bar';
 import React from "react";
-import { StyleSheet, Text, TouchableOpacity, Image, ImageBackground, View, TouchableWithoutFeedback } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, Image, View } from 'react-native';
 import ModalPoup from '../component/ModalPoup';
-
-const TravelModal = () => {
-  return(
-    <View style={styles.travelBg}>
-      <Text style={styles.title}>想帶誰去旅行呢？</Text>
-      <View style={styles.animalsContainer}>
-        <TouchableOpacity 
-          style={styles.animalBg}
-          onPress={reply_btn_chooseAnimal}
-        >
-          <Image
-            style={styles.animal}
-            source={require('../assets/animals/panda.png')}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity 
-          style={styles.animalBg}
-          onPress={reply_btn_chooseAnimal}
-        >
-          <Image
-            style={styles.animal}
-            source={require('../assets/animals/pig.png')}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity 
-          style={styles.animalBg}
-          onPress={reply_btn_chooseAnimal}
-        >
-          <Image
-            style={styles.animal}
-            source={require('../assets/animals/cat.png')}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity 
-          style={styles.animalBg}
-          onPress={reply_btn_chooseAnimal}
-        >
-          <Image
-            style={styles.animal}
-            source={require('../assets/animals/crocodile.png')}
-          />
-        </TouchableOpacity>
-      </View>
-    </View>
-  )
-}
+import ChooseAnimalScreen from './ChooseAnimalScreen';
 
 export default function TravelScreen({ navigation }) {
   const [travelVisible, setTravelVisible] = React.useState(false);
@@ -55,26 +9,29 @@ export default function TravelScreen({ navigation }) {
     <View style={{ flex:1, justifyContent: 'center', alignItems: 'center'}}>
       <Image 
         style={{ position: 'absolute' }}
-        source={require('../assets/reply/img_replyBg.png')}
+        source={require('../assets/travel/img_travelBg.png')}
       />
       <Image
         style={{ position: 'absolute', width: 145, height: 109.65 }}
         source={require('../assets/animals/racoon.png')}
       />
       <ModalPoup visible={travelVisible}>
-        <TravelModal></TravelModal>
+        <ChooseAnimalScreen></ChooseAnimalScreen>
+        <TouchableOpacity onPress={() => setTravelVisible(false)}>
+          <Image source={require('../assets/btn_back.png')} style={styles.btnBack}/>
+        </TouchableOpacity>
       </ModalPoup>
       <TouchableOpacity 
-        style={styles.btnRecord} 
+        style={styles.btnTravel}
         onPress={() => setTravelVisible(true)}
       >
-        <Text style={styles.recordText}>冒險紀錄</Text>
-      </TouchableOpacity>
-      <TouchableOpacity 
-        style={styles.btnTravel}
-        /*onPress={reply_btn_travel}*/
-      >
         <Text style={styles.btnText}>去旅行！</Text>
+      </TouchableOpacity>
+      <TouchableOpacity /*onPress={reply_btn_travel}*/>
+        <Image
+          style={styles.btnRecord} 
+          source={require('../assets/travel/btnRecord.png')}
+        />
       </TouchableOpacity>
     </View>
   );
@@ -82,21 +39,10 @@ export default function TravelScreen({ navigation }) {
 
 const styles = StyleSheet.create({
   btnRecord:{
-    width: 120,
-    height: 50,
-    backgroundColor: '#FFFAEE',
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 3,
-    },
-    shadowOpacity: 0.2,
-    shadowRadius: 3.5,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 20,
-    marginTop: 50,
-    marginLeft: 240,
+    width: 70,
+    height: 70,
+    marginTop: -60,
+    marginLeft: 300,
   },
   recordText:{
     fontSize: 18,
@@ -117,7 +63,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 20,
-    marginTop: 580,
+    marginTop: 700,
   },
   btnText:{
     fontSize: 18,
@@ -166,4 +112,10 @@ const styles = StyleSheet.create({
     height: '70%',
     overflow: 'visible',
   },
+  btnBack:{
+    width: 15,
+    height: 28.3,
+    marginTop: -510,
+    marginLeft: 30,
+  }
 });

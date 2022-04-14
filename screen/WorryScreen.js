@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { StyleSheet, Text, TouchableOpacity, Image, View, Animated, FlatList } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, Image, View, Animated, FlatList, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard} from 'react-native';
 import LottieView from 'lottie-react-native';
 import { Bubble, GiftedChat, InputToolbar, Send } from "react-native-gifted-chat";
 
@@ -10,7 +10,7 @@ export default function WorryScreen({ navigation, props }) {
     setMessages([
       {
         _id: 1,
-        text: '有什麼煩惱嗎？先用20字描述呦~之後再好好詳細跟我說這個煩惱~',
+        text: '有什麼煩惱嗎？先用20字跟我說說吧~',
         createdAt: new Date(),
         user: {
           _id: 2,
@@ -41,6 +41,9 @@ export default function WorryScreen({ navigation, props }) {
   }
 
   return (
+    <KeyboardAvoidingView style={styles.container}
+      behavior={Platform.OS === "ios" ? "padding" : "height"}>
+    {/* <TouchableWithoutFeedback onPress={Keyboard.dismiss}></TouchableWithoutFeedback> */}
     <View style={{flex:1}}>
       <View style={{alignItems:'center', height: 895}}>
         <LottieView source={require('../json/bg_happy.json')} autoPlay loop/>
@@ -119,6 +122,7 @@ export default function WorryScreen({ navigation, props }) {
         </View>
       </View>
     </View>
+    </KeyboardAvoidingView>
   );
 }
 
