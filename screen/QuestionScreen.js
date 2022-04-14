@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity, Image, View, Animated } from 'react-native';
+import {Button} from "react-native-elements";
 import { ProgressBar } from 'react-native-paper';
 import test from '../json/test.json'
 
@@ -12,24 +13,72 @@ export default function QuestionScreen({ navigation }) {
       </TouchableOpacity>
       
       <View style={styles.numberBg}>
-        <Text style={styles.number}>Q1</Text>
+        <Text style={styles.number}>{test.num}</Text>
       </View>
       <View style={styles.questionBg}>
-        <Text style={styles.questionText}>我睡不好</Text>
+        <Text style={styles.questionText}>{test.question}</Text>
       </View>
       <View style={styles.optionBox}>
-        <TouchableOpacity style={styles.option}>
-          <Text style={styles.optionText}>沒有或極少(每周1天以下)</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.option}>
-          <Text style={styles.optionText}>有時候(每周1-2天)</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.option}>
-          <Text style={styles.optionText}>時常(每周3-4天)</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.option}>
-          <Text style={styles.optionText}>常常或總是(每周5-7天)</Text>
-        </TouchableOpacity>
+        <Button 
+          buttonStyle={{
+            width: 285,
+            height: 60,
+            backgroundColor: '#FFFAEE',
+            borderColor: '#F1A673',
+            borderRadius:20,
+            borderWidth: 3,
+            marginTop: 20,
+          }}
+          title="沒有或極少(每周1天以下)" 
+          titleStyle={{
+            fontSize: 20,
+            fontWeight: 'bold',
+            color: '#F1A673'}}/>
+        <Button 
+          buttonStyle={{
+            width: 285,
+            height: 60,
+            backgroundColor: '#FFFAEE',
+            borderColor: '#F1A673',
+            borderRadius:20,
+            borderWidth: 3,
+            marginTop: 20,
+          }}
+          title="有時候(每周1-2天)" 
+          titleStyle={{
+            fontSize: 20,
+            fontWeight: 'bold',
+            color: '#F1A673'}}/>
+        <Button 
+          buttonStyle={{
+            width: 285,
+            height: 60,
+            backgroundColor: '#FFFAEE',
+            borderColor: '#F1A673',
+            borderRadius:20,
+            borderWidth: 3,
+            marginTop: 20,
+          }}
+          title="時常(每周3-4天)" 
+          titleStyle={{
+            fontSize: 20,
+            fontWeight: 'bold',
+            color: '#F1A673'}}/>
+        <Button 
+          buttonStyle={{
+            width: 285,
+            height: 60,
+            backgroundColor: '#FFFAEE',
+            borderColor: '#F1A673',
+            borderRadius:20,
+            borderWidth: 3,
+            marginTop: 20,
+          }}
+          title="常常或總是(每周5-7天)" 
+          titleStyle={{
+            fontSize: 20,
+            fontWeight: 'bold',
+            color: '#F1A673'}}/>
       </View>
     </View>
   );
@@ -44,7 +93,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   back:{
-    marginRight:300,
+    marginRight:350,
     marginBottom:50,
     marginTop:-50,
   },

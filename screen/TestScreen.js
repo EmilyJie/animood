@@ -19,7 +19,6 @@ const DetailModal = () => {
   )
 }
 
-
 export default function TestScreen({ navigation }) {
   const [detailVisible, setDetailVisible] = React.useState(false);
   

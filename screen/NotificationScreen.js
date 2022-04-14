@@ -16,7 +16,7 @@ export default function NotificationScreen() {
     ]);
     return (
         <View style={styles.setting}>
-            <Image source={require('../assets/user/img_bigNotification.png')} style={{ width: 54, height: 61, marginTop: 30, marginBottom: 10 }}/>
+            <Image source={require('../assets/user/img_bigNotification.png')} style={{ width: 80, height: 80, marginTop: 20, marginBottom: 10 }}/>
             <View style={styles.settingBox}>
                 <Text style={styles.settingText}>每日記錄提醒</Text>
                 <View style={styles.btnSwitch}>

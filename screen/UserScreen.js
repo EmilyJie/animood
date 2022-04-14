@@ -133,8 +133,6 @@ const styles = StyleSheet.create({
   photoBg:{
     width: 120,
     height: 120,
-    backgroundColor: '#FFF5F0',
-    borderRadius: 100,
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 120,
@@ -142,13 +140,6 @@ const styles = StyleSheet.create({
   profilePhoto:{
     width: 100,
     height: 100,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 3,
-    },
-    shadowOpacity: 0.2,
-    shadowRadius: 3.5,
   },
   setting:{
     width: 345,
@@ -161,7 +152,7 @@ const styles = StyleSheet.create({
   settingBox:{
     width: 300,
     height: 60,
-    backgroundColor: '#FFF5F0',
+    backgroundColor: '#FFFAEE',
     borderRadius: 20,
     marginTop: 15,
     shadowColor: "#000",
@@ -177,7 +168,7 @@ const styles = StyleSheet.create({
   signOut:{
     width: 300,
     height: 60,
-    backgroundColor: '#FFF5F0',
+    backgroundColor: '#FFFAEE',
     borderRadius: 20,
     marginTop: 40,
     shadowColor: "#000",
@@ -193,13 +184,13 @@ const styles = StyleSheet.create({
   settingText:{
     fontSize: 18,
     fontWeight:"bold",
-    color: '#FF986D',
+    color: '#D2A98D',
     marginLeft: 15,
   },
   signOutText:{
     fontSize: 18,
     fontWeight:"bold",
-    color: '#FF5422',
+    color: '#FE9A7B',
     marginLeft: 15,
   },
   arrow:{
