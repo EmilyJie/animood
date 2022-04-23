@@ -1,6 +1,7 @@
 import React ,{createContext,useState,useEffect} from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import userData from "../json/user.json";
+import testData from "../json/test.json";
 const ME_PERSISTENCE_KEY = "ME_PERSISTENCE_KEY";
 const HAS_SET_KEY = "HAS_SET_KEY";
 
@@ -11,10 +12,12 @@ export const StoreContext = createContext();
 
 export const StoreProvider = ({children}) => {
     const [isLogin, setIsLogin] = useState(false);
+    const [testItems, settestItems] = useState(testData);
     const [user,setUser] = useState(userData);
     const store = {
         isLoginState: [isLogin, setIsLogin],
-        userState: [user,setUser]
+        userState: [user,setUser],
+        testState:[testItems, settestItems]
     };
     
     const LoginrestoreState = async () => {
@@ -44,7 +47,6 @@ export const StoreProvider = ({children}) => {
         
         }catch(e) {}
     };
-
     useEffect(()=>{
         restoreState();
         LoginrestoreState();

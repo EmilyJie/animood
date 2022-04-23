@@ -1,24 +1,36 @@
 import { StatusBar } from 'expo-status-bar';
-import React from "react";
+import React, { createContext, useState, useContext} from "react";
 import { StyleSheet, Text, TouchableOpacity, Image, View, Animated } from 'react-native';
 import {Button} from "react-native-elements";
 import { ProgressBar } from 'react-native-paper';
 import test from '../json/test.json'
+import QuestionDetail from '../component/QuestionDetail';
+import * as firebase from 'firebase';
+import { StoreContext } from "../stores/index";
 
 export default function QuestionScreen({ navigation }) {
+  const { testState } = useContext(StoreContext);
+  const [testItems, settestItems] = useState([]);
+
+  var questiondataRef = firebase.database().ref('test');
+    questiondataRef.on('value',function (snapshot) {
+      snapshot.forEach(function (childSnapshot){
+        settestItems();
+      });
+    });
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={() => navigation.goBack()}>
         <Image style={styles.back} source={require('../assets/btn_back.png')} />
       </TouchableOpacity>
-      
+      {/* <QuestionDetail  data={testItems}/> */}
       <View style={styles.numberBg}>
         <Text style={styles.number}>{test.num}</Text>
       </View>
       <View style={styles.questionBg}>
         <Text style={styles.questionText}>{test.question}</Text>
       </View>
-      <View style={styles.optionBox}>
+      <View style={styles.optionBox}> 
         <Button 
           buttonStyle={{
             width: 285,
