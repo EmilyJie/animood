@@ -36,7 +36,7 @@ export default function WorryScreen({ navigation, props }) {
 
   const scrollToBottomComponent = () => {
     return(
-      <Image style={styles.btn_goBack} source={require('../assets/btn_goBack.png')}/>
+      <Image style={styles.btn_goBack} source={require('../assets/btn_goDown.png')}/>
     );
   }
 

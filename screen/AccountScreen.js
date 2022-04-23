@@ -1,10 +1,9 @@
 import React , { useContext,useState,useEffect }from 'react';
-import { StyleSheet, Text, TextInput, View, TouchableWithoutFeedback, KeyboardAvoidingView, Keyboard } from 'react-native';
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import { StyleSheet, Image, TextInput, View, TouchableWithoutFeedback, TouchableOpacity,KeyboardAvoidingView, Keyboard } from 'react-native';
 import * as firebase from 'firebase'; 
 import {StoreContext}from "../stores/index.js";
 
-export default function AccountScreen() {
+export default function AccountScreen({ navigation }) {
   const [name, setName] = useState(null);
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
@@ -22,56 +21,75 @@ export default function AccountScreen() {
     storefirebaseauth();
     },[]);
 
-    return (
-      <KeyboardAvoidingView style={styles.container}
-        behavior={Platform.OS === "ios" ? "padding" : "height"}>
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <View style={styles.setting}>
-          {/* <View style={styles.settingBox}>
-              <Text style={styles.settingText}>帳號</Text>
-              <Text style={styles.detailText}>{user.email}</Text>
-          </View> */}
-          <TextInput
-            style={styles.input}
-            onChangeText={(email) => setEmail(email)}
-            value={email}
-            placeholder="帳號"
-            placeholderTextColor={'#D2A98D'}
-            textContentType='email'
-            keyboardAppearance='dark'
-          />
-          <TextInput
-            style={styles.input}
-            onChangeText={(name) => setName(name)}
-            value={name}
-            placeholder="名稱"
-            placeholderTextColor={'#D2A98D'}
-            textContentType='name'
-            keyboardAppearance='dark'
-          />
-          <TextInput
-            style={styles.input}
-            onChangeText={(password) => setPassword(password)}
-            value={password}
-            placeholder="密碼"
-            placeholderTextColor={'#D2A98D'}
-            textContentType='password'
-            keyboardAppearance='dark'
+  return (
+    <KeyboardAvoidingView style={styles.container}
+      behavior={Platform.OS === "ios" ? "padding" : "height"}>
+      <View style={styles.container}>
+        <Image 
+          style={{ position: 'absolute' ,flex: 1 }}
+          source={require('../assets/gif/bg_gif.gif')}
+        />
+        <View style={styles.photoBg}>
+          <Image
+            style={styles.profilePhoto}
+            source={require('../assets/img_head1.png')}
           />
         </View>
-      </TouchableWithoutFeedback>
-      </KeyboardAvoidingView>
-    )
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          <View style={{marginTop: 20}}>
+            <TextInput
+              style={styles.input}
+              onChangeText={(email) => setEmail(email)}
+              value={email}
+              placeholder="帳號"
+              placeholderTextColor={'#D2A98D'}
+              textContentType='email'
+              keyboardAppearance='dark'
+            />
+            <TextInput
+              style={styles.input}
+              onChangeText={(name) => setName(name)}
+              value={name}
+              placeholder="名稱"
+              placeholderTextColor={'#D2A98D'}
+              textContentType='name'
+              keyboardAppearance='dark'
+            />
+            <TextInput
+              style={styles.input}
+              onChangeText={(password) => setPassword(password)}
+              value={password}
+              placeholder="密碼"
+              placeholderTextColor={'#D2A98D'}
+              textContentType='password'
+              keyboardAppearance='dark'
+            />
+            <TouchableOpacity onPress={() => navigation.navigate('User')}>
+              <Image source={require('../assets/user/btn_sent.png')} style={styles.btnSent}/>
+            </TouchableOpacity> 
+          </View>
+        </TouchableWithoutFeedback>
+      </View>
+    </KeyboardAvoidingView>
+  )
 }
 
 const styles = StyleSheet.create({
-  setting:{
-    width: 345,
-    height: 455,
-    backgroundColor: '#FFEBC3',
-    borderRadius: 20,
-    paddingTop: 20,
+  container:{
     alignItems: 'center',
+    width:415,
+    height:896,
+  },
+  photoBg:{
+    width: 120,
+    height: 120,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 120,
+  },
+  profilePhoto:{
+    width: 100,
+    height: 100,
   },
   input: {
     width: 300,
@@ -93,4 +111,10 @@ const styles = StyleSheet.create({
     fontWeight:"bold",
     color:'#D2A98D'
   },
+  btnSent:{
+    width: 50,
+    height: 50,
+    marginTop: 50,
+    marginLeft: 125,
+  }
 });

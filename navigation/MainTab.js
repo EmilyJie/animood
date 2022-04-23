@@ -1,7 +1,8 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import React from 'react';
+import { getFocusedRouteNameFromRoute, NavigationContainer } from '@react-navigation/native';
+import React, { useEffect } from 'react';
 import { Image } from 'react-native';
-import { HomeStack, TravelStack, TestStack, UserStack } from '../screen/index';
+import { HomeStack, TravelStack, TestStack, UserStack, getTabBarVisibility } from '../screen/index';
 
 const Tab = createBottomTabNavigator();
 
@@ -64,7 +65,7 @@ const HomeTabNavigation = () => {
     >
     <Tab.Screen name="首頁" component={HomeStack}/>
     <Tab.Screen name="旅行" component={TravelStack}/>
-    <Tab.Screen name="測驗" component={TestStack}/>
+    <Tab.Screen name="測驗" component={TestStack} />
     <Tab.Screen name="個人" component={UserStack}/>
   </Tab.Navigator>
 );

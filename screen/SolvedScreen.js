@@ -1,52 +1,54 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 
-export default function SolvedScreen() {
-    return (
-        <View style={styles.setting}>
-          <View style={styles.settingBox}>
-              <Text style={styles.settingText}>帳號</Text>
-              <Text style={styles.detailText}>a123456</Text>
-          </View>
-        </View>
-    )
+export default function SolvedScreen({ navigation }) {
+  return (
+    <View style={styles.container}>
+      <Image 
+        style={{ position: 'absolute' ,flex: 1 }}
+        source={require('../assets/gif/bg_gif.gif')}
+      />
+      <View style={styles.photoBg}>
+        <Image
+          style={styles.profilePhoto}
+          source={require('../assets/img_head1.png')}
+        />
+      </View>
+      <View style={{ marginTop:20, height:350, justifyContent:'center', alignItems:'center' }}>
+        <Text style={styles.settingText}>目前還沒有任何煩惱哦！</Text>
+      </View>
+      <TouchableOpacity onPress={() => navigation.navigate('User')}>
+        <Image source={require('../assets/user/btn_sent.png')} style={styles.btnSent}/>
+      </TouchableOpacity> 
+    </View>
+  )
 }
 
 const styles = StyleSheet.create({
-  setting:{
-    width: 345,
-    height: 455,
-    backgroundColor: '#FFEBC3',
-    borderRadius: 20,
-    paddingTop: 20,
+  container:{
     alignItems: 'center',
+    width:415,
+    height:896,
   },
-  settingBox:{
-    width: 300,
-    height: 60,
-    backgroundColor: '#FFFAEE',
-    borderRadius: 20,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 3,
-    },
-    shadowOpacity: 0.2,
-    shadowRadius: 3.5,
-    marginTop: 30,
+  photoBg:{
+    width: 120,
+    height: 120,
+    justifyContent: 'center',
     alignItems: 'center',
-    flexDirection: 'row',
+    marginTop: 120,
+  },
+  profilePhoto:{
+    width: 100,
+    height: 100,
   },
   settingText:{
     fontSize: 18,
     fontWeight:"bold",
     color: '#D2A98D',
-    marginLeft: 15,
   },
-  detailText:{
-    fontSize: 18,
-    fontWeight:"bold",
-    color: '#D2A98D',
-    marginLeft: 40,
-  },
+  btnSent:{
+    width: 50,
+    height: 50,
+    marginTop: 70,
+  }
 });

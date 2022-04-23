@@ -2,20 +2,9 @@ import React , { Component, useContext  }from 'react';
 import { TouchableOpacity } from 'react-native';
 import { StyleSheet, Text, View ,Image, Modal, Animated} from 'react-native';
 import * as firebase from "firebase";
-import { Button } from "react-native-elements";
 import { StoreContext } from "../stores";
-import ModalPoup from '../component/ModalPoup';
-import AccountScreen from './AccountScreen';
-import NotificationScreen from './NotificationScreen';
-import SolvedScreen from './SolvedScreen';
-import AboutScreen from './AboutScreen';
 
 export default function UserScreen({ navigation }) {
-  const [accountVisible, setAccountVisible] = React.useState(false);
-  const [notificationVisible, setNotificationVisible] = React.useState(false);
-  const [solvedVisible, setSolvedVisible] = React.useState(false);
-  const [aboutVisible, setAboutVisible] = React.useState(false);
-
   const { isLoginState } = useContext(StoreContext);
   const [isLogin, setIsLogin] = isLoginState;
   const onSignOut = () => {
@@ -42,13 +31,7 @@ export default function UserScreen({ navigation }) {
             source={require('../assets/user/img_account.png')}
           />
           <Text style={styles.settingText}>會員資訊</Text>
-          <ModalPoup visible={accountVisible}>
-              <AccountScreen></AccountScreen>
-              <TouchableOpacity onPress={() => setAccountVisible(false)}>
-                <Image source={require('../assets/user/btn_sent.png')} style={styles.btnSent}/>
-              </TouchableOpacity> 
-          </ModalPoup>
-          <TouchableOpacity onPress={() => setAccountVisible(true)}>
+          <TouchableOpacity onPress={() => navigation.navigate('Account')}>
             <Image
               style={styles.arrow}
               source={require('../assets/user/btn_arrow.png')}
@@ -61,13 +44,7 @@ export default function UserScreen({ navigation }) {
             source={require('../assets/user/img_solved.png')}
           />
           <Text style={styles.settingText}>所有煩惱</Text>
-          <ModalPoup visible={solvedVisible}>
-              <SolvedScreen></SolvedScreen>
-              <TouchableOpacity onPress={() => setSolvedVisible(false)}>
-                <Image source={require('../assets/user/btn_sent.png')} style={styles.btnSent}/>
-              </TouchableOpacity> 
-          </ModalPoup>
-          <TouchableOpacity onPress={() => setSolvedVisible(true)}>
+          <TouchableOpacity onPress={() => navigation.navigate('Solved')}>
             <Image
               style={styles.arrow}
               source={require('../assets/user/btn_arrow.png')}
@@ -80,13 +57,7 @@ export default function UserScreen({ navigation }) {
             source={require('../assets/user/img_notification.png')}
           />
           <Text style={styles.settingText}>提醒設定</Text>
-          <ModalPoup visible={notificationVisible}>
-              <NotificationScreen></NotificationScreen>
-              <TouchableOpacity onPress={() => setNotificationVisible(false)}>
-                <Image source={require('../assets/user/btn_sent.png')} style={styles.btnSent}/>
-              </TouchableOpacity> 
-          </ModalPoup>
-          <TouchableOpacity onPress={() => setNotificationVisible(true)}>
+          <TouchableOpacity onPress={() => navigation.navigate('Notification')}>
             <Image
               style={styles.arrow}
               source={require('../assets/user/btn_arrow.png')}
@@ -99,13 +70,7 @@ export default function UserScreen({ navigation }) {
             source={require('../assets/user/img_about.png')}
           />
           <Text style={styles.settingText}>關於我們</Text>
-          <ModalPoup visible={aboutVisible}>
-              <AboutScreen></AboutScreen>
-              <TouchableOpacity onPress={() => setAboutVisible(false)}>
-                <Image source={require('../assets/user/btn_sent.png')} style={styles.btnSent}/>
-              </TouchableOpacity> 
-          </ModalPoup>
-          <TouchableOpacity onPress={() => setAboutVisible(true)}>
+          <TouchableOpacity onPress={() => navigation.navigate('About')}>
             <Image
               style={styles.arrow}
               source={require('../assets/user/btn_arrow.png')}

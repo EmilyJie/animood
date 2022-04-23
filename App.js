@@ -11,13 +11,12 @@ const SIGN_PERSISTENCE_KEY = "SIGN_PERSISTENCE_KEY";
 const SIGN_HAS_SET_KEY = "SIGN_HAS_SET_KEY";
 
 const App=()=> {
-
-  const { isLoginState } = useContext(StoreContext);
-  const [isLogin, setIsLogin] = isLoginState;
-
   const [isLoadingComplete,setLoadingComplete] = React.useState(false);
   const [initialNavigationState, setInitialNavigationState] = React.useState();
-
+  
+  const { isLoginState } = useContext(StoreContext);
+  const [isLogin, setIsLogin] = isLoginState;
+  
   useEffect(()=>{
     const firebaseConfig = {
       apiKey: "AIzaSyAXE_MTC98TlksEoWcwWEplNhsI8mnCw7A",
@@ -35,6 +34,16 @@ const App=()=> {
     console.log(`firebase`);
   },[]);
 
+  useEffect(()=>{
+    async function GetLoginAsyncStorage(){
+        const saveLoginstate = await AsyncStorage.getItem(SIGN_PERSISTENCE_KEY);
+        const Loginstate = JSON.parse(saveLoginstate);
+        setIsLogin(Loginstate);
+        console.log(`App isLogin=${isLogin}`);
+    }
+    GetLoginAsyncStorage();
+  },[]);
+  
   React.useEffect(()=>{
     async function loadResourceAndDataAsync(){
       try{
@@ -45,7 +54,6 @@ const App=()=> {
         console.warn(e);
       }finally{
         setLoadingComplete(true);
-
       }
     }
     loadResourceAndDataAsync();
@@ -54,16 +62,22 @@ const App=()=> {
   if (!isLoadingComplete) {
     return null;
   } else {
-    
-    return isLogin ?(
-      <NavigationContainer>
-        <MainTab />
-      </NavigationContainer>
-    ):(
-      <NavigationContainer>
-        <LoginStack/>
-      </NavigationContainer>
-    );
+      return isLogin?(
+        <NavigationContainer
+          initialState={initialNavigationState}
+          onStateChange={(state) =>
+            AsyncStorage.setItem('PERSISTENCE_KEY', JSON.stringify(state))
+          }>
+          <MainTab />
+        </NavigationContainer>
+      ):(
+        <NavigationContainer
+          onStateChange={(state) =>
+            AsyncStorage.setItem('PERSISTENCE_KEY', JSON.stringify(state))
+          }>
+          <LoginStack />
+        </NavigationContainer>
+      );
   }
 }
 

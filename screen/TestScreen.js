@@ -1,23 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View ,Image, TouchableOpacity, ScrollView} from 'react-native';
 import ModalPoup from '../component/ModalPoup';
-
-const DetailModal = () => {
-  return(
-    <View style={styles.detailBg}>
-      <View style={styles.detailDate}>
-        <Text style={styles.detailText}>2022/01/15</Text>
-      </View>
-      <View style={styles.detailScore}>
-        <Text style={styles.score}>80</Text>
-      </View>
-      <View style={styles.suggest}>
-        <Text style={styles.suggestText}>建議內容：</Text>
-        <Text style={styles.suggestText}>可以更好！</Text>
-      </View>
-    </View>
-  )
-}
+import DetailScreen from './DetailScreen';
 
 export default function TestScreen({ navigation }) {
   const [detailVisible, setDetailVisible] = React.useState(false);
@@ -30,7 +14,7 @@ export default function TestScreen({ navigation }) {
         source={require('../assets/gif/bg_gif.gif')}
       />
       <View style={styles.scoreBg}>
-        <Text style={styles.score}>85</Text>
+        <Text style={styles.score}>良好</Text>
       </View>
       <View style={styles.testDateBg}>
         <Text style={styles.testDate}>2022/03/10</Text>
@@ -41,17 +25,16 @@ export default function TestScreen({ navigation }) {
       >
         <Text style={styles.btnTest}>來做測驗</Text>
       </TouchableOpacity>
-      {/* <Button style={styles.btnTestBg} onPress={this.goToTest} title="來做測驗"/> */}
      
       <View style={styles.historyContainer}>
         <Text style={styles.title}>歷史紀錄</Text>
         <View style={styles.historyBox}>
           <View style={styles.scoreBg1}>
-            <Text style={styles.detailText}>80</Text>
+            <Text style={styles.detailText}>良</Text>
           </View>
           <Text style={styles.testDate}>2022/01/15</Text>
           <ModalPoup visible={detailVisible}>
-            <DetailModal></DetailModal>
+            <DetailScreen></DetailScreen>
             <TouchableOpacity onPress={() => setDetailVisible(false)}>
               <Image source={require('../assets/btn_close.png')} style={styles.btnClose}/>
             </TouchableOpacity>
@@ -64,11 +47,11 @@ export default function TestScreen({ navigation }) {
         </View>
         <View style={styles.historyBox}>
           <View style={styles.scoreBg1}>
-            <Text style={styles.detailText}>90</Text>
+            <Text style={styles.detailText}>輕</Text>
           </View>
           <Text style={styles.testDate}>2022/01/01</Text>
           <ModalPoup visible={detailVisible}>
-            <DetailModal></DetailModal>
+            <DetailScreen></DetailScreen>
             <TouchableOpacity onPress={() => setDetailVisible(false)}>
               <Image source={require('../assets/btn_close.png')} style={styles.btnClose}/>
             </TouchableOpacity>
@@ -81,11 +64,11 @@ export default function TestScreen({ navigation }) {
         </View>
         <View style={styles.historyBox}>
           <View style={styles.scoreBg1}>
-            <Text style={styles.detailText}>86</Text>
+            <Text style={styles.detailText}>輕</Text>
           </View>
           <Text style={styles.testDate}>2022/12/13</Text>
           <ModalPoup visible={detailVisible}>
-            <DetailModal></DetailModal>
+            <DetailScreen></DetailScreen>
             <TouchableOpacity onPress={() => setDetailVisible(false)}>
               <Image source={require('../assets/btn_close.png')} style={styles.btnClose}/>
             </TouchableOpacity>
@@ -125,7 +108,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   score:{
-    fontSize: 46,
+    fontSize: 40,
     fontWeight:"bold",
     color: "#521111",
   },
@@ -237,79 +220,10 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: "#FFFAEE",
   },
-  detailBg:{
-    backgroundColor: '#FFFAEE',
-    width: 350,
-    height: 455,
-    borderRadius: 20,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 4,
-    },
-    shadowOpacity: 0.2,
-    shadowRadius: 3.5,
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    paddingTop: 15,
-    paddingBottom: 20,
-  },
-  detailDate:{
-    backgroundColor: '#FFE8B0',
-    width: 175,
-    height: 45,
-    borderRadius: 20,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 4,
-    },
-    shadowOpacity: 0.2,
-    shadowRadius: 3.5,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginLeft: -120,
-  },
-  detailScore:{
-    backgroundColor: '#FFE8B0',
-    width: 300,
-    height: 85,
-    borderRadius: 20,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 4,
-    },
-    shadowOpacity: 0.2,
-    shadowRadius: 3.5,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  suggest:{
-    backgroundColor: '#FFE8B0',
-    width: 300,
-    height: 165,
-    borderRadius: 20,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 4,
-    },
-    shadowOpacity: 0.2,
-    shadowRadius: 3.5,
-    paddingTop: 5
-  },
-  suggestText:{
-    fontSize: 18,
-    fontWeight: "bold",
-    color: "#521111",
-    marginTop: 15,
-    marginLeft: 20,
-  },
   btnClose:{
     width: 50,
     height: 50,
-    marginTop: -420,
+    marginTop: -470,
     marginLeft: 270,
   }
 });

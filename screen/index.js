@@ -1,7 +1,5 @@
-import React from 'react';
-import {View, Text,Image,TouchableOpacity} from "react-native"
+import React, { useEffect } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { NavigationContainer } from "@react-navigation/native";
 
 import HomeScreen from './HomeScreen';
 import TravelScreen from './TravelScreen';
@@ -12,6 +10,11 @@ import LoginScreen from './LoginScreen';
 import SignUpScreen from './SignUpScreen';
 import TransitionScreen from './TransitionScreen';
 import WorryScreen from './WorryScreen';
+import AccountScreen from './AccountScreen';
+import SolvedScreen from './SolvedScreen';
+import NotificationScreen from './NotificationScreen';
+import AboutScreen from './AboutScreen';
+import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 
 export const Stack = createStackNavigator();
 
@@ -25,7 +28,7 @@ export const HomeStack = ({navigation}) => {
       <Stack.Screen name="Worry" component={WorryScreen} 
         options={{
           headerStyle:{
-              height:0,
+            height:0,
           },
           headerLeft: null,
         }}/>  
@@ -82,6 +85,34 @@ export const UserStack = () => {
         },
         headerLeft: null,
       }} />
+    <Stack.Screen name="Account" component={AccountScreen} 
+      options={{
+        headerStyle:{
+          height:0,
+        },
+        headerLeft: null,
+      }}/>
+    <Stack.Screen name="Solved" component={SolvedScreen} 
+      options={{
+        headerStyle:{
+          height:0,
+        },
+        headerLeft: null,
+      }}/>
+    <Stack.Screen name="Notification" component={NotificationScreen} 
+      options={{
+        headerStyle:{
+          height:0,
+        },
+        headerLeft: null,
+      }}/>
+    <Stack.Screen name="About" component={AboutScreen} 
+      options={{
+        headerStyle:{
+          height:0,
+        },
+        headerLeft: null,
+      }}/>     
     </Stack.Navigator>
   );
 }
