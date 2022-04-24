@@ -14,16 +14,18 @@ import AccountScreen from './AccountScreen';
 import SolvedScreen from './SolvedScreen';
 import NotificationScreen from './NotificationScreen';
 import AboutScreen from './AboutScreen';
-import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
+import ChooseAnimalScreen from './ChooseAnimalScreen';
 
 export const Stack = createStackNavigator();
 
-export const HomeStack = ({navigation}) => {
+export const HomeStack = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Home"component={HomeScreen}
         options={{
-          headerShown: false
+          headerStyle:{
+            height:0,
+          }
         }}/>
       <Stack.Screen name="Worry" component={WorryScreen} 
         options={{
@@ -45,6 +47,12 @@ export const TravelStack = () => {
               height:0,
           }
         }} />
+      <Stack.Screen name="ChooseAnimal" component={ChooseAnimalScreen} 
+        options={{
+          headerStyle:{
+            height:0,
+          }
+        }}/>
     </Stack.Navigator>
   );
 }

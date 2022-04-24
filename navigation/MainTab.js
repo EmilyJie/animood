@@ -1,8 +1,8 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { getFocusedRouteNameFromRoute, NavigationContainer } from '@react-navigation/native';
 import React, { useEffect } from 'react';
 import { Image } from 'react-native';
-import { HomeStack, TravelStack, TestStack, UserStack, getTabBarVisibility } from '../screen/index';
+import {getFocusedRouteNameFromRoute} from '@react-navigation/native';
+import { HomeStack, TravelStack, TestStack, UserStack } from '../screen/index';
 
 const Tab = createBottomTabNavigator();
 
@@ -53,7 +53,6 @@ const HomeTabNavigation = () => {
         tabBarStyle: {
           height: 85,
           backgroundColor: '#FFFAEE',
-          borderRadius: 30,
         }
       })}
       tabBarOptions={{
@@ -63,12 +62,44 @@ const HomeTabNavigation = () => {
         }
       }}
     >
-    <Tab.Screen name="首頁" component={HomeStack}/>
+    <Tab.Screen 
+      name="首頁" 
+      component={HomeStack}
+      options={({route}) => ({
+        tabBarStyle: {
+          display: getTabBarVisibility(route),
+          height: 85,
+          backgroundColor: '#FFFAEE',
+        }
+      })}
+    />
     <Tab.Screen name="旅行" component={TravelStack}/>
-    <Tab.Screen name="測驗" component={TestStack} />
+    <Tab.Screen 
+      name="測驗" 
+      component={TestStack}
+      options={({route}) => ({
+        tabBarStyle: {
+          display: getTabBarVisibility(route),
+          height: 85,
+          backgroundColor: '#FFFAEE',
+        }
+      })}
+    />
     <Tab.Screen name="個人" component={UserStack}/>
   </Tab.Navigator>
 );
 };
+
+const getTabBarVisibility = (route) => {
+  const routeName = getFocusedRouteNameFromRoute(route) ?? 'Feed';
+
+  if( routeName == 'Worry'){
+    return 'none';
+  }
+  if( routeName == 'Question'){
+    return 'none';
+  }
+  return 'flex';
+}
 
 export default HomeTabNavigation;

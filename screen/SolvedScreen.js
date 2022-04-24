@@ -18,7 +18,7 @@ export default function SolvedScreen({ navigation }) {
         <Text style={styles.settingText}>目前還沒有任何煩惱哦！</Text>
       </View>
       <TouchableOpacity onPress={() => navigation.navigate('User')}>
-        <Image source={require('../assets/user/btn_sent.png')} style={styles.btnSent}/>
+        <Image source={require('../assets/user/btn_goBack.png')} style={styles.btnSent}/>
       </TouchableOpacity> 
     </View>
   )

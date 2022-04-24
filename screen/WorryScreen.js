@@ -49,7 +49,7 @@ export default function WorryScreen({ navigation, props }) {
         <LottieView source={require('../json/bg_happy.json')} autoPlay loop/>
         <TouchableOpacity
           style={{marginTop: 80, marginLeft: -320}}
-          /*onPress={worry_btn_back}*/
+          onPress={() => navigation.navigate('Home')}
         >
           <Image style={styles.btn_back} source={require('../assets/btn_back.png')}/>
         </TouchableOpacity>
@@ -78,10 +78,12 @@ export default function WorryScreen({ navigation, props }) {
                   {...props}
                   wrapperStyle={{
                     left: {
-                      backgroundColor: '#FFBB9E'
+                      backgroundColor: '#FFBB9E',
+                      marginBottom: 10,
                     },
                     right: {
-                      backgroundColor: '#FFE8B0'
+                      backgroundColor: '#FFE8B0',
+                      marginBottom: 10,
                     }
                   }}
                   textStyle={{
@@ -147,11 +149,12 @@ const styles = StyleSheet.create({
   },
   inputContainer:{
     width: 420,
-    height: 480,
+    height: 540,
     backgroundColor: '#FFFAEE',
     zIndex: 10,
     marginTop: -120,
     borderRadius: 20,
+    paddingBottom: 25
   },
   sendBg:{
     width: 60,
