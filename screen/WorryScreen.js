@@ -3,21 +3,34 @@ import { StyleSheet, Text, TouchableOpacity, Image, View, Animated, FlatList, Ke
 import LottieView from 'lottie-react-native';
 import { Bubble, GiftedChat, InputToolbar, Send } from "react-native-gifted-chat";
 
+// import { Dialogflow_V2 } from "react-native-dialogflow";
+// import { dialogflowConfig } from "./env";
+
+const animoodAvatar = require('../assets/home/animoodAvatar.png');
+
+const Animood = { _id: 2, name: 'Animood', avatar: animoodAvatar }
+
 export default function WorryScreen({ navigation, props }) {
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
     setMessages([
       {
-        _id: 1,
-        text: '有什麼煩惱嗎？先用20字跟我說說吧~',
-        createdAt: new Date(),
-        user: {
-          _id: 2,
-          name: 'Animood',
-        }
+        _id: 2, text: '先用20個字跟我說說吧~', createdAt: new Date(),
+        user: Animood
+      },
+      {
+        _id: 1, text: '嗨，最近有什麼煩惱嗎？', createdAt: new Date(),
+        user: Animood
       },
     ])
+
+    // Dialogflow_V2.setConfiguration(
+    //   dialogflowConfig.client_email,
+    //   dialogflowConfig.private_key,
+    //   Dialogflow_V2.LANG_CHINESE_TAIWAN,
+    //   dialogflowConfig.project_id
+    // )
   }, []);
 
   const onSend = useCallback((messages = []) => {
@@ -59,6 +72,7 @@ export default function WorryScreen({ navigation, props }) {
             <GiftedChat
               messages={messages}
               onSend={messages => onSend(messages)}
+              onQuickReply={(quickReply) => onQuickReply(quickReply)}
               user={{
                 _id: 1,
               }}

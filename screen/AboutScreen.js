@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity, Linking } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import ExternalLink from '../component/ExternalLink';
 
 const lineURL = "https://line.me/R/ti/p/@961pijzf"
@@ -19,26 +19,26 @@ export default function AboutScreen({ navigation }) {
         />
       </View>
       <View style={{marginTop:30, alignItems:'center'}}>
-          <View style={styles.settingBox}>
-            <Text style={styles.settingText}>版本資訊</Text>
-            <Text style={styles.settingText}>1.3.0</Text>
-          </View>
-          <View style={styles.settingBox}>
-            <ExternalLink url={lineURL}>
-              <Image source={require('../assets/user/btn_line.png')} style={styles.btnLink}/>
-            </ExternalLink>
-            <Text style={styles.settingText}>@961pijzf</Text>
-          </View>
-          <View style={styles.settingBox}>
-            <ExternalLink url={igURL}>
-              <Image source={require('../assets/user/btn_ig.png')} style={styles.btnLink}/>
-            </ExternalLink>
-            <Text style={styles.settingText}>animood_8</Text>
-          </View>
-          <TouchableOpacity onPress={() => navigation.navigate('User')}>
-            <Image source={require('../assets/user/btn_goBack.png')} style={styles.btnSent}/>
-          </TouchableOpacity> 
+        <View style={styles.settingBox}>
+          <Text style={styles.settingText}>版本資訊</Text>
+          <Text style={styles.settingText}>1.3.0</Text>
         </View>
+        <View style={styles.settingBox}>
+          <ExternalLink url={lineURL}>
+            <Image source={require('../assets/user/btn_line.png')} style={styles.btnLink}/>
+          </ExternalLink>
+          <Text style={styles.settingText}>@961pijzf</Text>
+        </View>
+        <View style={styles.settingBox}>
+          <ExternalLink url={igURL}>
+            <Image source={require('../assets/user/btn_ig.png')} style={styles.btnLink}/>
+          </ExternalLink>
+          <Text style={styles.settingText}>animood_8</Text>
+        </View>
+        <TouchableOpacity onPress={() => navigation.navigate('User')}>
+          <Image source={require('../assets/user/btn_goBack.png')} style={styles.btnSent}/>
+        </TouchableOpacity> 
+      </View>
     </View>
   )
 }
