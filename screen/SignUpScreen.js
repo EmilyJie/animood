@@ -62,7 +62,9 @@ export default function SignUpScreen({ navigation }) {
               
           //     style={{borderRadius:22}}
           //     />
-          <TouchableOpacity onPress={onSignUp} >
+          <TouchableOpacity onPress={onSignUp} 
+          //onPress={() => navigation.navigate('Transition')}
+          >
             <Image style={styles.btnSent} source={require('../assets/btn_sent.png')}/>
           </TouchableOpacity>
       );
@@ -95,6 +97,7 @@ export default function SignUpScreen({ navigation }) {
           setError(err1.message);
       } finally {
           setLoading(false);
+        
       }
     };
 
@@ -117,7 +120,7 @@ export default function SignUpScreen({ navigation }) {
         <TouchableOpacity>
           <Image style={styles.profliePhoto} source={require('../assets/img_head3.png')}/>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('Transition')}>
+        <TouchableOpacity>
           <Image style={styles.profliePhoto} source={require('../assets/img_head4.png')}/>
         </TouchableOpacity>
       </View>
@@ -195,6 +198,7 @@ const styles = StyleSheet.create({
     padding: 15,
     fontSize: 18,
     fontWeight:"bold",
+    color:'#D2A98D'
   },
   forget:{
     fontSize: 14,

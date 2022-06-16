@@ -73,7 +73,17 @@ const HomeTabNavigation = () => {
         }
       })}
     />
-    <Tab.Screen name="旅行" component={TravelStack}/>
+    <Tab.Screen 
+      name="旅行" 
+      component={TravelStack}
+      options={({route}) => ({
+        tabBarStyle: {
+          display: getTabBarVisibility(route),
+          height: 85,
+          backgroundColor: '#FFFAEE',
+        }
+      })}
+    />
     <Tab.Screen 
       name="測驗" 
       component={TestStack}
@@ -97,6 +107,9 @@ const getTabBarVisibility = (route) => {
     return 'none';
   }
   if( routeName == 'Question'){
+    return 'none';
+  }
+  if( routeName == 'OthersWorry'){
     return 'none';
   }
   return 'flex';
