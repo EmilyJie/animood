@@ -15,6 +15,7 @@ import SolvedScreen from './SolvedScreen';
 import NotificationScreen from './NotificationScreen';
 import AboutScreen from './AboutScreen';
 import ChooseAnimalScreen from './ChooseAnimalScreen';
+import WorryScreenfromother from './WorryScreenfromother';
 
 export const Stack = createStackNavigator();
 
@@ -53,6 +54,13 @@ export const TravelStack = () => {
             height:0,
           }
         }}/>
+        <Stack.Screen name="OthersWorry" component={WorryScreenfromother} 
+          options={{
+            headerStyle:{
+              height:0,
+            },
+            headerLeft: null,
+          }}/>
     </Stack.Navigator>
   );
 }

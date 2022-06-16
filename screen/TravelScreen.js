@@ -11,10 +11,12 @@ export default function TravelScreen({ navigation }) {
         style={{ position: 'absolute' }}
         source={require('../assets/travel/img_travelBg.png')}
       />
-      <Image
-        style={{ position: 'absolute', width: 145, height: 109.65 }}
-        source={require('../assets/animals/racoon.png')}
-      />
+      <TouchableOpacity onPress={() => navigation.navigate('OthersWorry')}>
+        <Image
+          style={{ position: 'absolute', width: 145, height: 109.65, marginTop:240, marginLeft:-50 }}
+          source={require('../assets/animals/racoon.png')}
+        />
+      </TouchableOpacity>
       <ModalPoup visible={travelVisible}>
         <ChooseAnimalScreen></ChooseAnimalScreen>
         <TouchableOpacity onPress={() => setTravelVisible(false)}>
@@ -27,7 +29,7 @@ export default function TravelScreen({ navigation }) {
       >
         <Text style={styles.btnText}>去旅行！</Text>
       </TouchableOpacity>
-      <TouchableOpacity /*onPress={reply_btn_travel}*/>
+      <TouchableOpacity >
         <Image
           style={styles.btnRecord} 
           source={require('../assets/travel/btnRecord.png')}
