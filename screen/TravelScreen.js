@@ -1,34 +1,66 @@
-import React from "react";
+import React, { useContext } from "react";
 import { StyleSheet, Text, TouchableOpacity, Image, View } from 'react-native';
 import ModalPoup from '../component/ModalPoup';
+import { StoreContext } from "../stores";
 import ChooseAnimalScreen from './ChooseAnimalScreen';
 
 export default function TravelScreen({ navigation }) {
-  const [travelVisible, setTravelVisible] = React.useState(false);
+  const {travelState} = useContext(StoreContext);
+  const [travelVisible, setTravelVisible] = travelState;
+  const {chooseState} = useContext(StoreContext);
+  const [isChoose, setIsChoose] = chooseState;
+  const {otherWorryState} = useContext(StoreContext);
+  const [isOther, setIsOther] = otherWorryState;
+
+  const handleOtherWorry = () => {
+    navigation.navigate('OthersWorry');
+    setIsOther(false);
+    setIsChoose(false);
+  }
+  
   return (
     <View style={{ flex:1, justifyContent: 'center', alignItems: 'center'}}>
       <Image 
         style={{ position: 'absolute' }}
         source={require('../assets/travel/img_travelBg.png')}
       />
-      <TouchableOpacity onPress={() => navigation.navigate('OthersWorry')}>
-        <Image
-          style={{ position: 'absolute', width: 145, height: 109.65, marginTop:240, marginLeft:-50 }}
-          source={require('../assets/animals/racoon.png')}
-        />
-      </TouchableOpacity>
+      {isOther ? (
+        <View>
+          <View style={styles.newVisiter}>
+            <Image
+              style={{ position: 'absolute', width: 277, height: 110}}
+              source={require('../assets/travel/textBg.png')}
+            />
+            <Text style={styles.visiterText}>嗨！很高興認識你{"\n"}點我看看我主人的煩惱吧</Text>
+          </View>
+          <TouchableOpacity onPress={handleOtherWorry}>
+            <Image
+              style={{ position: 'absolute', width: 145, height: 109.65, top:290, left: 35 }}
+              source={require('../assets/animals/racoon.png')}
+            />
+          </TouchableOpacity>
+        </View>
+      ) : (
+        <View></View>
+      )}
       <ModalPoup visible={travelVisible}>
         <ChooseAnimalScreen></ChooseAnimalScreen>
         <TouchableOpacity onPress={() => setTravelVisible(false)}>
           <Image source={require('../assets/btn_back.png')} style={styles.btnBack}/>
         </TouchableOpacity>
       </ModalPoup>
-      <TouchableOpacity 
-        style={styles.btnTravel}
-        onPress={() => setTravelVisible(true)}
-      >
-        <Text style={styles.btnText}>去旅行！</Text>
-      </TouchableOpacity>
+      {isChoose ? (
+        <View style={styles.btnTravel}>
+          <Text style={styles.timeText}>倒數2天</Text>
+        </View>
+      ) : (
+        <TouchableOpacity 
+          style={styles.btnTravel}
+          onPress={() => setTravelVisible(true)}
+        >
+          <Text style={styles.btnText}>去旅行！</Text>
+        </TouchableOpacity>
+      )}
       <TouchableOpacity >
         <Image
           style={styles.btnRecord} 
@@ -46,13 +78,21 @@ const styles = StyleSheet.create({
     marginTop: -60,
     marginLeft: 300,
   },
-  recordText:{
+  newVisiter:{
+    top: 250,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  visiterText:{
     fontSize: 18,
     fontWeight:"bold",
-    color: '#702929'
+    color: '#702929',
+    textAlign: 'center',
+    lineHeight: 26,
+    marginBottom: 5
   },
   btnTravel:{
-    width: 125,
+    width: 130,
     height: 60,
     backgroundColor: '#FE9A7B',
     shadowColor: "#000",
@@ -65,12 +105,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 20,
-    marginTop: 700,
+    marginTop: 650,
   },
   btnText:{
     fontSize: 18,
     fontWeight:"bold",
     color: '#FFFFFF'
+  },
+  timeText:{
+    fontSize: 18,
+    fontWeight:"bold",
+    color: '#EDD2D2'
   },
   travelBg:{
     backgroundColor: '#FFFAEE',

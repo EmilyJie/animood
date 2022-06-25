@@ -14,71 +14,81 @@ export default function TestScreen({ navigation }) {
         source={require('../assets/gif/bg_gif.gif')}
       />
       <View style={styles.scoreBg}>
-        <Text style={styles.score}>良好</Text>
+        <Text style={styles.testDate}>上次紀錄：2022/03/10</Text>
+        <View style={{marginTop: 40, alignItems: 'center', justifyContent: 'center',}}>
+          <Image 
+            style={{width: 125, height: 115}}
+            source={require('../assets/mood/happy_face.png')}
+          />
+          <Text style={styles.score}>良好</Text>
+          <TouchableOpacity 
+            style={styles.btnTestBg} 
+            onPress={() => navigation.navigate('Question')}
+          >
+            <Text style={styles.btnTest}>來做測驗</Text>
+          </TouchableOpacity>
+        </View>
       </View>
-      <View style={styles.testDateBg}>
-        <Text style={styles.testDate}>2022/03/10</Text>
-      </View>
-      <TouchableOpacity 
-        style={styles.btnTestBg} 
-        onPress={() => navigation.navigate('Question')}
-      >
-        <Text style={styles.btnTest}>來做測驗</Text>
-      </TouchableOpacity>
      
       <View style={styles.historyContainer}>
         <Text style={styles.title}>歷史紀錄</Text>
-        <View style={styles.historyBox}>
-          <View style={styles.scoreBg1}>
-            <Text style={styles.detailText}>良</Text>
-          </View>
-          <Text style={styles.testDate}>2022/01/15</Text>
-          <ModalPoup visible={detailVisible}>
-            <DetailScreen></DetailScreen>
-            <TouchableOpacity onPress={() => setDetailVisible(false)}>
-              <Image source={require('../assets/btn_close.png')} style={styles.btnClose}/>
-            </TouchableOpacity>
-          </ModalPoup>
-          <TouchableOpacity onPress={() => setDetailVisible(true)}>
-            <View style={styles.btnBg}>
-              <Text style={styles.btnDetail}>詳細內容</Text>
-            </View>
+        <ModalPoup visible={detailVisible}>
+          <DetailScreen></DetailScreen>
+          <TouchableOpacity onPress={() => setDetailVisible(false)}>
+            <Image source={require('../assets/btn_close.png')} style={styles.btnClose}/>
           </TouchableOpacity>
-        </View>
-        <View style={styles.historyBox}>
+        </ModalPoup>
+        <TouchableOpacity style={styles.historyBox} onPress={() => setDetailVisible(true)}>
           <View style={styles.scoreBg1}>
-            <Text style={styles.detailText}>輕</Text>
+            <Image 
+              style={{width: 61, height: 60}}
+              source={require('../assets/mood/happy.png')}
+            />
           </View>
-          <Text style={styles.testDate}>2022/01/01</Text>
-          <ModalPoup visible={detailVisible}>
-            <DetailScreen></DetailScreen>
-            <TouchableOpacity onPress={() => setDetailVisible(false)}>
-              <Image source={require('../assets/btn_close.png')} style={styles.btnClose}/>
-            </TouchableOpacity>
-          </ModalPoup>
-          <TouchableOpacity onPress={() => setDetailVisible(true)}>
-            <View style={styles.btnBg}>
-              <Text style={styles.btnDetail}>詳細內容</Text>
-            </View>
+          <View style={{height: 70, justifyContent: 'space-evenly'}}>
+            <Text style={styles.testDate}>2022/01/15</Text>
+            <Text style={styles.testText}>良好</Text>
+          </View>
+        </TouchableOpacity>
+
+        {/* <ModalPoup visible={detailVisible}>
+          <DetailScreen></DetailScreen>
+          <TouchableOpacity onPress={() => setDetailVisible(false)}>
+            <Image source={require('../assets/btn_close.png')} style={styles.btnClose}/>
           </TouchableOpacity>
-        </View>
-        <View style={styles.historyBox}>
+        </ModalPoup> */}
+        <TouchableOpacity style={styles.historyBox}>
           <View style={styles.scoreBg1}>
-            <Text style={styles.detailText}>輕</Text>
+            <Image 
+              style={{width: 60, height: 40}}
+              source={require('../assets/mood/normal.png')}
+            />
           </View>
-          <Text style={styles.testDate}>2022/12/13</Text>
-          <ModalPoup visible={detailVisible}>
-            <DetailScreen></DetailScreen>
-            <TouchableOpacity onPress={() => setDetailVisible(false)}>
-              <Image source={require('../assets/btn_close.png')} style={styles.btnClose}/>
-            </TouchableOpacity>
-          </ModalPoup>
-          <TouchableOpacity onPress={() => setDetailVisible(true)}>
-            <View style={styles.btnBg}>
-              <Text style={styles.btnDetail}>詳細內容</Text>
-            </View>
+          <View style={{height: 70, justifyContent: 'space-evenly'}}>
+            <Text style={styles.testDate}>2022/01/01</Text>
+            <Text style={styles.testText}>輕度</Text>
+          </View>
+        </TouchableOpacity>
+
+        {/* <ModalPoup visible={detailVisible}>
+          <DetailScreen></DetailScreen>
+          <TouchableOpacity onPress={() => setDetailVisible(false)}>
+            <Image source={require('../assets/btn_close.png')} style={styles.btnClose}/>
           </TouchableOpacity>
-        </View>
+        </ModalPoup> */}
+        <TouchableOpacity style={styles.historyBox}>
+          <View style={styles.scoreBg1}>
+            <Image 
+              style={{width: 60, height: 40}}
+              source={require('../assets/mood/normal.png')}
+            />
+          </View>
+          <View style={{height: 70, justifyContent: 'space-evenly'}}>
+            <Text style={styles.testDate}>2022/12/13</Text>
+            <Text style={styles.testText}>輕度</Text>
+          </View>
+        </TouchableOpacity>
+
       </View>
     </View>
     </ScrollView>
@@ -92,10 +102,10 @@ const styles = StyleSheet.create({
     height:896,
   },
   scoreBg:{
-    width: 180,
-    height: 180,
+    width: 375,
+    height: 400,
     backgroundColor: "#FFFAEE",
-    borderRadius: 100,
+    borderRadius: 20,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -104,18 +114,23 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 3.5,
     marginTop: 90,
-    alignItems: 'center',
-    justifyContent: 'center',
+    paddingTop: 30
   },
   score:{
     fontSize: 40,
     fontWeight:"bold",
     color: "#521111",
+    marginTop: 25
   },
-  testDateBg:{
-    width: 175,
-    height: 45,
-    backgroundColor: "#FFFAEE",
+  testDate:{
+    left: 20,
+    fontSize: 18,
+    color: "#521111",
+  },
+  btnTestBg:{
+    width: 300,
+    height: 60,
+    backgroundColor: "#D2A98D",
     borderRadius: 20,
     shadowColor: "#000",
     shadowOffset: {
@@ -125,26 +140,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 3.5,
     marginTop: 25,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  testDate:{
-    fontSize: 20,
-    color: "#521111",
-  },
-  btnTestBg:{
-    width: 200,
-    height: 55,
-    backgroundColor: "#FE9A7B",
-    borderRadius: 20,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 4,
-    },
-    shadowOpacity: 0.2,
-    shadowRadius: 3.5,
-    marginTop: 40,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -178,27 +173,29 @@ const styles = StyleSheet.create({
     marginBottom: 15
   },
   historyBox:{
-    width: 315,
-    height: 75,
+    width: 320,
+    height: 100,
     backgroundColor: "#FFE8B0",
     borderRadius: 20,
     marginTop: 15,
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-around',
+    justifyContent: 'flex-start',
   },
   scoreBg1:{
-    width: 55,
-    height: 55,
+    width: 80,
+    height: 80,
     backgroundColor: "#FFFAEE",
     borderRadius: 20,
     alignItems: 'center',
     justifyContent: 'center',
+    marginLeft: 20
   },
-  detailText:{
-    fontSize: 20,
+  testText:{
+    left: 20,
+    fontSize: 24,
     fontWeight: 'bold',
-    color: "#702929",
+    color: "#521111"
   },
   btnBg:{
     width: 90,
@@ -223,7 +220,7 @@ const styles = StyleSheet.create({
   btnClose:{
     width: 50,
     height: 50,
-    marginTop: -470,
-    marginLeft: 270,
+    marginTop: -595,
+    marginLeft: 290,
   }
 });

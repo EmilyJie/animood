@@ -2,7 +2,6 @@ import React, { useContext,useState,useEffect } from "react";
 import { StyleSheet, Text, TextInput, TouchableOpacity, View, Image, 
   ActivityIndicator, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import {Button} from "react-native-elements";
 import * as firebase from 'firebase'; 
 import {StoreContext}from "../stores/index.js";
 const ME_PERSISTENCE_KEY = "ME_PERSISTENCE_KEY";
@@ -52,20 +51,10 @@ export default function SignUpScreen({ navigation }) {
       return loading ? (
         <ActivityIndicator size="large" color="#F0A202"  />
       ) : (
-          // <Button
-          //     buttonStyle={{
-          //         backgroundColor:"#F0A202",
-          //         borderRadius:22
-          //     }}
-              
-          //     title="註冊"
-              
-          //     style={{borderRadius:22}}
-          //     />
-          <TouchableOpacity onPress={onSignUp} 
+          <TouchableOpacity onPress={onSignUp} style={styles.signUp}
           //onPress={() => navigation.navigate('Transition')}
           >
-            <Image style={styles.btnSent} source={require('../assets/btn_sent.png')}/>
+            <Text style={styles.btnText}>註冊</Text>
           </TouchableOpacity>
       );
     };
@@ -130,7 +119,7 @@ export default function SignUpScreen({ navigation }) {
           onChangeText={(name) => setName(name)}
           value={name}
           placeholder="名稱"
-          placeholderTextColor={'#D2A98D'}
+          placeholderTextColor={'#C9C9C9'}
           textContentType='username'
           keyboardAppearance='dark'
         />
@@ -139,7 +128,7 @@ export default function SignUpScreen({ navigation }) {
           onChangeText={(email) => setUser({...user,email})}
           value={email}
           placeholder="帳號"
-          placeholderTextColor={'#D2A98D'}
+          placeholderTextColor={'#C9C9C9'}
           textContentType='username'
           keyboardAppearance='dark'
         />
@@ -148,16 +137,19 @@ export default function SignUpScreen({ navigation }) {
           onChangeText={(password) => setPassword(password)}
           value={password}
           placeholder="密碼"
-          placeholderTextColor={'#D2A98D'}
+          placeholderTextColor={'#C9C9C9'}
           textContentType='password'
           keyboardAppearance='dark'
           secureTextEntry={true}
         />
       </View>
       {renderButton()}
-      </View>
-     </TouchableWithoutFeedback>
-     </KeyboardAvoidingView>
+      <TouchableOpacity style={styles.login} onPress={() => navigation.navigate('Login')}>
+        <Text style={styles.loginText}>登入</Text>
+      </TouchableOpacity>
+    </View>
+    </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
   );
 }
 
@@ -189,7 +181,7 @@ const styles = StyleSheet.create({
   },
   input:{
     backgroundColor: '#FFF9F6',
-    height: 55,
+    height: 60,
     width: 285,
     margin: 15,
     borderWidth: 1,
@@ -198,7 +190,7 @@ const styles = StyleSheet.create({
     padding: 15,
     fontSize: 18,
     fontWeight:"bold",
-    color:'#D2A98D'
+    color: '#D2A98D'
   },
   forget:{
     fontSize: 14,
@@ -206,9 +198,46 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     textDecorationLine: 'underline'
   },
-  btnSent:{
-    width: 45,
-    height: 45,
+  signUp: {
+    width: 285,
+    height: 55,
+    backgroundColor: '#FFFAEE',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 20,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 3.5,
     marginTop: 20
+  },
+  btnText: {
+    fontSize: 18,
+    fontWeight:"bold",
+    color: '#D2A98D',
+  },
+  login: {
+    width: 285,
+    height: 55,
+    backgroundColor: '#D2A98D',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 20,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 3.5,
+    marginTop: 20
+  },
+  loginText: {
+    fontSize: 18,
+    fontWeight:"bold",
+    color: '#FFFAEE',
   }
 });

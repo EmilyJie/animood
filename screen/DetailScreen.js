@@ -4,16 +4,16 @@ import { StyleSheet, Text, TouchableOpacity, Image, View } from 'react-native';
 export default function DetailScreen( ) {
     return(
         <View style={styles.detailBg}>
-          <View style={styles.detailDate}>
-            <Text style={styles.detailText}>2022/01/15</Text>
-          </View>
-          <View style={styles.detailScore}>
+            <Text style={styles.detailDate}>2022/01/15</Text>
+            <Image 
+                style={{width: 165, height: 162, zIndex: 999}}
+                source={require('../assets/mood/happy_face.png')}
+            />
             <Text style={styles.score}>良好</Text>
-          </View>
-          <View style={styles.suggest}>
-            <Text style={styles.suggestTitle}>建議內容：</Text>
-            <Text style={styles.suggestText}>恭喜你！目前的身心適應狀況很良好，如果有保持快樂與放鬆的小撇步，歡迎跟我們或是親朋好友分享，繼續將這份美麗的心情感染給身邊的人吧！</Text>
-          </View>
+            <View style={styles.suggest}>
+                <Text style={styles.suggestTitle}>建議內容：</Text>
+                <Text style={styles.suggestText}>恭喜你！目前的身心適應狀況很良好，如果有保持快樂與放鬆的小撇步，歡迎跟我們或是親朋好友分享，繼續將這份美麗的心情感染給身邊的人吧！</Text>
+            </View>
         </View>
     )
 }
@@ -21,8 +21,8 @@ export default function DetailScreen( ) {
 const styles = StyleSheet.create({
     detailBg:{
         backgroundColor: '#FFFAEE',
-        width: 350,
-        height: 505,
+        width: 375,
+        height: 620,
         borderRadius: 20,
         shadowColor: "#000",
         shadowOffset: {
@@ -37,40 +37,15 @@ const styles = StyleSheet.create({
         paddingBottom: 20,
     },
     detailDate:{
-        backgroundColor: '#FFE8B0',
-        width: 175,
-        height: 45,
-        borderRadius: 20,
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 4,
-        },
-        shadowOpacity: 0.2,
-        shadowRadius: 3.5,
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginLeft: -120,
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: "#702929",
+        marginLeft: -200
     },
     detailText:{
         fontSize: 20,
         fontWeight: 'bold',
         color: "#702929",
-    },
-    detailScore:{
-        backgroundColor: '#FFE8B0',
-        width: 300,
-        height: 85,
-        borderRadius: 20,
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 4,
-        },
-        shadowOpacity: 0.2,
-        shadowRadius: 3.5,
-        justifyContent: 'center',
-        alignItems: 'center'
     },
     score:{
         fontSize: 30,

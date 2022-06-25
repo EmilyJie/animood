@@ -1,46 +1,67 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { StyleSheet, Text, TextInput, TouchableOpacity, Image, View } from 'react-native';
 import ModalPoup from '../component/ModalPoup';
-
-const GoTravel = () => {
-  const [worry, setWorry] = useState(null);
-  return(
-    <View style={styles.travelBg}>
-      <Text style={styles.title}>想帶誰去旅行呢？</Text>
-      <Image
-        style={styles.goAnimal}
-        source={require('../assets/animals/panda.png')}
-      />
-      <TextInput
-        style={styles.input}
-        onChangeText={(worry) => setWorry(worry)}
-        value={worry}
-        placeholder="找不到理想的實習"
-        placeholderTextColor={'#702929'}
-        textContentType='name'
-        keyboardAppearance='dark'
-      />
-      <Image
-        style={styles.btnEntry}
-        source={require('../assets/travel/btnEntry.png')} //Change your icon image here
-      />
-      <TouchableOpacity style={styles.btnTravel}>
-        <Text style={styles.btnText}>出發</Text>
-      </TouchableOpacity>
-      <Text style={styles.tip}>旅行時間有3天哦</Text>
-    </View>
-  )
-}
+import { StoreContext } from '../stores';
 
 export default function ChooseAnimalScreen( ) {
-  const [gotravelVisible, setgoTravelVisible] = React.useState(false);
+  const {goTravelState} = useContext(StoreContext);
+  const [gotravelVisible, setgoTravelVisible] = goTravelState;
+  const {travelState} = useContext(StoreContext);
+  const [travelVisible, setTravelVisible] = travelState;
+  const {chooseState} = useContext(StoreContext);
+  const [isChoose, setIsChoose] = chooseState;
+  const {otherWorryState} = useContext(StoreContext);
+  const [isOther, setIsOther] = otherWorryState;
+
+  const GoTravel = () => {
+    const [worry, setWorry] = useState(null);
+  
+    const handleTravel = () => {
+      setgoTravelVisible(false);
+      setTravelVisible(false);
+      setIsChoose(true);
+      setIsOther(true);
+    }
+  
+    return(
+      <View style={styles.travelBg}>
+        <Text style={styles.title}>想帶誰去旅行呢？</Text>
+        <Image
+          style={styles.goAnimal}
+          source={require('../assets/animals/panda.png')}
+        />
+        <TextInput
+          style={styles.input}
+          onChangeText={(worry) => setWorry(worry)}
+          value={worry}
+          placeholder="找不到理想的實習"
+          placeholderTextColor={'#702929'}
+          textContentType='name'
+          keyboardAppearance='dark'
+        />
+        <Image
+          style={styles.btnEntry}
+          source={require('../assets/travel/btnEntry.png')} //Change your icon image here
+        />
+        <TouchableOpacity style={styles.btnTravel} onPress={handleTravel}>
+          <Text style={styles.btnText}>出發</Text>
+        </TouchableOpacity>
+        <Text style={styles.tip}>旅行時間有3天哦</Text>
+      </View>
+    )
+  }
+
+  const handleGo = () => {
+    setgoTravelVisible(true);
+  }
+  
   return(
     <View style={styles.travelBg}>
       <Text style={styles.title}>想帶誰去旅行呢？</Text>
       <View style={styles.animalsContainer}>
         <TouchableOpacity 
           style={styles.animalBg}
-          onPress={() => setgoTravelVisible(true)}
+          onPress={handleGo}
         >
           <Image
             style={styles.animal}
@@ -56,7 +77,6 @@ export default function ChooseAnimalScreen( ) {
 
         <TouchableOpacity 
           style={styles.animalBg}
-          //onPress={reply_btn_chooseAnimal}
         >
           <Image
             style={styles.animal}
@@ -66,7 +86,6 @@ export default function ChooseAnimalScreen( ) {
 
         <TouchableOpacity 
           style={styles.animalBg}
-          //onPress={reply_btn_chooseAnimal}
         >
           <Image
             style={styles.animal}
@@ -76,7 +95,6 @@ export default function ChooseAnimalScreen( ) {
 
         <TouchableOpacity 
           style={styles.animalBg}
-          //onPress={reply_btn_chooseAnimal}
         >
           <Image
             style={styles.animal}

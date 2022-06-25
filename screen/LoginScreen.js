@@ -56,9 +56,9 @@ export default function LoginScreen({ navigation }) {
     ) : (
       <Button
         buttonStyle={{
-          width: 125,
+          width: 285,
           height: 60,
-          backgroundColor: '#EEA970',
+          backgroundColor: '#FE9A7B',
           justifyContent: 'center',
           alignItems: 'center',
           borderRadius: 20,
@@ -70,16 +70,13 @@ export default function LoginScreen({ navigation }) {
           shadowOpacity: 0.2,
           shadowRadius: 3.5,
           marginBottom: 15,
-        }}
-            
+        }}  
         title="登入"
+        titleStyle={{fontWeight: "bold"}}
         onPress={onSignIn}
         //onPress={() => navigation.navigate('Home')} 
         style={{borderRadius:20}}
         />
-        // <TouchableOpacity style={styles.login} onPress={onSignIn}>
-        //   <Text style={styles.btnText}>登入</Text>
-        // </TouchableOpacity>
     );
   };
 
@@ -125,7 +122,7 @@ export default function LoginScreen({ navigation }) {
           value={email}
           onChangeText={(email) => setEmail(email)}
           placeholder="帳號"
-          placeholderTextColor={'#D2A98D'}
+          placeholderTextColor={'#C9C9C9'}
           textContentType='username'
           keyboardAppearance='dark'
         />
@@ -134,7 +131,7 @@ export default function LoginScreen({ navigation }) {
           value={password}
           onChangeText={(password) => setPassword(password)}
           placeholder="密碼"
-          placeholderTextColor={'#D2A98D'}
+          placeholderTextColor={'#C9C9C9'}
           textContentType='password'
           keyboardAppearance='dark'
           secureTextEntry={true}
@@ -172,7 +169,7 @@ const styles = StyleSheet.create({
   },
   input: {
     backgroundColor: '#FFF9F6',
-    height: 55,
+    height: 60,
     width: 285,
     margin: 15,
     borderWidth: 1,
@@ -181,6 +178,7 @@ const styles = StyleSheet.create({
     padding: 15,
     fontSize: 18,
     fontWeight:"bold",
+    color: '#D2A98D'
   },
   forget: {
     fontSize: 14,
@@ -210,9 +208,9 @@ const styles = StyleSheet.create({
     marginBottom: 15,
   },
   signUp: {
-    width: 125,
+    width: 285,
     height: 60,
-    backgroundColor: '#D2A98D',
+    backgroundColor: '#FFFAEE',
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 20,
@@ -227,6 +225,6 @@ const styles = StyleSheet.create({
   btnText: {
     fontSize: 18,
     fontWeight:"bold",
-    color: '#FFFFFF'
+    color: '#D2A98D',
   }
 });
