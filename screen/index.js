@@ -6,6 +6,11 @@ import TravelScreen from './TravelScreen';
 import TestScreen from './TestScreen';
 import UserScreen from './UserScreen';
 import QuestionScreen from './QuestionScreen';
+import QuestionScreen2 from './QuestionScreen2';
+import QuestionScreen3 from './QuestionScreen3';
+import QuestionScreen4 from './QuestionScreen4';
+import QuestionScreen5 from './QuestionScreen5';
+import ResultScreen from './ResultScreen';
 import LoginScreen from './LoginScreen';
 import SignUpScreen from './SignUpScreen';
 import MoodScreen from './MoodScreen';
@@ -15,7 +20,10 @@ import SolvedScreen from './SolvedScreen';
 import NotificationScreen from './NotificationScreen';
 import AboutScreen from './AboutScreen';
 import ChooseAnimalScreen from './ChooseAnimalScreen';
+import ComeBackAnimalScreen from './ComeBackAnimalScreen';
 import WorryScreenfromother from './WorryScreenfromother';
+import WorryScreenUpdate from './WorryScreenUpdate';
+import BackWorryScreen from './BackWorryScreen';
 
 export const Stack = createStackNavigator();
 
@@ -34,22 +42,49 @@ export const HomeStack = () => {
             height:0,
           },
           headerLeft: null,
-        }}/> 
+        }}/>  
+      <Stack.Screen name="WorryUpdate" component={WorryScreenUpdate} 
+        options={{
+          headerStyle:{
+            height:0,
+          },
+          headerLeft: null,
+        }}/>
       <Stack.Screen name="Mood" component={MoodScreen}  
-      options={{
-      headerStyle:{
-          height:0,
-      },
-      headerLeft: null,
-      }} />  
+        options={{
+        headerStyle:{
+            height:0,
+        },
+        headerLeft: null,
+      }} /> 
     </Stack.Navigator>
   );
 }
   
+export const TravelBackStack = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="ComeBackAnimal" component={ComeBackAnimalScreen} 
+        options={{
+          headerStyle:{
+            height:0,
+          }
+        }}/>
+      <Stack.Screen name="BackWorry" component={BackWorryScreen} 
+        options={{
+          headerStyle:{
+            height:0,
+          },
+          headerLeft: null,
+        }}/>
+    </Stack.Navigator>
+  );
+}
+
 export const TravelStack = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Travel" component={TravelScreen}  
+      <Stack.Screen name="Travel"component={TravelScreen}  
         options={{
           headerStyle:{
               height:0,
@@ -61,13 +96,20 @@ export const TravelStack = () => {
             height:0,
           }
         }}/>
-        <Stack.Screen name="OthersWorry" component={WorryScreenfromother} 
-          options={{
-            headerStyle:{
-              height:0,
-            },
-            headerLeft: null,
-          }}/>
+      <Stack.Screen name="OthersWorry" component={WorryScreenfromother} 
+        options={{
+          headerStyle:{
+            height:0,
+          },
+          headerLeft: null,
+        }}/>
+      <Stack.Screen name="BackWorry" component={BackWorryScreen} 
+        options={{
+          headerStyle:{
+            height:0,
+          },
+          headerLeft: null,
+      }}/>
     </Stack.Navigator>
   );
 }
@@ -75,13 +117,48 @@ export const TravelStack = () => {
 export const TestStack = () => {
   return (
     <Stack.Navigator>
-    <Stack.Screen name="Test" component={TestScreen}  
+    <Stack.Screen name="Test"component={TestScreen}  
       options={{
         headerStyle:{
             height:0,
         }
       }} />  
     <Stack.Screen name="Question" component={QuestionScreen} 
+      options={{
+        headerStyle:{
+            height:0,
+        },
+        headerLeft: null,
+      }} />
+    <Stack.Screen name="Question2" component={QuestionScreen2} 
+      options={{
+        headerStyle:{
+            height:0,
+        },
+        headerLeft: null,
+      }} />
+    <Stack.Screen name="Question3" component={QuestionScreen3} 
+      options={{
+        headerStyle:{
+            height:0,
+        },
+        headerLeft: null,
+      }} />
+    <Stack.Screen name="Question4" component={QuestionScreen4} 
+      options={{
+        headerStyle:{
+            height:0,
+        },
+        headerLeft: null,
+      }} />
+    <Stack.Screen name="Question5" component={QuestionScreen5} 
+      options={{
+        headerStyle:{
+            height:0,
+        },
+        headerLeft: null,
+      }} />
+    <Stack.Screen name="Result" component={ResultScreen} 
       options={{
         headerStyle:{
             height:0,
@@ -95,7 +172,7 @@ export const TestStack = () => {
 export const UserStack = () => {
   return (
     <Stack.Navigator>
-    <Stack.Screen name="User" component={UserScreen}  
+    <Stack.Screen name="User"component={UserScreen}  
       options={{
       headerStyle:{
           height:0,
@@ -143,20 +220,20 @@ export const UserStack = () => {
 export const LoginStack = () => {
   return (
     <Stack.Navigator>
-    <Stack.Screen name="Login" component={LoginScreen}  
+    <Stack.Screen name="Login"component={LoginScreen}  
       options={{
       headerStyle:{
           height:0,
       },
       headerLeft: null,
       }} />  
-    <Stack.Screen name="Signup" component={SignUpScreen}  
+    <Stack.Screen name="Signup"component={SignUpScreen}  
       options={{
       headerStyle:{
           height:0,
       },
       headerLeft: null,
-      }} />
+      }} />  
     </Stack.Navigator>
   );
 }
@@ -164,7 +241,7 @@ export const LoginStack = () => {
 export const SignUpStack = () => {
   return (
     <Stack.Navigator>
-    <Stack.Screen name="Signup" component={SignUpScreen}  
+    <Stack.Screen name="Signup"component={SignUpScreen}  
       options={{
       headerStyle:{
           height:0,

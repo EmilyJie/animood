@@ -3,10 +3,13 @@ import { StyleSheet, Text, TouchableOpacity, Image, View } from 'react-native';
 import ModalPoup from '../component/ModalPoup';
 import { StoreContext } from "../stores";
 import ChooseAnimalScreen from './ChooseAnimalScreen';
+import ComeBackAnimalScreen from './ComeBackAnimalScreen';
 
 export default function TravelScreen({ navigation }) {
   const {travelState} = useContext(StoreContext);
+  const {backState} = useContext(StoreContext);
   const [travelVisible, setTravelVisible] = travelState;
+  const [backVisible, setBackVisible] = backState;
   const {chooseState} = useContext(StoreContext);
   const [isChoose, setIsChoose] = chooseState;
   const {otherWorryState} = useContext(StoreContext);
@@ -61,7 +64,13 @@ export default function TravelScreen({ navigation }) {
           <Text style={styles.btnText}>去旅行！</Text>
         </TouchableOpacity>
       )}
-      <TouchableOpacity >
+      <ModalPoup visible={backVisible}>
+        <ComeBackAnimalScreen></ComeBackAnimalScreen>
+        <TouchableOpacity onPress={() => setBackVisible(false)}>
+          <Image source={require('../assets/btn_back.png')} style={styles.btnBack}/>
+        </TouchableOpacity>
+      </ModalPoup>
+      <TouchableOpacity onPress={() => setBackVisible(true)}>
         <Image
           style={styles.btnRecord} 
           source={require('../assets/travel/btnRecord.png')}

@@ -109,7 +109,25 @@ const getTabBarVisibility = (route) => {
   if( routeName == 'Question'){
     return 'none';
   }
+  if( routeName == 'Question2'){
+    return 'none';
+  }
+  if( routeName == 'Question3'){
+    return 'none';
+  }
+  if( routeName == 'Question4'){
+    return 'none';
+  }
+  if( routeName == 'Question5'){
+    return 'none';
+  }
+  if( routeName == 'Result'){
+    return 'none';
+  }
   if( routeName == 'OthersWorry'){
+    return 'none';
+  }
+  if( routeName == 'WorryUpdate'){
     return 'none';
   }
   if( routeName == 'Mood'){

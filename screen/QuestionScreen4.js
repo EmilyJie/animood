@@ -25,14 +25,14 @@ export default function QuestionScreen({ navigation }) {
       </TouchableOpacity>
       {/* <QuestionDetail  data={testItems}/> */}
       <View style={styles.numberBg}>
-        <Text style={styles.number}>Q1</Text>
+        <Text style={styles.number}>Q4</Text>
       </View>
       <View style={styles.questionBg}>
-        <Text style={styles.questionText}>我睡不好</Text>
+        <Text style={styles.questionText}>我覺得心情不好</Text>
       </View>
       <View style={styles.optionBox}> 
         <Button 
-          onPress={() => navigation.navigate('Question2')}
+          onPress={() => navigation.navigate('Question5')}
           buttonStyle={{
             width: 285,
             height: 60,

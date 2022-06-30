@@ -1,43 +1,32 @@
-import React from 'react';
-import { TouchableOpacity } from 'react-native';
-import { StyleSheet, Text, View ,Image } from 'react-native';
+import React from "react";
+import { StyleSheet, Text, TouchableOpacity, Image, View } from 'react-native';
 
 export default function ResultScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <Image 
-        style={{ position: 'absolute' }}
-        source={require('../assets/img_bg.png')}
-      />
-      <View style={styles.resultAnimal}>
-        <Image 
-          style={{ width: 194, height: 140, marginLeft: 5 }}
-          source={require('../assets/test/img_textBg.png')}
+          style={{ position: 'absolute' ,flex: 1 }}
+          source={require('../assets/gif/bg_gif.gif')}
         />
-        <Text style={styles.title}>測驗結果！</Text>
+      <View style={styles.resultBg}>
+        <Text style={styles.detailDate}>測驗結果</Text>
         <Image 
-          style={{ width: 249, height: 188 }}
-          source={require('../assets/animals/racoon.png')}
+            style={{width: 165, height: 162, zIndex: 999}}
+            source={require('../assets/mood/happy_face.png')}
         />
-        <Image 
-          style={{ width: 103, height: 20, marginTop: -10, marginLeft: -20 }}
-          source={require('../assets/animals/img_shadow.png')}
-        />
-      </View>
-      <View style={styles.result}>
         <View style={styles.scoreBg}>
-          <Text style={styles.score}>90</Text>
+          <Text style={styles.score}>良好</Text>
         </View>
-        <View style={styles.suggestBg}>
-          <Text style={styles.suggestText}>建議內容：</Text>
-          <Text style={styles.suggestText}>繼續保持！</Text>
+        <View style={styles.suggest}>
+            <Text style={styles.suggestTitle}>建議內容：</Text>
+            <Text style={styles.suggestText}>恭喜你！目前的身心適應狀況很良好，如果有保持快樂與放鬆的小撇步，歡迎跟我們或是親朋好友分享，繼續將這份美麗的心情感染給身邊的人吧！</Text>
         </View>
       </View>
-      <TouchableOpacity>
-        <Image 
-          style={styles.btnCheck}
-          source={require('../assets/test/btn_check.png')}
-        />
+      <TouchableOpacity 
+        style={styles.btnTestBg} 
+        onPress={() => navigation.navigate('Test')}
+      >
+        <Text style={styles.btnTest}>回到測驗頁</Text>
       </TouchableOpacity>
     </View>
   )
@@ -49,39 +38,86 @@ const styles = StyleSheet.create({
     width:415,
     height:896,
   },
-  resultAnimal:{
-    marginTop: 50,
-    alignItems: 'center',
-  },
-  title:{
-    position: 'absolute',
-    fontSize: 20,
-    fontWeight: "bold",
-    color: "#521111",
-    marginTop: 50,
-  },
-  result:{
-    width: 360,
-    height: 350,
-    backgroundColor: "#FFFAEE",
+  resultBg:{
+    backgroundColor: '#FFFAEE',
+    width: 375,
+    height: 668,
     borderRadius: 20,
     shadowColor: "#000",
     shadowOffset: {
-      width: 0,
-      height: 4,
+        width: 0,
+        height: 4,
     },
     shadowOpacity: 0.2,
     shadowRadius: 3.5,
-    marginTop: 40,
-    paddingTop: 30,
-    paddingBottom: 40,
+    justifyContent: 'space-around',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    marginTop: 75,
+  },
+  detailDate:{
+      fontSize: 25,
+      fontWeight: 'bold',
+      color: "#702929",
+      marginLeft: -200
+  },
+  detailText:{
+      fontSize: 20,
+      fontWeight: 'bold',
+      color: "#702929",
+  },
+  score:{
+      fontSize: 30,
+      fontWeight:"bold",
+      color: "#521111",
   },
   scoreBg:{
-    width: 320,
-    height: 80,
-    backgroundColor: "#FFE8B0",
+    backgroundColor: '#FFE8B0',
+    width: 300,
+    height: 85,
+    borderRadius: 20,
+    shadowColor: "#000",
+    shadowOffset: {
+        width: 0,
+        height: 4,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 3.5,
+    justifyContent: 'space-around',
+    alignItems: 'center',
+},
+  suggest:{
+      backgroundColor: '#FFE8B0',
+      width: 300,
+      height: 225,
+      borderRadius: 20,
+      shadowColor: "#000",
+      shadowOffset: {
+          width: 0,
+          height: 4,
+      },
+      shadowOpacity: 0.2,
+      shadowRadius: 3.5,
+      paddingTop: 5
+  },
+  suggestTitle:{
+      fontSize: 18,
+      fontWeight: "bold",
+      color: "#521111",
+      marginTop: 15,
+      marginLeft: 20,
+  },
+  suggestText:{
+      width: 270,
+      fontSize: 18,
+      color: "#521111",
+      marginTop: 15,
+      marginLeft: 20,
+      lineHeight: 30
+  },
+  btnTestBg:{
+    width: 300,
+    height: 60,
+    backgroundColor: "#D2A98D",
     borderRadius: 20,
     shadowColor: "#000",
     shadowOffset: {
@@ -90,45 +126,13 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.2,
     shadowRadius: 3.5,
+    marginTop: 25,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  score:{
-    fontSize: 48,
-    fontWeight: 'bold',
-    color: "#521111",
-  },
-  suggestBg:{
-    width: 320,
-    height: 165,
-    backgroundColor: "#FFE8B0",
-    borderRadius: 20,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 4,
-    },
-    shadowOpacity: 0.2,
-    shadowRadius: 3.5,
-    marginTop: 15,
-  },
-  suggestText:{
+  btnTest:{
     fontSize: 20,
     fontWeight: "bold",
-    color: "#521111",
-    marginTop: 20,
-    marginLeft: 20,
+    color: "#FFFAEE",
   },
-  btnCheck:{
-    width: 65,
-    height: 65,
-    marginTop: 30,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 4,
-    },
-    shadowOpacity: 0.2,
-    shadowRadius: 3.5,
-  }
 });

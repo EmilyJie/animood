@@ -73,10 +73,13 @@ export default function HomeScreen({ navigation }) {
                 style={styles.faceGifStyle}
                 source={require('../assets/animals/panda_circle.png')}
               />
-              <Image
-                style={styles.faceGifStyle}
-                source={require('../assets/animals/pig_circle.png')}
-              />
+              <TouchableOpacity
+                onPress={() => navigation.navigate('WorryUpdate')}>
+                <Image
+                  style={styles.faceGifStyle}
+                  source={require('../assets/animals/pig_circle.png')}
+                />
+              </TouchableOpacity>
               <Image
                 style={styles.faceGifStyle}
                 source={require('../assets/animals/crocodile_circle.png')}

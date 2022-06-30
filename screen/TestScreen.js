@@ -7,28 +7,29 @@ export default function TestScreen({ navigation }) {
   const [detailVisible, setDetailVisible] = React.useState(false);
   
   return (
-    <ScrollView>
-    <View style={styles.container}>
+    <View>
       <Image 
-        style={{ position: 'absolute' ,flex: 1 }}
-        source={require('../assets/gif/bg_gif.gif')}
-      />
-      <View style={styles.scoreBg}>
-        <Text style={styles.testDate}>上次紀錄：2022/03/10</Text>
-        <View style={{marginTop: 40, alignItems: 'center', justifyContent: 'center',}}>
-          <Image 
-            style={{width: 125, height: 115}}
-            source={require('../assets/mood/happy_face.png')}
-          />
-          <Text style={styles.score}>良好</Text>
-          <TouchableOpacity 
-            style={styles.btnTestBg} 
-            onPress={() => navigation.navigate('Question')}
-          >
-            <Text style={styles.btnTest}>來做測驗</Text>
-          </TouchableOpacity>
+          style={{ position: 'absolute' ,flex: 1 }}
+          source={require('../assets/gif/bg_gif.gif')}
+        />
+    <ScrollView>
+      <View style={styles.container}>
+        <View style={styles.scoreBg}>
+          <Text style={styles.testDate}>上次紀錄：2022/03/10</Text>
+          <View style={{marginTop: 40, alignItems: 'center', justifyContent: 'center',}}>
+            <Image 
+              style={{width: 125, height: 115}}
+              source={require('../assets/mood/happy_face.png')}
+            />
+            <Text style={styles.score}>良好</Text>
+            <TouchableOpacity 
+              style={styles.btnTestBg} 
+              onPress={() => navigation.navigate('Question')}
+            >
+              <Text style={styles.btnTest}>來做測驗</Text>
+            </TouchableOpacity>
+          </View>
         </View>
-      </View>
      
       <View style={styles.historyContainer}>
         <Text style={styles.title}>歷史紀錄</Text>
@@ -84,7 +85,7 @@ export default function TestScreen({ navigation }) {
             />
           </View>
           <View style={{height: 70, justifyContent: 'space-evenly'}}>
-            <Text style={styles.testDate}>2022/12/13</Text>
+            <Text style={styles.testDate}>2021/12/13</Text>
             <Text style={styles.testText}>輕度</Text>
           </View>
         </TouchableOpacity>
@@ -92,6 +93,7 @@ export default function TestScreen({ navigation }) {
       </View>
     </View>
     </ScrollView>
+    </View>
   )
 }
 
@@ -99,7 +101,6 @@ const styles = StyleSheet.create({
   container:{
     alignItems: 'center',
     width:415,
-    height:896,
   },
   scoreBg:{
     width: 375,
@@ -160,6 +161,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 3.5,
     marginTop: 40,
+    marginBottom: 40,
     paddingTop: 30,
     paddingBottom: 40,
     alignItems: 'center',

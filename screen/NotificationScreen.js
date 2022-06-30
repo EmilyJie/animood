@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, TextInput, View, Image, TouchableOpacity } from 'react-native';
-import { Switch } from 'react-native-switch';
+import { StyleSheet, Text, TextInput, View, Image, TouchableOpacity, Switch } from 'react-native';
+//import { Switch } from 'react-native-switch';
 import DropDownPicker from 'react-native-dropdown-picker';
 
 export default function NotificationScreen({ navigation }) {
@@ -9,10 +9,10 @@ export default function NotificationScreen({ navigation }) {
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState(null);
     const [items, setItems] = useState([
-        {label: 'AM 9:00', value: 'am9'},
-        {label: 'AM 11:00', value: 'am11'},
-        {label: 'PM 15:00', value: 'pm15'},
-        {label: 'PM 20:00', value: 'pm20'},
+      {label: 'AM 9:00', value: 'am9'},
+      {label: 'AM 11:00', value: 'am11'},
+      {label: 'PM 15:00', value: 'pm15'},
+      {label: 'PM 20:00', value: 'pm20'},
     ]);
     return (
       <View style={styles.container}>
@@ -33,18 +33,22 @@ export default function NotificationScreen({ navigation }) {
               <Switch
                 value={notificationEnabled}
                 onValueChange={notificationSwitch}
-                disabled={false}
-                activeText={'ON'}
-                activeTextStyle={styles.inText}
-                inActiveText={'OFF'}
-                inactiveTextStyle={styles.inText}
-                backgroundActive={'#D2C4AA'}
-                backgroundInactive={'#D8B37E'}
-                circleSize={30}
-                barHeight={30}
-                circleBorderWidth={0}
-                circleActiveColor={'#D2A98D'}
-                circleInActiveColor={'#D2A98D'}
+                // disabled={false}
+                // activeText={'ON'}
+                // activeTextStyle={styles.inText}
+                // inActiveText={'OFF'}
+                // inactiveTextStyle={styles.inText}
+                // backgroundActive={'#D2C4AA'}
+                // backgroundInactive={'#D8B37E'}
+                // circleSize={30}
+                // barHeight={30}
+                // circleBorderWidth={0}
+                // circleActiveColor={'#D2A98D'}
+                // circleInActiveColor={'#D2A98D'}
+
+                trackColor={{ false: "#FBEDD3", true: "#D8B37E" }}
+                thumbColor={notificationEnabled ? "#FFF5F0" : "#D2A98D"}
+                ios_backgroundColor="#FBEDD3"
               />
             </View>
           </View>

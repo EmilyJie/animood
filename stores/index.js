@@ -14,7 +14,8 @@ export const StoreProvider = ({children}) => {
     const [isLogin, setIsLogin] = useState(false);
     const [testItems, settestItems] = useState(testData);
     const [user,setUser] = useState(userData);
-    const [travelVisible, setTravelVisible] = useState(false)
+    const [travelVisible, setTravelVisible] = useState(false);
+    const [backVisible, setBackVisible] = useState(false)
     const [gotravelVisible, setgoTravelVisible] = useState(false);
     const [isChoose, setIsChoose] = useState(false);
     const [isOther, setIsOther] = useState(false);
@@ -27,6 +28,7 @@ export const StoreProvider = ({children}) => {
         goTravelState: [gotravelVisible, setgoTravelVisible],
         chooseState: [isChoose, setIsChoose],
         travelState: [travelVisible, setTravelVisible],
+        backState: [backVisible, setBackVisible],
         otherWorryState: [isOther, setIsOther],
         moodState: [isMood, setIsMood]
     };
