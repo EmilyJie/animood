@@ -7535,10 +7535,10 @@ react-native-dialogflow@^3.2.2:
   dependencies:
     jsrsasign "^8.0.12"
 
-react-native-dropdown-picker@^5.3.0:
-  version "5.3.0"
-  resolved "https://registry.yarnpkg.com/react-native-dropdown-picker/-/react-native-dropdown-picker-5.3.0.tgz#a1043890846e07a197ed882ff922299b46dd4a7a"
-  integrity sha512-LUctVMAWiDir1X0WrFX1784psvqzBXRxRujYbvlvKz1Owa6cujrVN98rP356hIXFzX19E7SkbA942fGfMvoEWQ==
+react-native-dropdown-picker@^5.4.2:
+  version "5.4.2"
+  resolved "https://registry.yarnpkg.com/react-native-dropdown-picker/-/react-native-dropdown-picker-5.4.2.tgz#3d17de3d8a84cb8e74a2ffda6be417d287245b81"
+  integrity sha512-cZBPyN+k52jA9XguFnKoF5tLf31z6gjZ8GijO/pfVNSSEtPwZ14UTUrr87JiiOnMh5K/O2kRzZ/jZN8D0MmUMA==
 
 react-native-elements@^3.4.2:
   version "3.4.2"

@@ -36,9 +36,7 @@ export default function LoginScreen({ navigation }) {
   const isignInsaveToAsyncStorage = () => {
       try{
           AsyncStorage.setItem(SIGN_PERSISTENCE_KEY,JSON.stringify(true));
-          AsyncStorage.setItem(SIGN_HAS_SET_KEY.stringify(true));
-          
-          
+          AsyncStorage.setItem(SIGN_HAS_SET_KEY.stringify(true));     
       }catch(e){}
       console.log(`signin isLogin=${isLogin}`);
   };
@@ -100,7 +98,6 @@ export default function LoginScreen({ navigation }) {
       setIsLogin(true);
       isignInsaveToAsyncStorage();
     } catch (err1) {
-      
         setError(err1.message);
     } finally {
         setLoading(false);
@@ -142,9 +139,9 @@ export default function LoginScreen({ navigation }) {
       </TouchableOpacity>
       <View style={styles.btn}>
         {renderButton()}
-          <TouchableOpacity style={styles.signUp} onPress={() => navigation.navigate('Signup')}>
-            <Text style={styles.btnText}>註冊</Text>
-          </TouchableOpacity>
+        <TouchableOpacity style={styles.signUp} onPress={() => navigation.navigate('Mood')}>
+          <Text style={styles.btnText}>註冊</Text>
+        </TouchableOpacity>
       </View>
       </View>
      </TouchableWithoutFeedback>

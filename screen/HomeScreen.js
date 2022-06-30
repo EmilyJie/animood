@@ -1,14 +1,72 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { StyleSheet, Text, TouchableOpacity, Image, View, Animated } from 'react-native';
 import LottieView from 'lottie-react-native';
+import { StoreContext } from "../stores";
 
 export default function HomeScreen({ navigation }) {
+  const {moodState} = useContext(StoreContext);
+  const [isMood, setIsMood] = moodState;
+
+  const handleBackground = () => {
+    if(isMood == "happy"){
+      return(
+        <LottieView source={require('../json/bg_happy.json')} autoPlay loop/>
+      )
+    }
+    else if(isMood == "normal"){
+      return(
+        <LottieView source={require('../json/bg_normal.json')} autoPlay loop/>
+      )
+    }
+    else if(isMood == "angry"){
+      return(
+        <LottieView source={require('../json/bg_angry.json')} autoPlay loop/>
+      )
+    }
+    else if(isMood == "sad"){
+      return(
+        <LottieView source={require('../json/bg_sad.json')} autoPlay loop/>
+      )
+    }
+  }
+
+  const handleMood = () => {
+    if(isMood == "happy"){
+      return(
+        <TouchableOpacity onPress={() => navigation.navigate('Mood')}>
+          <Image style={styles.icon_mood} source={require('../assets/home/icon_happy.png')}/>
+        </TouchableOpacity>
+      )
+    }
+    else if(isMood == "normal"){
+      return(
+        <TouchableOpacity onPress={() => navigation.navigate('Mood')}>
+          <Image style={styles.icon_mood} source={require('../assets/home/icon_normal.png')}/>
+        </TouchableOpacity>
+      )
+    }
+    else if(isMood == "angry"){
+      return(
+        <TouchableOpacity onPress={() => navigation.navigate('Mood')}>
+          <Image style={styles.icon_mood} source={require('../assets/home/icon_angry.png')}/>
+        </TouchableOpacity>
+      )
+    }
+    else if(isMood == "sad"){
+      return(
+        <TouchableOpacity onPress={() => navigation.navigate('Mood')}>
+          <Image style={styles.icon_mood} source={require('../assets/home/icon_sad.png')}/>
+        </TouchableOpacity>
+      )
+    }
+  }
+
   return (
     <View style={{flex:1}}>
       <View style={{alignItems:'center', height: 896}}>
         {/* <Image style={styles.home_bg} source={require('../assets/gif/bg_gif.gif')}/>  */}
-        <LottieView source={require('../json/bg_happy.json')} autoPlay loop/>
-        <Image style={styles.icon_happy} source={require('../assets/home/icon_happy.png')}/>
+        {handleBackground()}
+        {handleMood()}
         <View style={styles.allWorreis}>
           <Animated.ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>    
               <Image
@@ -50,11 +108,11 @@ const styles = StyleSheet.create({
     position: 'absolute' ,
     flex: 1
   },
-  icon_happy:{
+  icon_mood:{
     width: 145,
     height: 51,
     marginTop: 90,
-    marginLeft: -220,
+    marginLeft: -180,
     zIndex:10
   },
   faceGifStyle:{

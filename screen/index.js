@@ -8,7 +8,7 @@ import UserScreen from './UserScreen';
 import QuestionScreen from './QuestionScreen';
 import LoginScreen from './LoginScreen';
 import SignUpScreen from './SignUpScreen';
-import TransitionScreen from './TransitionScreen';
+import MoodScreen from './MoodScreen';
 import WorryScreen from './WorryScreen';
 import AccountScreen from './AccountScreen';
 import SolvedScreen from './SolvedScreen';
@@ -34,7 +34,14 @@ export const HomeStack = () => {
             height:0,
           },
           headerLeft: null,
-        }}/>  
+        }}/> 
+      <Stack.Screen name="Mood" component={MoodScreen}  
+      options={{
+      headerStyle:{
+          height:0,
+      },
+      headerLeft: null,
+      }} />  
     </Stack.Navigator>
   );
 }
@@ -42,7 +49,7 @@ export const HomeStack = () => {
 export const TravelStack = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Travel"component={TravelScreen}  
+      <Stack.Screen name="Travel" component={TravelScreen}  
         options={{
           headerStyle:{
               height:0,
@@ -68,7 +75,7 @@ export const TravelStack = () => {
 export const TestStack = () => {
   return (
     <Stack.Navigator>
-    <Stack.Screen name="Test"component={TestScreen}  
+    <Stack.Screen name="Test" component={TestScreen}  
       options={{
         headerStyle:{
             height:0,
@@ -88,7 +95,7 @@ export const TestStack = () => {
 export const UserStack = () => {
   return (
     <Stack.Navigator>
-    <Stack.Screen name="User"component={UserScreen}  
+    <Stack.Screen name="User" component={UserScreen}  
       options={{
       headerStyle:{
           height:0,
@@ -136,20 +143,20 @@ export const UserStack = () => {
 export const LoginStack = () => {
   return (
     <Stack.Navigator>
-    <Stack.Screen name="Login"component={LoginScreen}  
+    <Stack.Screen name="Login" component={LoginScreen}  
       options={{
       headerStyle:{
           height:0,
       },
       headerLeft: null,
       }} />  
-    <Stack.Screen name="Signup"component={SignUpScreen}  
+    <Stack.Screen name="Signup" component={SignUpScreen}  
       options={{
       headerStyle:{
           height:0,
       },
       headerLeft: null,
-      }} />  
+      }} />
     </Stack.Navigator>
   );
 }
@@ -157,14 +164,7 @@ export const LoginStack = () => {
 export const SignUpStack = () => {
   return (
     <Stack.Navigator>
-    <Stack.Screen name="Signup"component={SignUpScreen}  
-      options={{
-      headerStyle:{
-          height:0,
-      },
-      headerLeft: null,
-      }} />  
-    <Stack.Screen name="Transition"component={TransitionScreen}  
+    <Stack.Screen name="Signup" component={SignUpScreen}  
       options={{
       headerStyle:{
           height:0,

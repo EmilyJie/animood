@@ -5,6 +5,7 @@ import * as firebase from 'firebase';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {HomeStack,LoginStack} from "./screen/index"
 import { StoreProvider, StoreContext } from "./stores/index.js";
+import MoodScreen from './screen/MoodScreen';
 
 const PERSISTENCE_KEY = "NAVIGATION_STATE";
 const SIGN_PERSISTENCE_KEY = "SIGN_PERSISTENCE_KEY";
@@ -14,8 +15,9 @@ const App=()=> {
   const [isLoadingComplete,setLoadingComplete] = React.useState(false);
   const [initialNavigationState, setInitialNavigationState] = React.useState();
   
-  const { isLoginState } = useContext(StoreContext);
+  const { isLoginState, moodState } = useContext(StoreContext);
   const [isLogin, setIsLogin] = isLoginState;
+  const [isMood, setIsMood] = moodState;
   
   useEffect(()=>{
     const firebaseConfig = {
@@ -44,7 +46,7 @@ const App=()=> {
     GetLoginAsyncStorage();
   },[]);
   
-  React.useEffect(()=>{
+  useEffect(()=>{
     async function loadResourceAndDataAsync(){
       try{
         const savedStateString = await AsyncStorage.getItem(PERSISTENCE_KEY);
@@ -68,7 +70,11 @@ const App=()=> {
           onStateChange={(state) =>
             AsyncStorage.setItem('PERSISTENCE_KEY', JSON.stringify(state))
           }>
-          <MainTab />
+          {isMood?(
+            <MainTab />
+          ):(
+            <MoodScreen />
+          )}
         </NavigationContainer>
       ):(
         <NavigationContainer

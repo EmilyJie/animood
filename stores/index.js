@@ -18,6 +18,7 @@ export const StoreProvider = ({children}) => {
     const [gotravelVisible, setgoTravelVisible] = useState(false);
     const [isChoose, setIsChoose] = useState(false);
     const [isOther, setIsOther] = useState(false);
+    const [isMood, setIsMood] = useState("");
 
     const store = {
         isLoginState: [isLogin, setIsLogin],
@@ -27,6 +28,7 @@ export const StoreProvider = ({children}) => {
         chooseState: [isChoose, setIsChoose],
         travelState: [travelVisible, setTravelVisible],
         otherWorryState: [isOther, setIsOther],
+        moodState: [isMood, setIsMood]
     };
     
     const LoginrestoreState = async () => {

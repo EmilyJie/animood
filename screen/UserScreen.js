@@ -5,11 +5,13 @@ import * as firebase from "firebase";
 import { StoreContext } from "../stores";
 
 export default function UserScreen({ navigation }) {
-  const { isLoginState } = useContext(StoreContext);
+  const { isLoginState, moodState } = useContext(StoreContext);
   const [isLogin, setIsLogin] = isLoginState;
+  const [isMood, setIsMood] = moodState;
   const onSignOut = () => {
     firebase.auth().signOut();
     setIsLogin(false);
+    setIsMood("");
   };
 
   return (
