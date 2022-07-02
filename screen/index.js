@@ -20,7 +20,6 @@ import SolvedScreen from './SolvedScreen';
 import NotificationScreen from './NotificationScreen';
 import AboutScreen from './AboutScreen';
 import ChooseAnimalScreen from './ChooseAnimalScreen';
-import ComeBackAnimalScreen from './ComeBackAnimalScreen';
 import WorryScreenfromother from './WorryScreenfromother';
 import WorryScreenUpdate from './WorryScreenUpdate';
 import BackWorryScreen from './BackWorryScreen';

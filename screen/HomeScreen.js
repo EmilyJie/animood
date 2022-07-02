@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { StyleSheet, Text, TouchableOpacity, Image, View, Animated } from 'react-native';
 import LottieView from 'lottie-react-native';
 import { StoreContext } from "../stores";

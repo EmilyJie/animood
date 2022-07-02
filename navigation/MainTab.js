@@ -1,5 +1,5 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Image } from 'react-native';
 import {getFocusedRouteNameFromRoute} from '@react-navigation/native';
 import { HomeStack, TravelStack, TestStack, UserStack } from '../screen/index';
@@ -124,7 +124,7 @@ const getTabBarVisibility = (route) => {
   if( routeName == 'Result'){
     return 'none';
   }
-  if( routeName == 'OthersWorry'){
+  if( routeName == 'BackWorry'){
     return 'none';
   }
   if( routeName == 'WorryUpdate'){

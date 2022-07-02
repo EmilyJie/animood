@@ -59,10 +59,9 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "#521111",
     top: 75,
-    left: 85
+    left: 45
   },
   racoon:{
-    left: 90,
     marginTop: 10,
   },
   moodContainer:{
