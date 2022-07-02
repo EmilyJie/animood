@@ -243,7 +243,8 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight:"bold",
     color: '#702929',
-    marginTop: 50,
+    marginTop: 45,
+    marginLeft: 30
   },
   animalsContainer:{
     flexDirection: 'row',

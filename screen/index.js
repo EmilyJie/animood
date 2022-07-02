@@ -23,7 +23,6 @@ import ChooseAnimalScreen from './ChooseAnimalScreen';
 import WorryScreenfromother from './WorryScreenfromother';
 import WorryScreenUpdate from './WorryScreenUpdate';
 import BackWorryScreen from './BackWorryScreen';
-import ComeBackAnimalScreen from './ComeBackAnimalScreen';
 
 export const Stack = createStackNavigator();
 

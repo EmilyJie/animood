@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import MainTab from './navigation/MainTab';
 import * as firebase from 'firebase';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {HomeStack,LoginStack} from "./screen/index"
+import { LoginStack } from "./screen/index"
 import { StoreProvider, StoreContext } from "./stores/index.js";
 import MoodScreen from './screen/MoodScreen';
 
