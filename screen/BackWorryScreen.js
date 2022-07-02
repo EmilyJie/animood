@@ -1,7 +1,10 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { StyleSheet, TouchableOpacity, Image, View, KeyboardAvoidingView } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, Image, View, Animated, FlatList, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard} from 'react-native';
 import LottieView from 'lottie-react-native';
 import { Bubble, GiftedChat, InputToolbar, Send } from "react-native-gifted-chat";
+
+// import { Dialogflow_V2 } from "react-native-dialogflow";
+// import { dialogflowConfig } from "./env";
 
 const animoodAvatar = require('../assets/home/animoodAvatar.png');
 const animoodUser1 = require('../assets/img_head2.png');
@@ -19,27 +22,27 @@ export default function WorryScreen({ navigation, props }) {
   useEffect(() => {
     setMessages([
       {
-        _id: 6, text: '我也是跟你一樣阿，別擔心！', createdAt: new Date(),
+        _id: 6, text: '我也是跟你一樣阿，別擔心！', createdAt: Date(),
         user: User3
       },
       {
-        _id: 5, text: '很羨慕還在求學的人呀', createdAt: new Date(),
+        _id: 5, text: '很羨慕還在求學的人呀', createdAt: Date(),
         user: User2
       },
       {
-        _id: 4, text: '當年我也跟你一樣焦慮，趁現在很多時間，好好享受人生吧！', createdAt: new Date(),
+        _id: 4, text: '當年我也跟你一樣焦慮，趁現在很多時間，好好享受人生吧！', createdAt: Date(),
         user: User2
       },
       {
-        _id: 3, text: '沒關係，總有一天會找到的！', createdAt: new Date(),
+        _id: 3, text: '沒關係，總有一天會找到的！', createdAt: Date(),
         user: User1
       },
       {
-        _id: 2, text: '我聽到一些別人的訊息，帶回來給主人聽聽看！', createdAt: new Date(),
+        _id: 2, text: '我聽到一些別人的訊息，帶回來給主人聽聽看！', createdAt: Date(),
         user: Animood
       },
       {
-        _id: 1, text: '帶著這個煩惱旅行時', createdAt: new Date(),
+        _id: 1, text: '帶著這個煩惱旅行時', createdAt:  Date(),
         user: Animood
       },
     ])
@@ -74,12 +77,12 @@ export default function WorryScreen({ navigation, props }) {
         <LottieView source={require('../json/bg_happy.json')} autoPlay loop/>
         <TouchableOpacity
           style={{marginTop: 80, marginLeft: -320}}
-          onPress={() => navigation.navigate('Travel')}
+          onPress={() => navigation.goBack()}
         >
           <Image style={styles.btn_back} source={require('../assets/btn_back.png')}/>
         </TouchableOpacity>
         <View style={{marginTop: 100, alignItems: 'center'}}>
-          <Image style={styles.img_animal} source={require('../assets/animals/cat.png')}/>
+          <Image style={styles.img_animal} source={require('../assets/animals/panda.png')}/>
           <View style={styles.inputContainer}>
             <GiftedChat
               messages={messages}
@@ -171,7 +174,7 @@ const styles = StyleSheet.create({
   },
   img_animal:{
     width: 323,
-    height: 267,
+    height: 275,
   },
   inputContainer:{
     width: 420,
