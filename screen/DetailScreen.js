@@ -1,14 +1,12 @@
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, Image, View } from 'react-native';
+import { StyleSheet, Text, Image, View } from 'react-native';
+import LottieView from 'lottie-react-native'
 
-export default function DetailScreen( ) {
+export default function DetailScreen() {
     return(
         <View style={styles.detailBg}>
             <Text style={styles.detailDate}>2022/01/15</Text>
-            <Image 
-                style={{width: 165, height: 162, zIndex: 999}}
-                source={require('../assets/mood/happy_face.png')}
-            />
+            <LottieView source={require('../json/depression_none.json')} autoPlay loop style={{width: 180}}/>
             <Text style={styles.score}>良好</Text>
             <View style={styles.suggest}>
                 <Text style={styles.suggestTitle}>建議內容：</Text>

@@ -1,10 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { StyleSheet, Text, TouchableOpacity, Image, View, Animated, FlatList, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard} from 'react-native';
-import LottieView from 'lottie-react-native';
+import { StyleSheet, TouchableOpacity, Image, View, KeyboardAvoidingView } from 'react-native';
 import { Bubble, GiftedChat, InputToolbar, Send } from "react-native-gifted-chat";
-
-// import { Dialogflow_V2 } from "react-native-dialogflow";
-// import { dialogflowConfig } from "./env";
 
 const animoodAvatar = require('../assets/home/animoodAvatar.png');
 
@@ -28,13 +24,6 @@ export default function WorryScreen({ navigation, props }) {
         user: Animood
       },
     ])
-
-    // Dialogflow_V2.setConfiguration(
-    //   dialogflowConfig.client_email,
-    //   dialogflowConfig.private_key,
-    //   Dialogflow_V2.LANG_CHINESE_TAIWAN,
-    //   dialogflowConfig.project_id
-    // )
   }, []);
 
   const onSend = useCallback((messages = []) => {
@@ -165,8 +154,8 @@ const styles = StyleSheet.create({
     height: 28,
   },
   img_animal:{
-    width: 355,
-    height: 267,
+    width: 343,
+    height: 260,
   },
   inputContainer:{
     width: 420,

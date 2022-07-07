@@ -2,13 +2,15 @@ import React , { useContext,useState,useEffect }from 'react';
 import { StyleSheet, Image, TextInput, View, TouchableWithoutFeedback, TouchableOpacity,KeyboardAvoidingView, Keyboard } from 'react-native';
 import * as firebase from 'firebase'; 
 import {StoreContext}from "../stores/index.js";
+import { handleAvatar } from '../component/HandleAvatar.js';
 
 export default function AccountScreen({ navigation }) {
   const [name, setName] = useState(null);
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
-  const {userState} = useContext(StoreContext);
+  const {userState , userAvatarState} = useContext(StoreContext);
   const [user,setUser] = userState;
+  const [userAvatar, setUserAvatar] = userAvatarState;
 
   const storefirebaseauth = () => {
     if(firebase.auth().currentUser.displayName){
@@ -17,9 +19,10 @@ export default function AccountScreen({ navigation }) {
     setPassword(firebase.auth().currentUser.password);
     }
   };
+
   useEffect(()=>{
     storefirebaseauth();
-    },[]);
+  },[]);
 
   return (
     <KeyboardAvoidingView style={styles.container}
@@ -30,10 +33,7 @@ export default function AccountScreen({ navigation }) {
           source={require('../assets/gif/bg_gif.gif')}
         />
         <View style={styles.photoBg}>
-          <Image
-            style={styles.profilePhoto}
-            source={require('../assets/img_head1.png')}
-          />
+          {handleAvatar(userAvatar)}
         </View>
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <View style={{marginTop: 20}}>

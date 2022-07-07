@@ -14,23 +14,29 @@ export const StoreProvider = ({children}) => {
     const [isLogin, setIsLogin] = useState(false);
     const [testItems, settestItems] = useState(testData);
     const [user,setUser] = useState(userData);
+    const [userAvatar, setUserAvatar] = useState('head1');
     const [travelVisible, setTravelVisible] = useState(false);
     const [backVisible, setBackVisible] = useState(false)
     const [gotravelVisible, setgoTravelVisible] = useState(false);
     const [isChoose, setIsChoose] = useState(false);
     const [isOther, setIsOther] = useState(false);
     const [isMood, setIsMood] = useState("");
+    const [wooryWords, setWorryWords] = useState(false)
+    const [worryDate, setWorryDate] = useState(false)
 
     const store = {
         isLoginState: [isLogin, setIsLogin],
         userState: [user,setUser],
+        userAvatarState: [userAvatar, setUserAvatar],
         testState:[testItems, settestItems],
         goTravelState: [gotravelVisible, setgoTravelVisible],
         chooseState: [isChoose, setIsChoose],
         travelState: [travelVisible, setTravelVisible],
         backState: [backVisible, setBackVisible],
         otherWorryState: [isOther, setIsOther],
-        moodState: [isMood, setIsMood]
+        moodState: [isMood, setIsMood],
+        worryWordsState: [wooryWords, setWorryWords],
+        worryDateState: [worryDate, setWorryDate],
     };
     
     const LoginrestoreState = async () => {

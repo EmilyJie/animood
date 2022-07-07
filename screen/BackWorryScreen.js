@@ -3,9 +3,6 @@ import { StyleSheet, Text, TouchableOpacity, Image, View, Animated, FlatList, Ke
 import LottieView from 'lottie-react-native';
 import { Bubble, GiftedChat, InputToolbar, Send } from "react-native-gifted-chat";
 
-// import { Dialogflow_V2 } from "react-native-dialogflow";
-// import { dialogflowConfig } from "./env";
-
 const animoodAvatar = require('../assets/home/animoodAvatar.png');
 const animoodUser1 = require('../assets/img_head2.png');
 const animoodUser2 = require('../assets/img_head3.png');

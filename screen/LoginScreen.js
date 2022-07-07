@@ -139,7 +139,7 @@ export default function LoginScreen({ navigation }) {
       </TouchableOpacity>
       <View style={styles.btn}>
         {renderButton()}
-        <TouchableOpacity style={styles.signUp} onPress={() => navigation.navigate('Mood')}>
+        <TouchableOpacity style={styles.signUp} onPress={() => navigation.navigate('Signup')}>
           <Text style={styles.btnText}>註冊</Text>
         </TouchableOpacity>
       </View>

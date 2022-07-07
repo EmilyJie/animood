@@ -1,17 +1,20 @@
-import React, { useCallback, useEffect, useState } from "react";
-import { StyleSheet, Text, TouchableOpacity, Image, View, Animated, FlatList, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard} from 'react-native';
+import React, { useCallback, useContext, useEffect, useState } from "react";
+import { StyleSheet, TouchableOpacity, Image, View, KeyboardAvoidingView } from 'react-native';
 import LottieView from 'lottie-react-native';
 import { Bubble, GiftedChat, InputToolbar, Send } from "react-native-gifted-chat";
-
-// import { Dialogflow_V2 } from "react-native-dialogflow";
-// import { dialogflowConfig } from "./env";
+import { StoreContext } from "../stores";
+import { format } from 'date-fns';
 
 const animoodAvatar = require('../assets/home/animoodAvatar.png');
 
 const Animood = { _id: 2, name: 'Animood', avatar: animoodAvatar }
 
-export default function WorryScreen({ navigation, props }) {
+export default function WorryScreen({ navigation }) {
   const [messages, setMessages] = useState([]);
+  const {worryWordsState} = useContext(StoreContext)
+  const [wooryWords, setWorryWords] = worryWordsState
+  const {worryDateState} = useContext(StoreContext)
+  const [worryDate, setWorryDate] = worryDateState
 
   useEffect(() => {
     setMessages([
@@ -24,17 +27,12 @@ export default function WorryScreen({ navigation, props }) {
         user: Animood
       },
     ])
-
-    // Dialogflow_V2.setConfiguration(
-    //   dialogflowConfig.client_email,
-    //   dialogflowConfig.private_key,
-    //   Dialogflow_V2.LANG_CHINESE_TAIWAN,
-    //   dialogflowConfig.project_id
-    // )
   }, []);
 
   const onSend = useCallback((messages = []) => {
-    setMessages(previousMessages => GiftedChat.append(previousMessages, messages))
+    setMessages(previousMessages => GiftedChat.append(previousMessages, messages));
+    setWorryWords(true);
+    setWorryDate(format(new Date(), 'yyyy-MM-dd'));
   }, [])
 
   const renderSend = (props) => {
@@ -56,7 +54,6 @@ export default function WorryScreen({ navigation, props }) {
   return (
     <KeyboardAvoidingView style={styles.container}
       behavior={Platform.OS === "ios" ? "padding" : "height"}>
-    {/* <TouchableWithoutFeedback onPress={Keyboard.dismiss}></TouchableWithoutFeedback> */}
     <View style={{flex:1}}>
       <View style={{alignItems:'center', height: 895}}>
         <LottieView source={require('../json/bg_happy.json')} autoPlay loop/>

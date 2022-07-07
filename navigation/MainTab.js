@@ -130,6 +130,9 @@ const getTabBarVisibility = (route) => {
   if( routeName == 'WorryUpdate'){
     return 'none';
   }
+  if( routeName == 'OthersWorry'){
+    return 'none';
+  }
   if( routeName == 'Mood'){
     return 'none';
   }

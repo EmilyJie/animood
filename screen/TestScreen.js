@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View ,Image, TouchableOpacity, ScrollView} from 'react-native';
 import ModalPoup from '../component/ModalPoup';
 import DetailScreen from './DetailScreen';
+import LottieView from 'lottie-react-native'
 
 export default function TestScreen({ navigation }) {
   const [detailVisible, setDetailVisible] = React.useState(false);
@@ -16,11 +17,8 @@ export default function TestScreen({ navigation }) {
       <View style={styles.container}>
         <View style={styles.scoreBg}>
           <Text style={styles.testDate}>上次紀錄：2022/03/10</Text>
-          <View style={{marginTop: 40, alignItems: 'center', justifyContent: 'center',}}>
-            <Image 
-              style={{width: 125, height: 115}}
-              source={require('../assets/mood/happy_face.png')}
-            />
+          <View style={{marginTop: 20, alignItems: 'center', justifyContent: 'center',}}>
+            <LottieView source={require('../json/depression_none.json')} autoPlay loop style={{width: 150}}/>
             <Text style={styles.score}>良好</Text>
             <TouchableOpacity 
               style={styles.btnTestBg} 
@@ -52,12 +50,6 @@ export default function TestScreen({ navigation }) {
           </View>
         </TouchableOpacity>
 
-        {/* <ModalPoup visible={detailVisible}>
-          <DetailScreen></DetailScreen>
-          <TouchableOpacity onPress={() => setDetailVisible(false)}>
-            <Image source={require('../assets/btn_close.png')} style={styles.btnClose}/>
-          </TouchableOpacity>
-        </ModalPoup> */}
         <TouchableOpacity style={styles.historyBox}>
           <View style={styles.scoreBg1}>
             <Image 
@@ -71,12 +63,6 @@ export default function TestScreen({ navigation }) {
           </View>
         </TouchableOpacity>
 
-        {/* <ModalPoup visible={detailVisible}>
-          <DetailScreen></DetailScreen>
-          <TouchableOpacity onPress={() => setDetailVisible(false)}>
-            <Image source={require('../assets/btn_close.png')} style={styles.btnClose}/>
-          </TouchableOpacity>
-        </ModalPoup> */}
         <TouchableOpacity style={styles.historyBox}>
           <View style={styles.scoreBg1}>
             <Image 
@@ -121,7 +107,7 @@ const styles = StyleSheet.create({
     fontSize: 40,
     fontWeight:"bold",
     color: "#521111",
-    marginTop: 25
+    marginTop: 15
   },
   testDate:{
     left: 20,
@@ -129,7 +115,7 @@ const styles = StyleSheet.create({
     color: "#521111",
   },
   btnTestBg:{
-    width: 300,
+    width: 290,
     height: 60,
     backgroundColor: "#D2A98D",
     borderRadius: 20,
@@ -140,7 +126,7 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.2,
     shadowRadius: 3.5,
-    marginTop: 25,
+    marginTop: 20,
     alignItems: 'center',
     justifyContent: 'center',
   },

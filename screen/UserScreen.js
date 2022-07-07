@@ -1,13 +1,16 @@
-import React , { Component, useContext  }from 'react';
+import React , { useContext  }from 'react';
 import { TouchableOpacity } from 'react-native';
-import { StyleSheet, Text, View ,Image, Modal, Animated} from 'react-native';
+import { StyleSheet, Text, View ,Image } from 'react-native';
 import * as firebase from "firebase";
 import { StoreContext } from "../stores";
+import { handleAvatar } from '../component/HandleAvatar';
 
 export default function UserScreen({ navigation }) {
-  const { isLoginState, moodState } = useContext(StoreContext);
+  const { isLoginState, moodState, userAvatarState } = useContext(StoreContext);
   const [isLogin, setIsLogin] = isLoginState;
   const [isMood, setIsMood] = moodState;
+  const [userAvatar, setUserAvatar] = userAvatarState;
+
   const onSignOut = () => {
     firebase.auth().signOut();
     setIsLogin(false);
@@ -21,10 +24,7 @@ export default function UserScreen({ navigation }) {
         source={require('../assets/gif/bg_gif.gif')}
       />
       <View style={styles.photoBg}>
-        <Image
-          style={styles.profilePhoto}
-          source={require('../assets/img_head1.png')}
-        />
+        {handleAvatar(userAvatar)}
       </View>
       <View style={styles.setting}>
         <View style={styles.settingBox}>

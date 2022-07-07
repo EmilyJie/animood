@@ -64,7 +64,7 @@ const App=()=> {
   if (!isLoadingComplete) {
     return null;
   } else {
-      return isLogin?(
+      return isLogin ? (
         <NavigationContainer
           initialState={initialNavigationState}
           onStateChange={(state) =>

@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import ExternalLink from '../component/ExternalLink';
+import { handleAvatar } from '../component/HandleAvatar';
+import { StoreContext } from '../stores';
 
 const lineURL = "https://line.me/R/ti/p/@961pijzf"
 const igURL = "https://instagram.com/animood_8?igshid=YmMyMTA2M2Y="
 
 export default function AboutScreen({ navigation }) {
+  const {userAvatarState} = useContext(StoreContext);
+  const [userAvatar, setUserAvatar] = userAvatarState;
+
   return (
     <View style={styles.container}>
       <Image 
@@ -13,10 +18,7 @@ export default function AboutScreen({ navigation }) {
         source={require('../assets/gif/bg_gif.gif')}
       />
       <View style={styles.photoBg}>
-        <Image
-          style={styles.profilePhoto}
-          source={require('../assets/img_head1.png')}
-        />
+        {handleAvatar(userAvatar)}
       </View>
       <View style={{marginTop:30, alignItems:'center'}}>
         <View style={styles.settingBox}>

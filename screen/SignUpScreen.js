@@ -19,6 +19,10 @@ export default function SignUpScreen({ navigation }) {
 
   const {userState} = useContext(StoreContext);
   const [user,setUser] = userState;
+  const {isLoginState} = useContext(StoreContext);
+  const [isLogin, setIsLogin] = isLoginState;
+  const {userAvatarState} = useContext(StoreContext);
+  const [userAvatar, setUserAvatar] = userAvatarState;
 
   const saveToAsyncStorage = () => {
       try{
@@ -30,10 +34,6 @@ export default function SignUpScreen({ navigation }) {
   useEffect(()=>{
       saveToAsyncStorage();
   },[user]);
-
-  const { isLoginState } = useContext(StoreContext);
-  const [isLogin, setIsLogin] = isLoginState;
-
 
   const isignInsaveToAsyncStorage = () => {
       try{
@@ -51,9 +51,7 @@ export default function SignUpScreen({ navigation }) {
       return loading ? (
         <ActivityIndicator size="large" color="#F0A202"  />
       ) : (
-          <TouchableOpacity onPress={onSignUp} style={styles.signUp}
-          //onPress={() => navigation.navigate('Transition')}
-          >
+          <TouchableOpacity onPress={onSignUp} style={styles.signUp}>
             <Text style={styles.btnText}>註冊</Text>
           </TouchableOpacity>
       );
@@ -92,7 +90,7 @@ export default function SignUpScreen({ navigation }) {
 
   return (
     <KeyboardAvoidingView style={styles.container}
-    behavior={Platform.OS === "ios" ? "padding" : "height"}>
+      behavior={Platform.OS === "ios" ? "padding" : "height"}>
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
     <View style={styles.container}>
       <Image 
@@ -100,16 +98,16 @@ export default function SignUpScreen({ navigation }) {
         source={require('../assets/logo.png')}
       />
       <View style={styles.photoSelection}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => setUserAvatar('head1')}>
           <Image style={styles.profliePhoto} source={require('../assets/img_head1.png')}/>
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => setUserAvatar('head2')}>
           <Image style={styles.profliePhoto} source={require('../assets/img_head2.png')}/>
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => setUserAvatar('head3')}>
           <Image style={styles.profliePhoto} source={require('../assets/img_head3.png')}/>
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => setUserAvatar('head4')}>
           <Image style={styles.profliePhoto} source={require('../assets/img_head4.png')}/>
         </TouchableOpacity>
       </View>
