@@ -4,6 +4,7 @@ import { StyleSheet, Text, TextInput, TouchableOpacity, View, Image,
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import * as firebase from 'firebase'; 
 import {StoreContext}from "../stores/index.js";
+
 const ME_PERSISTENCE_KEY = "ME_PERSISTENCE_KEY";
 const HAS_SET_KEY = "HAS_SET_KEY";
 
@@ -99,16 +100,32 @@ export default function SignUpScreen({ navigation }) {
       />
       <View style={styles.photoSelection}>
         <TouchableOpacity onPress={() => setUserAvatar('head1')}>
-          <Image style={styles.profliePhoto} source={require('../assets/img_head1.png')}/>
+          {userAvatar == 'head1' ? (
+            <Image style={styles.chooseProfliePhoto} source={require('../assets/img_head1.png')}/>
+          ):(
+            <Image style={styles.profliePhoto} source={require('../assets/img_head1.png')}/>
+          )}
         </TouchableOpacity>
         <TouchableOpacity onPress={() => setUserAvatar('head2')}>
-          <Image style={styles.profliePhoto} source={require('../assets/img_head2.png')}/>
+          {userAvatar == 'head2' ? (
+            <Image style={styles.chooseProfliePhoto} source={require('../assets/img_head2.png')}/>
+          ):(
+            <Image style={styles.profliePhoto} source={require('../assets/img_head2.png')}/>
+          )}
         </TouchableOpacity>
         <TouchableOpacity onPress={() => setUserAvatar('head3')}>
-          <Image style={styles.profliePhoto} source={require('../assets/img_head3.png')}/>
+          {userAvatar == 'head3' ? (
+            <Image style={styles.chooseProfliePhoto} source={require('../assets/img_head3.png')}/>
+          ):(
+            <Image style={styles.profliePhoto} source={require('../assets/img_head3.png')}/>
+          )}
         </TouchableOpacity>
         <TouchableOpacity onPress={() => setUserAvatar('head4')}>
-          <Image style={styles.profliePhoto} source={require('../assets/img_head4.png')}/>
+          {userAvatar == 'head4' ? (
+            <Image style={styles.chooseProfliePhoto} source={require('../assets/img_head4.png')}/>
+          ):(
+            <Image style={styles.profliePhoto} source={require('../assets/img_head4.png')}/>
+          )}
         </TouchableOpacity>
       </View>
       <View style={styles.inputContainer}>
@@ -169,6 +186,14 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     justifyContent: 'space-between',
     flexDirection: 'row'
+  },
+  chooseProfliePhoto:{
+    width: 62,
+    height: 62,
+    borderStyle: 'solid',
+    borderWidth: 3,
+    borderRadius: 50,
+    borderColor: '#FFF9F6'
   },
   profliePhoto:{
     width: 60,

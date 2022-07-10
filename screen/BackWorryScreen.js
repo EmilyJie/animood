@@ -39,7 +39,7 @@ export default function WorryScreen({ navigation, props }) {
         user: Animood
       },
       {
-        _id: 1, text: '帶著這個煩惱旅行時', createdAt:  Date(),
+        _id: 1, text: '帶著 “找不到理想的實習” 這個煩惱旅行時', createdAt:  Date(),
         user: Animood
       },
     ])

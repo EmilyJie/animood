@@ -3,6 +3,7 @@ import { StyleSheet, Text, TouchableOpacity, Image, View } from 'react-native';
 import ModalPoup from '../component/ModalPoup';
 import { StoreContext } from "../stores";
 import ChooseAnimalScreen from './ChooseAnimalScreen';
+import LottieView from 'lottie-react-native';
 
 export default function TravelScreen({ navigation }) {
   const {travelState} = useContext(StoreContext);
@@ -86,10 +87,7 @@ export default function TravelScreen({ navigation }) {
             <Text style={styles.visiterText}>嗨！很高興認識你{"\n"}點我看看我主人的煩惱吧</Text>
           </View>
           <TouchableOpacity onPress={handleOtherWorry}>
-            <Image
-              style={{ position: 'absolute', width: 145, height: 109.65, top:290, left: 35 }}
-              source={require('../assets/animals/racoon.png')}
-            />
+            <LottieView source={require('../json/racoon.json')} autoPlay loop style={{width: 165, top: 95, left: 5}}/>
           </TouchableOpacity>
         </View>
       ) : (
@@ -139,7 +137,7 @@ const styles = StyleSheet.create({
     marginLeft: 300,
   },
   newVisiter:{
-    top: 250,
+    top: 265,
     justifyContent: 'center',
     alignItems: 'center',
   },

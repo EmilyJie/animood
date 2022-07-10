@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View ,Image, TouchableOpacity, ScrollView} from 'react-native';
 import ModalPoup from '../component/ModalPoup';
 import DetailScreen from './DetailScreen';
 import LottieView from 'lottie-react-native'
+import DetailScreenMild from './DetailScreen_mild';
 
 export default function TestScreen({ navigation }) {
-  const [detailVisible, setDetailVisible] = React.useState(false);
-  
+  const [detailVisible, setDetailVisible] = useState(false);
+  const [lightVisible, setLightVisible] = useState(false)
+
   return (
     <View>
       <Image 
@@ -50,7 +52,13 @@ export default function TestScreen({ navigation }) {
           </View>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.historyBox}>
+        <ModalPoup visible={lightVisible}>
+          <DetailScreenMild></DetailScreenMild>
+          <TouchableOpacity onPress={() => setLightVisible(false)}>
+            <Image source={require('../assets/btn_close.png')} style={styles.btnClose}/>
+          </TouchableOpacity>
+        </ModalPoup>
+        <TouchableOpacity style={styles.historyBox}  onPress={() => setLightVisible(true)}>
           <View style={styles.scoreBg1}>
             <Image 
               style={{width: 60, height: 40}}

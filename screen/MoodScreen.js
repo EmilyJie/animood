@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useContext } from "react";
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
-import FadeInView from "../component/FadeInView";
 import { StoreContext } from "../stores";
+import LottieView from 'lottie-react-native'
 
 export default function MoodScreen({ navigation }) {
   const {moodState} = useContext(StoreContext);
@@ -19,7 +19,7 @@ export default function MoodScreen({ navigation }) {
         <Image style={styles.textBg} source={require('../assets/img_moodTextBg.png')}/>
         <Text style={styles.text}>你今天的心情如何呢？</Text>
       </View>
-      <Image style={styles.racoon} source={require('../assets/animals/racoon.png')}/>
+      <LottieView source={require('../json/racoon.json')} autoPlay loop style={{width: 240}}/>
       <View style={styles.moodContainer}>
         <TouchableOpacity style={styles.moodBg} onPress={() => handlePress("happy")}>
           <Image style={{width: 60, height: 60}} source={require('../assets/mood/happy_face.png')}/>

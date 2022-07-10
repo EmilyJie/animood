@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity, Image, View } from 'react-native';
+import LottieView from 'lottie-react-native'
 
 export default function ResultScreen({ navigation }) {
   return (
@@ -10,10 +11,7 @@ export default function ResultScreen({ navigation }) {
         />
       <View style={styles.resultBg}>
         <Text style={styles.detailDate}>測驗結果</Text>
-        <Image 
-            style={{width: 165, height: 162, zIndex: 999}}
-            source={require('../assets/mood/happy_face.png')}
-        />
+        <LottieView source={require('../json/depression_none.json')} autoPlay loop style={{width: 150}}/>
         <View style={styles.scoreBg}>
           <Text style={styles.score}>良好</Text>
         </View>

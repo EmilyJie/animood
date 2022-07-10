@@ -25,7 +25,7 @@ export default function SolvedScreen({ navigation }) {
           <TouchableOpacity style={styles.historyBox}>
             <Image 
               style={{width: 70, height: 70}}
-              source={require('../assets/animals/bear_circle.png')}
+              source={require('../assets/animals/cat_circle.png')}
             />
             <View style={{height: 70, justifyContent: 'space-evenly'}}>
               <Text style={styles.worryText}>{worryDate}</Text>
